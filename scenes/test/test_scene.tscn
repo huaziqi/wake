@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1wko1rfba2e7"]
+
+[ext_resource type="Texture2D" uid="uid://4kqfpwwjof27" path="res://assets/temp_assets/back.png" id="1_4b6mq"]
+[ext_resource type="PackedScene" uid="uid://qi8cxx074bja" path="res://scenes/player/player.tscn" id="2_lpkca"]
+
+[sub_resource type="Environment" id="Environment_4b6mq"]
+background_mode = 3
+glow_enabled = true
+
+[node name="test_scene" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-23, 14)
+scale = Vector2(5.78125, 3.9375)
+texture = ExtResource("1_4b6mq")
+
+[node name="Player" parent="." instance=ExtResource("2_lpkca")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-4, -10)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4b6mq")
