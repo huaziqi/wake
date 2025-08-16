@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://csd485ac73uxn"]
+
+[ext_resource type="Script" uid="uid://b3kxkykuvvycf" path="res://pipe.gd" id="1_wd2d1"]
+[ext_resource type="Texture2D" uid="uid://bs3tc4chnqium" path="res://钢管.png" id="2_wd2d1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbd7x"]
+size = Vector2(77.7578, 10.9965)
+
+[node name="the_god_of_pipe" type="RigidBody2D"]
+mass = 0.916
+gravity_scale = 1.408
+script = ExtResource("1_wd2d1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, -3)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_wd2d1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -8)
+rotation = -0.420624
+shape = SubResource("RectangleShape2D_jbd7x")
