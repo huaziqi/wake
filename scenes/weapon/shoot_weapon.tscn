@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtvteogckdglk"]
+
+[ext_resource type="Script" uid="uid://el8e18berfa7" path="res://scripts/weapon/shoot_weapon.gd" id="1_y63p1"]
+[ext_resource type="Texture2D" uid="uid://cb7m5kp2xyv1" path="res://assets/temp_assets/tile_0105.png" id="2_hc1my"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qi8r"]
+size = Vector2(15, 30)
+
+[node name="ShootWeapon" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_y63p1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_hc1my")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_6qi8r")

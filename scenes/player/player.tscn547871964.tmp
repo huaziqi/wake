@@ -1,14 +1,36 @@
-[gd_scene load_steps=16 format=3 uid="uid://qi8cxx074bja"]
+[gd_scene load_steps=14 format=3 uid="uid://qi8cxx074bja"]
 
-[ext_resource type="Script" uid="uid://nl1ip673o7un" path="res://scripts/player/player.gd" id="1_0owmy"]
 [ext_resource type="Shader" uid="uid://gax1k8tg58fm" path="res://scripts/shader/outline.gdshader" id="3_0owmy"]
 [ext_resource type="Texture2D" uid="uid://dj3glbu268d0q" path="res://assets/player/idle_1.png" id="3_75vfm"]
 [ext_resource type="Texture2D" uid="uid://djgma2uaxxmru" path="res://assets/player/idle_0.png" id="3_qek5x"]
 [ext_resource type="Script" uid="uid://5g33a5nsapcy" path="res://scripts/state/idle.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://d1pjl8s55angd" path="res://scripts/state/state_machine.gd" id="5_0owmy"]
 [ext_resource type="Script" uid="uid://cnvl78m6lfcr1" path="res://scripts/state/move.gd" id="5_p47bc"]
-[ext_resource type="Script" uid="uid://7trakc2bxru" path="res://scripts/player/camera.gd" id="8_5gtgg"]
-[ext_resource type="Script" uid="uid://klxvq0rlepha" path="res://scripts/player/attack_manager.gd" id="8_qek5x"]
+
+[sub_resource type="GDScript" id="GDScript_75vfm"]
+script/source = "extends CharacterBody2D
+class_name Player
+
+@onready var graphics: Node2D = $graphics
+@onready var collision_2d: CollisionPolygon2D = $CollisionPolygon2D
+
+const ACCELERATION := 9000
+const MAXSPEED := 500
+const MAX_HEALTH := 100
+
+var direction : Vector2 = Vector2.DOWN
+var last_direction : Vector2 = Vector2.DOWN #记录最后一次的位置
+var facing_direction : int = 1 # 1表示右边，-1表示左边
+var push_force := 50.0 #推力
+var current_health : int
+
+func _ready() -> void:
+	add_to_group(\"player\")
+	current_health = MAX_HEALTH
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	z_index = 99 # 保证显示在大部分图片上方
+	
+"
 
 [sub_resource type="Animation" id="Animation_p47bc"]
 length = 0.001
@@ -460,7 +482,7 @@ glow_enabled = true
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
-script = ExtResource("1_0owmy")
+script = SubResource("GDScript_75vfm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -498,7 +520,3 @@ script = ExtResource("5_p47bc")
 metadata/_custom_type_script = "uid://c8iyeby8xwg2o"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("8_5gtgg")
-
-[node name="AttackManager" type="Node" parent="."]
-script = ExtResource("8_qek5x")

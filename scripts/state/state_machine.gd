@@ -27,7 +27,7 @@ func switch_state(last_state : State, next_state_name): #这里的newState是字
 	var next_state : State = state_dir.get(next_state_name.to_lower()) #获取下一个节点
 	if !next_state: #如果没有找到
 		return
-	print(next_state_name)
+	#print(next_state_name)
 	current_state = next_state
 	last_state.exit_state()
 	next_state.enter_state()

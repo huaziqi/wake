@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc006t2ujquda"]
+
+[ext_resource type="Script" uid="uid://cggef7ftlaclw" path="res://scripts/weapon/rotate_weapon.gd" id="1_rhfqg"]
+[ext_resource type="Texture2D" uid="uid://csrpxnc21s0r0" path="res://assets/temp_assets/tile_0117.png" id="2_3wf4w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhfqg"]
+size = Vector2(22, 32)
+
+[node name="RotateWeapon" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_rhfqg")
+
+[node name="graphics" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="graphics"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_3wf4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rhfqg")

@@ -23,5 +23,5 @@ func update_state(delta): #判断何时需要改变状态
 func tick_physics(delta): #每一帧要做什么
 	pass
 
-func transition_state(next_state):  #更改状态 /或者用发送信号实现，可以不需要这个函数？/先用着吧
+func transition_state(next_state):  #更改状态 
 	state_machine.switch_state(self, next_state)

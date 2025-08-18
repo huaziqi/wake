@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1wko1rfba2e7"]
+[gd_scene load_steps=4 format=3 uid="uid://c1wko1rfba2e7"]
 
 [ext_resource type="Texture2D" uid="uid://4kqfpwwjof27" path="res://assets/temp_assets/back.png" id="1_4b6mq"]
 [ext_resource type="PackedScene" uid="uid://qi8cxx074bja" path="res://scenes/player/player.tscn" id="2_lpkca"]
 [ext_resource type="PackedScene" uid="uid://dlo3n7hvwctoc" path="res://scenes/tower/master.tscn" id="2_omf4g"]
-[ext_resource type="Script" uid="uid://cru01rprfqcsl" path="res://scripts/enemy/enemy_generator.gd" id="4_omf4g"]
 
 [node name="test_scene" type="Node2D"]
 
@@ -15,7 +14,3 @@ texture = ExtResource("1_4b6mq")
 [node name="master" parent="." instance=ExtResource("2_omf4g")]
 
 [node name="Player" parent="." instance=ExtResource("2_lpkca")]
-
-[node name="EnemyGenerator" type="Node" parent="."]
-script = ExtResource("4_omf4g")
-metadata/_custom_type_script = "uid://cru01rprfqcsl"
