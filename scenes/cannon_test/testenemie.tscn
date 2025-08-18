@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs602itrlnkro"]
+
+[ext_resource type="Script" uid="uid://cpo3x3rcahv6u" path="res://scripts/cannon/testenemie.gd" id="1_mafbc"]
+[ext_resource type="Texture2D" uid="uid://dqw2121h7d2jn" path="res://icon.svg" id="1_uhdr1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uhdr1"]
+radius = 81.615
+
+[node name="testenemie" type="Area2D" groups=["enemies"]]
+script = ExtResource("1_mafbc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uhdr1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_uhdr1")
