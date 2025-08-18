@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://g6sk0kx2ccj7"]
+
+[ext_resource type="PackedScene" uid="uid://eisk158kli6j" path="res://scenes/cannon_test/cannon.tscn" id="1_h1d4g"]
+[ext_resource type="PackedScene" uid="uid://bs602itrlnkro" path="res://scenes/cannon_test/testenemie.tscn" id="2_k6iw5"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Cannon" parent="." instance=ExtResource("1_h1d4g")]
+position = Vector2(508, 299)
+
+[node name="testenemie" parent="." instance=ExtResource("2_k6iw5")]
+position = Vector2(811, 463)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.14, 0.14)
