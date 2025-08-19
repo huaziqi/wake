@@ -20,3 +20,4 @@ func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	z_index = 99 # 保证显示在大部分图片上方
 	
+	

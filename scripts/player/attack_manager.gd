@@ -1,12 +1,14 @@
 extends Node
 
 @onready var player: Player = $".."
+@export var scan_enemy: Area2D
 
 const SHOOT_WEAPON = preload("res://scenes/weapon/shoot_weapon.tscn")
 const ROTATE_WEAPON = preload("res://scenes/weapon/rotate_weapon.tscn")
+const Hand_Knife = preload("res://scenes/weapon/hand_knife.tscn")
 
 var shootTimer : Timer
-var rotate_weapon
+var rotate_weapon : Rotate_Weapon
 
 func _ready() -> void:
 	shootTimer = Timer.new() #定时发射
@@ -21,7 +23,7 @@ func _ready() -> void:
 	get_tree().current_scene.add_child.call_deferred(rotate_weapon)
 
 func _physics_process(delta: float) -> void:
-	pass	
+	pass
 
 func on_timer_timeout(timerName : String):
 	timerName = timerName.to_lower()

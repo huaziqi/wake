@@ -3,7 +3,7 @@ class_name Rotate_Weapon
 
 var rotation_angle : float = 0.0
 var rotation_speed: float = 80.0   #公转速度
-var orbit_radius: float = 30.0   #半径大小
+var orbit_radius: float = 90   #半径大小
 var player: Player
 
 var weapon_num : int = 3 #武器数量
