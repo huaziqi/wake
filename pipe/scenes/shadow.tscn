@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0po25ms8ffxw"]
+
+[ext_resource type="Texture2D" uid="uid://dhvpwrdpfl4f4" path="res://assets/shadow.png" id="1_jqplm"]
+[ext_resource type="Script" uid="uid://df4c3iinc8yj6" path="res://scripts/shadow.gd" id="2_bs2fw"]
+
+[node name="shadow" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.176471)
+position = Vector2(-4.76837e-07, 4.76837e-07)
+scale = Vector2(0.323383, 0.196565)
+texture = ExtResource("1_jqplm")
+script = ExtResource("2_bs2fw")

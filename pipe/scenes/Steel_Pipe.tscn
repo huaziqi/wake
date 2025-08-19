@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://csd485ac73uxn"]
+
+[ext_resource type="Script" uid="uid://b3kxkykuvvycf" path="res://scripts/pipe.gd" id="1_wd2d1"]
+[ext_resource type="Texture2D" uid="uid://bs3tc4chnqium" path="res://assets/钢管.png" id="2_wd2d1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbd7x"]
+size = Vector2(84.1951, 9.44378)
+
+[node name="Steel_Pipe" type="RigidBody2D" groups=["player"]]
+mass = 0.916
+gravity_scale = 1.612
+script = ExtResource("1_wd2d1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.999998, 5)
+scale = Vector2(0.110586, 0.109896)
+texture = ExtResource("2_wd2d1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.499999, -1.5)
+rotation = -0.420624
+shape = SubResource("RectangleShape2D_jbd7x")

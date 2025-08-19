@@ -1,0 +1,219 @@
+[gd_scene load_steps=23 format=3 uid="uid://cnthlauqvlojg"]
+
+[ext_resource type="Script" uid="uid://knxgayakmmhq" path="res://scripts/stage.gd" id="1_st0q7"]
+[ext_resource type="Script" uid="uid://cokj77x13tamf" path="res://scripts/camera_for_pipe.gd" id="1_vcsse"]
+[ext_resource type="Script" uid="uid://csqetpfotvvc8" path="res://scripts/area_2d.gd" id="2_2so7o"]
+[ext_resource type="PackedScene" uid="uid://b0po25ms8ffxw" path="res://scenes/shadow.tscn" id="3_dexii"]
+[ext_resource type="AudioStream" uid="uid://cfrvmrqufkw6n" path="res://assets/钢管落地.wav" id="3_st0q7"]
+[ext_resource type="Script" uid="uid://df6cv6iftun6t" path="res://scripts/audio_stream_player_2d.gd" id="4_1hwpr"]
+[ext_resource type="PackedScene" uid="uid://csd485ac73uxn" path="res://scenes/Steel_Pipe.tscn" id="5_dexii"]
+[ext_resource type="PackedScene" uid="uid://bp3hsx7ra62nm" path="res://scenes/frog.tscn" id="6_2so7o"]
+[ext_resource type="Texture2D" uid="uid://u70qg1aekw3a" path="res://assets/background.jpg" id="8_1hwpr"]
+[ext_resource type="FontFile" uid="uid://u1tdi6cs0kuk" path="res://assets/Uranus_Pixel_11Px.ttf" id="10_yd2gm"]
+[ext_resource type="Script" uid="uid://cnucyxtblw7a1" path="res://scenes/label.gd" id="11_0hg5s"]
+
+[sub_resource type="Animation" id="Animation_1hwpr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_st0q7"]
+resource_name = "zoom"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(6.49802, 0.353554, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dexii"]
+_data = {
+&"RESET": SubResource("Animation_1hwpr"),
+&"zoom": SubResource("Animation_st0q7")
+}
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yd2gm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
+size = Vector2(2323, 25)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_st0q7"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1hwpr"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dexii"]
+
+[sub_resource type="Animation" id="Animation_yd2gm"]
+resource_name = "label"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(8.87654, 1, 0.267943),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3),
+"transitions": PackedFloat32Array(3.13834, 1, 0.420448),
+"update": 0,
+"values": [Vector2(27, 22), Vector2(10, 22), Vector2(27, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_0hg5s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(27, 22)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jl6nj"]
+_data = {
+&"RESET": SubResource("Animation_0hg5s"),
+&"label": SubResource("Animation_yd2gm")
+}
+
+[node name="stage" type="Node2D" node_paths=PackedStringArray("kills_label")]
+script = ExtResource("1_st0q7")
+frog_scene = ExtResource("6_2so7o")
+shadow_scene = ExtResource("3_dexii")
+kills_label = NodePath("CanvasLayer/Label")
+
+[node name="background" type="Sprite2D" parent="."]
+light_mask = 0
+z_index = -1000
+position = Vector2(18.9999, 29.9999)
+scale = Vector2(0.719792, 0.77037)
+texture = ExtResource("8_1hwpr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(2, 2)
+script = ExtResource("1_vcsse")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_dexii")
+}
+
+[node name="ground" type="StaticBody2D" parent="."]
+position = Vector2(0, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+shape = SubResource("WorldBoundaryShape2D_yd2gm")
+
+[node name="check_shake_play" type="Area2D" parent="ground"]
+script = ExtResource("2_2so7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/check_shake_play"]
+shape = SubResource("RectangleShape2D_wtcfe")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(91, 69)
+stream = ExtResource("3_st0q7")
+volume_db = -13.998
+script = ExtResource("4_1hwpr")
+
+[node name="Steel_Pipe" parent="." instance=ExtResource("5_dexii")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="wall_celling" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall_celling"]
+position = Vector2(575, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_celling/StaticBody2D"]
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_st0q7")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="wall_celling"]
+position = Vector2(-575, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_celling/StaticBody2D2"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_1hwpr")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="wall_celling"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_celling/StaticBody2D3"]
+position = Vector2(0, -325)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_dexii")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 27.0
+offset_top = 22.0
+offset_right = 413.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.231643, 0.246521, 0.620452, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("10_yd2gm")
+theme_override_font_sizes/font_size = 87
+text = "Frog Kills:0"
+script = ExtResource("11_0hg5s")
+
+[node name="Label_bounce" type="AnimationPlayer" parent="CanvasLayer/Label"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_jl6nj")
+}
+autoplay = "RESET"
+
+[connection signal="body_entered" from="ground/check_shake_play" to="ground/check_shake_play" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/check_shake_play" to="AudioStreamPlayer2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="ground/check_shake_play" to="ground/check_shake_play" method="_on_body_exited"]
+[connection signal="body_shape_entered" from="ground/check_shake_play" to="ground/check_shake_play" method="_on_body_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
