@@ -39,7 +39,8 @@ func control_weapon(delta : float):
 	for i in weapon_array.size():
 		angle += gap_angle
 		var offset = Vector2(cos(angle), sin(angle)) * orbit_radius
-		weapon_array[i].position = player.position + offset
+		weapon_array[i].position = player.graphics.position + offset
+	print(player.position)
 	rotation_angle += rotation_speed * delta
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

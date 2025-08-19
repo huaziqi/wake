@@ -11,15 +11,21 @@ func _ready() -> void:
 
 func set_direction(dir : Vector2) -> void:
 	direction = dir
-	rotation += direction.angle() + PI / 2 #将武器初始方向转到敌人方向
+	rotation += direction.angle() + PI / 2 #武器初始方向
 
 func _physics_process(delta: float) -> void:
+	trace_decision(delta)
+	free_action()
+
+func trace_decision(delta: float) -> void:
 	position += delta * direction * shoot_speed
+
+func free_action():
 	if(player and player.position.distance_to(self.position) > 1500): #当武器距离玩家足够远
 		queue_free()
 
-func _on_attack_shape_area_entered(area: Area2D) -> void:
-	var node = area.get_parent()
-	if(node.is_in_group("enemy")):
-		node.knock_back(2800, direction)
+#func _on_attack_shape_area_entered(area: Area2D) -> void:
+	#var node = area.get_parent()
+	#if(node.is_in_group("enemy")):
+		#node.knock_back(2800, direction)
 		

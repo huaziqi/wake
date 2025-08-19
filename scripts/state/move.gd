@@ -30,6 +30,7 @@ func tick_physics(delta): #每一帧要做什么
 		acceleration = 20000
 	#print(player.direction.x)
 	player.velocity = player.velocity.move_toward(player.direction * player.MAXSPEED,  acceleration * delta)
+	
 	player.move_and_slide()
 
 func transition_state(next_state):  #更改状态 
