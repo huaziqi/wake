@@ -60,6 +60,33 @@ size = Vector2(2323, 25)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dexii"]
 
+[sub_resource type="Animation" id="Animation_0hg5s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(27, 22)]
+}
+
 [sub_resource type="Animation" id="Animation_yd2gm"]
 resource_name = "label"
 length = 0.3
@@ -86,33 +113,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(3.13834, 1, 0.420448),
 "update": 0,
 "values": [Vector2(27, 22), Vector2(10, 22), Vector2(27, 22)]
-}
-
-[sub_resource type="Animation" id="Animation_0hg5s"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Label:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(27, 22)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jl6nj"]
@@ -164,7 +164,7 @@ script = ExtResource("4_1hwpr")
 [node name="Steel_Pipe" parent="." instance=ExtResource("5_dexii")]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 0.191
 autostart = true
 
 [node name="wall_celling" type="Node" parent="."]

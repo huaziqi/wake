@@ -3,7 +3,7 @@ extends RigidBody2D
 # 跳跃参数
 @export var b_jump_force: float = 500.0 
 @export var jump_force: float = 500.0  
-@export var jump_interval: Vector2 = Vector2(1.0, 3.0)  # 间隔范围（min, max）
+@export var jump_interval: Vector2 = Vector2(0.3, 3.0)  # 间隔范围（min, max）
 # 落地检测
 var on_ground:bool = false
 var on_body:int = 0
@@ -13,7 +13,8 @@ var on_body:int = 0
 @export var HP:int=size*1000
 @export var is_dead:bool =false
 func _ready():
-	
+	get_node("uhahaha").pitch_scale+=(1.1-size)*1
+	get_node("die").pitch_scale+=(1.1-size)*1
 	randomize()
 	schedule_jump()
 func _physics_process(delta):
@@ -47,7 +48,7 @@ func jump():
 	if (on_ground or on_body) and not is_dead:
 		$AnimatedSprite2D.play("jump")
 		$AnimationPlayer.play("bounce")
-		$uhahaha.play()
+		get_node("uhahaha").play()
 		var is_left = randf() < 0.5  # 50%概率向左
 		var dir = -1.0 if is_left else 1.0
 		var angle_deg = 45.0 + randf() * 30.0
@@ -71,7 +72,7 @@ func turn_red():
 	$AnimatedSprite2D.modulate=Color(1,1,1)
 func hurt(damage):
 	if not is_dead:
-		$hurt.play()
+		get_node("hurt").play()
 		HP-=damage
 		print(damage)
 		turn_red()
@@ -79,7 +80,7 @@ func die():
 	is_dead=true
 	get_node("CollisionShape2D").queue_free()	
 	get_tree().root.get_child(0).add_kills()
-	$die.play()
+	get_node("die").play()
 	$AnimationPlayer.play("die")
 	get_node("frog_check").queue_free()
 	get_node("shadow").queue_free()
