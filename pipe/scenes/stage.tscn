@@ -1,16 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://cnthlauqvlojg"]
+[gd_scene load_steps=22 format=3 uid="uid://cnthlauqvlojg"]
 
 [ext_resource type="Script" uid="uid://knxgayakmmhq" path="res://scripts/stage.gd" id="1_st0q7"]
-[ext_resource type="Script" uid="uid://cokj77x13tamf" path="res://scripts/camera_for_pipe.gd" id="1_vcsse"]
-[ext_resource type="Script" uid="uid://csqetpfotvvc8" path="res://scripts/area_2d.gd" id="2_2so7o"]
+[ext_resource type="Script" uid="uid://cokj77x13tamf" path="res://scripts/Stage_camera.gd" id="1_vcsse"]
+[ext_resource type="Script" uid="uid://csqetpfotvvc8" path="res://scripts/ground-checker.gd" id="2_2so7o"]
 [ext_resource type="PackedScene" uid="uid://b0po25ms8ffxw" path="res://scenes/shadow.tscn" id="3_dexii"]
-[ext_resource type="AudioStream" uid="uid://cfrvmrqufkw6n" path="res://assets/钢管落地.wav" id="3_st0q7"]
-[ext_resource type="Script" uid="uid://df6cv6iftun6t" path="res://scripts/audio_stream_player_2d.gd" id="4_1hwpr"]
+[ext_resource type="AudioStream" uid="uid://cfrvmrqufkw6n" path="res://assets/Sound/钢管落地.wav" id="3_st0q7"]
+[ext_resource type="Texture2D" uid="uid://dg1s1yji5cxko" path="res://assets/asadal_stock_62.jpg" id="4_yd2gm"]
 [ext_resource type="PackedScene" uid="uid://csd485ac73uxn" path="res://scenes/Steel_Pipe.tscn" id="5_dexii"]
 [ext_resource type="PackedScene" uid="uid://bp3hsx7ra62nm" path="res://scenes/frog.tscn" id="6_2so7o"]
-[ext_resource type="Texture2D" uid="uid://u70qg1aekw3a" path="res://assets/background.jpg" id="8_1hwpr"]
 [ext_resource type="FontFile" uid="uid://u1tdi6cs0kuk" path="res://assets/Uranus_Pixel_11Px.ttf" id="10_yd2gm"]
-[ext_resource type="Script" uid="uid://cnucyxtblw7a1" path="res://scenes/label.gd" id="11_0hg5s"]
+[ext_resource type="Script" uid="uid://cnucyxtblw7a1" path="res://scripts/label.gd" id="11_0hg5s"]
 
 [sub_resource type="Animation" id="Animation_1hwpr"]
 length = 0.001
@@ -130,9 +129,9 @@ kills_label = NodePath("CanvasLayer/Label")
 [node name="background" type="Sprite2D" parent="."]
 light_mask = 0
 z_index = -1000
-position = Vector2(18.9999, 29.9999)
-scale = Vector2(0.719792, 0.77037)
-texture = ExtResource("8_1hwpr")
+position = Vector2(7, -2)
+scale = Vector2(0.342349, 0.285156)
+texture = ExtResource("4_yd2gm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
@@ -159,12 +158,11 @@ shape = SubResource("RectangleShape2D_wtcfe")
 position = Vector2(91, 69)
 stream = ExtResource("3_st0q7")
 volume_db = -13.998
-script = ExtResource("4_1hwpr")
 
 [node name="Steel_Pipe" parent="." instance=ExtResource("5_dexii")]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.191
+wait_time = 2.0
 autostart = true
 
 [node name="wall_celling" type="Node" parent="."]
@@ -197,7 +195,7 @@ offset_left = 27.0
 offset_top = 22.0
 offset_right = 413.0
 offset_bottom = 110.0
-theme_override_colors/font_color = Color(0.231643, 0.246521, 0.620452, 1)
+theme_override_colors/font_color = Color(0.546148, 0.676156, 0.282371, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_fonts/font = ExtResource("10_yd2gm")

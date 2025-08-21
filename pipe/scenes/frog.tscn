@@ -1,12 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://bp3hsx7ra62nm"]
+[gd_scene load_steps=18 format=3 uid="uid://bp3hsx7ra62nm"]
 
 [ext_resource type="Script" uid="uid://g8e7qn3ky7xd" path="res://scripts/frog.gd" id="1_uu7fg"]
-[ext_resource type="Texture2D" uid="uid://bt1jijyc77n1b" path="res://assets/frog2.png" id="2_ybftx"]
-[ext_resource type="Texture2D" uid="uid://84r6r4xlfq42" path="res://assets/frog1.png" id="3_1g2vb"]
-[ext_resource type="Script" uid="uid://qoyc4k0yyorg" path="res://scripts/frog_check.gd" id="5_ybftx"]
-[ext_resource type="AudioStream" uid="uid://bygbdjcmidsb1" path="res://assets/uhahaha.mp3" id="6_4ifle"]
-[ext_resource type="AudioStream" uid="uid://cq371111ybppg" path="res://assets/打击声效.mp3" id="6_uu7fg"]
-[ext_resource type="AudioStream" uid="uid://crucy1h145sep" path="res://assets/ahhhhh.mp3" id="7_uu7fg"]
+[ext_resource type="Texture2D" uid="uid://bt1jijyc77n1b" path="res://assets/Textures/frog2.png" id="2_ybftx"]
+[ext_resource type="Texture2D" uid="uid://84r6r4xlfq42" path="res://assets/Textures/frog1.png" id="3_1g2vb"]
+[ext_resource type="Script" uid="uid://qoyc4k0yyorg" path="res://scripts/frog_checker.gd" id="5_ybftx"]
+[ext_resource type="AudioStream" uid="uid://bygbdjcmidsb1" path="res://assets/Sound/uhahaha.mp3" id="6_4ifle"]
+[ext_resource type="AudioStream" uid="uid://cq371111ybppg" path="res://assets/Sound/打击声效.mp3" id="6_uu7fg"]
+[ext_resource type="AudioStream" uid="uid://crucy1h145sep" path="res://assets/Sound/ahhhhh.mp3" id="7_uu7fg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uu7fg"]
+bounce = 0.2
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ycnbg"]
 animations = [{
@@ -206,6 +209,7 @@ size = Vector2(80, 72)
 
 [node name="Frog" type="RigidBody2D" groups=["enemies"]]
 mass = 0.144
+physics_material_override = SubResource("PhysicsMaterial_uu7fg")
 gravity_scale = 1.611
 center_of_mass_mode = 1
 script = ExtResource("1_uu7fg")
