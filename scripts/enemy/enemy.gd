@@ -15,7 +15,6 @@ signal enemy_die_signal(enemy_name : String)
 func random_dis(minn : int, maxn : int) -> Vector2:
 	var dis = randi_range(minn, maxn)
 	var rand_vec2 = Vector2(randf_range(-1, 1), randf_range(-1, 1))
-	print(rand_vec2 * dis)
 	return rand_vec2 * dis
 
 func _ready() -> void:

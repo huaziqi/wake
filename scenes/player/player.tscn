@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://djgma2uaxxmru" path="res://assets/player/idle_0.png" id="3_qek5x"]
 [ext_resource type="Script" uid="uid://5g33a5nsapcy" path="res://scripts/state/idle.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://d1pjl8s55angd" path="res://scripts/state/state_machine.gd" id="5_0owmy"]
-[ext_resource type="Script" uid="uid://brnqdgwx2vnle" path="res://scenes/player/scan_enemy.gd" id="5_h17s1"]
+[ext_resource type="Script" uid="uid://brnqdgwx2vnle" path="res://scripts/player/scan_enemy.gd" id="5_h17s1"]
 [ext_resource type="Script" uid="uid://cnvl78m6lfcr1" path="res://scripts/state/move.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://7trakc2bxru" path="res://scripts/player/camera.gd" id="8_5gtgg"]
 [ext_resource type="Script" uid="uid://klxvq0rlepha" path="res://scripts/player/attack_manager.gd" id="8_qek5x"]
