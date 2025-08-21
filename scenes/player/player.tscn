@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://qi8cxx074bja"]
+[gd_scene load_steps=19 format=3 uid="uid://qi8cxx074bja"]
 
 [ext_resource type="Script" uid="uid://nl1ip673o7un" path="res://scripts/player/player.gd" id="1_0owmy"]
 [ext_resource type="Shader" uid="uid://gax1k8tg58fm" path="res://scripts/shader/outline.gdshader" id="3_0owmy"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://djgma2uaxxmru" path="res://assets/player/idle_0.png" id="3_qek5x"]
 [ext_resource type="Script" uid="uid://5g33a5nsapcy" path="res://scripts/state/idle.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://d1pjl8s55angd" path="res://scripts/state/state_machine.gd" id="5_0owmy"]
-[ext_resource type="Script" uid="uid://brnqdgwx2vnle" path="res://scripts/player/scan_enemy.gd" id="5_h17s1"]
+[ext_resource type="Script" path="res://scripts/player/scan_enemy.gd" id="5_h17s1"]
 [ext_resource type="Script" uid="uid://cnvl78m6lfcr1" path="res://scripts/state/move.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://7trakc2bxru" path="res://scripts/player/camera.gd" id="8_5gtgg"]
 [ext_resource type="Script" uid="uid://klxvq0rlepha" path="res://scripts/player/attack_manager.gd" id="8_qek5x"]
@@ -444,11 +444,14 @@ shader_parameter/outline_width = 0.0
 shader_parameter/outline_color = Color(10.497, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gtgg"]
-size = Vector2(112, 82)
+size = Vector2(71, 76)
 
 [sub_resource type="Environment" id="Environment_75vfm"]
 background_mode = 3
 glow_enabled = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h17s1"]
+radius = 97.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
@@ -476,7 +479,7 @@ collision_mask = 4
 script = ExtResource("5_h17s1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/scan_enemy"]
-position = Vector2(39, -6)
+position = Vector2(18.5, -4)
 shape = SubResource("RectangleShape2D_5gtgg")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -505,6 +508,13 @@ metadata/_edit_lock_ = true
 [node name="AttackManager" type="Node" parent="." node_paths=PackedStringArray("scan_enemy")]
 script = ExtResource("8_qek5x")
 scan_enemy = NodePath("../graphics/scan_enemy")
+
+[node name="Pickup_Area(cyy)" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup_Area(cyy)"]
+shape = SubResource("CircleShape2D_h17s1")
 
 [connection signal="area_entered" from="graphics/scan_enemy" to="graphics/scan_enemy" method="_on_area_entered"]
 [connection signal="area_exited" from="graphics/scan_enemy" to="graphics/scan_enemy" method="_on_area_exited"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://014pne6gavek"]
+
+[ext_resource type="Script" uid="uid://clgp5a3kchh6o" path="res://scripts/upgrade(cyy)/upgrade_Manager.gd" id="1_373v4"]
+[ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource(cyy)/ability.gd" id="2_c5ovp"]
+[ext_resource type="Resource" uid="uid://b075hiqka1of" path="res://ability_resource(cyy)/shoot_quickness.tres" id="3_q5smk"]
+[ext_resource type="PackedScene" uid="uid://4mmjyi8gjurk" path="res://scenes/dna/upgrade_screen.tscn" id="4_ihlby"]
+
+[node name="upgrade_manager" type="Node" node_paths=PackedStringArray("dna_manager")]
+script = ExtResource("1_373v4")
+upgrade_pool = Array[ExtResource("2_c5ovp")]([ExtResource("3_q5smk")])
+dna_manager = NodePath(".")
+upgrade_scene = ExtResource("4_ihlby")

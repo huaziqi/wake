@@ -1,0 +1,32 @@
+
+extends Node
+
+signal dna_updated(current_dna:float,target_dna:float)
+signal level_up(new_level:int)
+const TARGET_GROWTH=5
+
+var current_dna=0 
+var current_level=1
+var target_dna=5
+
+func _ready():	
+	Gameevent.dna_collected.connect(on_dna_collected)
+	
+func increment_dna(number:float):
+	current_dna=min(current_dna+number,target_dna)
+
+	dna_updated.emit(current_dna,target_dna)
+	if current_dna==target_dna:
+		current_level+=1
+		target_dna+=TARGET_GROWTH
+		current_dna=0
+		dna_updated.emit(current_dna,target_dna)
+		level_up.emit(current_level)
+
+
+
+func on_dna_collected(number:float):
+	increment_dna(number)
+
+	
+ 

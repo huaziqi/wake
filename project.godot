@@ -15,6 +15,10 @@ run/main_scene="uid://qi8cxx074bja"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Gameevent="*res://scenes/dna/gameevent.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
