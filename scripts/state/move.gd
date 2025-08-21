@@ -32,6 +32,9 @@ func tick_physics(delta): #每一帧要做什么
 	player.velocity = player.velocity.move_toward(player.direction * player.MAXSPEED,  acceleration * delta)
 	
 	player.move_and_slide()
+#
+#func _unhandled_input(event):
+	#print("Player received input: ", event)
 
 func transition_state(next_state):  #更改状态 
 	state_machine.switch_state(self, next_state)

@@ -2,7 +2,7 @@ extends StaticBody2D
 class_name ShootWeapon
 
 var direction : Vector2 = Vector2.ZERO
-var shoot_speed : float = 600.0
+var shoot_speed : float = 800.0
 var player : Player
 
 func _ready() -> void:
@@ -28,4 +28,3 @@ func free_action():
 	#var node = area.get_parent()
 	#if(node.is_in_group("enemy")):
 		#node.knock_back(2800, direction)
-		
