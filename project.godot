@@ -21,7 +21,6 @@ Gameevent="*res://scenes/dna/gameevent.gd"
 
 [display]
 
-
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
