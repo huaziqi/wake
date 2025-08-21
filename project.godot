@@ -15,13 +15,14 @@ run/main_scene="uid://qi8cxx074bja"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[display]
-
-window/stretch/mode="canvas_items"
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gamedev_assistant/plugin.cfg")
+
+[display]
+
+
+window/stretch/mode="canvas_items"
 
 [input]
 
