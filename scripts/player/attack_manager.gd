@@ -15,7 +15,7 @@ var hand_knife : HandKnife
 func _ready() -> void:
 	shootTimer = Timer.new() #定时发射
 	add_child(shootTimer)
-	shootTimer.wait_time = 1 #间隔时间为0
+	shootTimer.wait_time = 0.3 #间隔时间为0
 	shootTimer.start()
 	shootTimer.one_shot = false
 	shootTimer.timeout.connect(on_timer_timeout.bind("shoot_timer"))

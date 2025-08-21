@@ -4,10 +4,14 @@ class_name ShootWeapon
 var direction : Vector2 = Vector2.ZERO
 var shoot_speed : float = 800.0
 var player : Player
+var shoot_gap_time : float = 1.0
 
-func _ready() -> void:
+func init():
 	add_to_group("weapon")
 	z_index = 100
+
+func _ready() -> void:
+	init()
 
 func set_direction(dir : Vector2) -> void:
 	direction = dir
