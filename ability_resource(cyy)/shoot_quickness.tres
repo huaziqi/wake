@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://b075hiqka1of"]
+
+[ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource(cyy)/ability.gd" id="1_3xphk"]
+
+[resource]
+script = ExtResource("1_3xphk")
+id = "shoot_rate"
+name = "shoot_quickness"
+description = "射击速度"

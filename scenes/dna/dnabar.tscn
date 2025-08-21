@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://8n8fpbivhjj1"]
+
+[ext_resource type="Script" uid="uid://cvha8usqt0xy6" path="res://scripts/upgrade(cyy)/dnabar.gd" id="1_1kudr"]
+
+[sub_resource type="Theme" id="Theme_etuql"]
+
+[node name="DNABAR" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_1kudr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 3.0
+offset_right = -2.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme = SubResource("Theme_etuql")
+max_value = 1.0
+show_percentage = false

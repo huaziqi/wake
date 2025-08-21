@@ -15,15 +15,19 @@ run/main_scene="uid://qi8cxx074bja"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[editor_plugins]
+[autoload]
 
-enabled=PackedStringArray("res://addons/gamedev_assistant/plugin.cfg")
+Gameevent="*res://scenes/dna/gameevent.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gamedev_assistant/plugin.cfg")
 
 [input]
 

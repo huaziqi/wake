@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://087uewui4ijj"]
+
+[ext_resource type="PackedScene" path="res://scene/manager/DNAmanager.tscn" id="1_4wnd8"]
+[ext_resource type="PackedScene" path="res://scene/manager/upgrade_manager.tscn" id="2_jsie2"]
+[ext_resource type="PackedScene" path="res://scene/player/mosquito.tscn" id="2_x5n27"]
+[ext_resource type="PackedScene" uid="uid://be338k3jqak4s" path="res://scenes/dna/dna.tscn" id="3_jsie2"]
+[ext_resource type="PackedScene" uid="uid://8n8fpbivhjj1" path="res://scenes/dna/dnabar.tscn" id="4_qvu5t"]
+
+[node name="MAIN" type="Node2D"]
+
+[node name="dnamanager" parent="." instance=ExtResource("1_4wnd8")]
+
+[node name="UPgrade_manager" parent="." node_paths=PackedStringArray("dna_manager") instance=ExtResource("2_jsie2")]
+dna_manager = NodePath("../dnamanager")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_x5n27")]
+
+[node name="DNA" parent="." instance=ExtResource("3_jsie2")]
+position = Vector2(270, 111)
+
+[node name="DNA2" parent="." instance=ExtResource("3_jsie2")]
+position = Vector2(925, 195)
+
+[node name="DNA3" parent="." instance=ExtResource("3_jsie2")]
+position = Vector2(139, 368)
+
+[node name="DNA4" parent="." instance=ExtResource("3_jsie2")]
+position = Vector2(384, 441)
+
+[node name="DNA5" parent="." instance=ExtResource("3_jsie2")]
+position = Vector2(668, 200)
+
+[node name="DNABAR" parent="." node_paths=PackedStringArray("dna_manager") instance=ExtResource("4_qvu5t")]
+dna_manager = NodePath("../dnamanager")

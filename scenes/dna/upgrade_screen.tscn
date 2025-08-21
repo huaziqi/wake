@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://4mmjyi8gjurk"]
+
+[ext_resource type="Script" uid="uid://d3poudwt5g2na" path="res://scripts/upgrade(cyy)/upgrade_screen.gd" id="1_5e8dt"]
+[ext_resource type="PackedScene" uid="uid://cpo0g0g17pov7" path="res://scenes/dna/card_upgrade.tscn" id="2_713sj"]
+
+[node name="upgrade_screen" type="CanvasLayer"]
+script = ExtResource("1_5e8dt")
+upgrade_card_scene = ExtResource("2_713sj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="card_container_upgrade" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2

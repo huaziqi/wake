@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5vlefp6jef5n"]
+
+[ext_resource type="Texture2D" uid="uid://ta52kvsxl3of" path="res://assets/DNA.png" id="1_14oti"]
+
+[sub_resource type="GDScript" id="GDScript_14oti"]
+script/source = "extends Node2D
+
+func _ready() -> void:
+	$Area2D.area_entered.connect(on_area_entered)
+	
+	 
+func on_area_entered(other_area:Area2D):
+	Gameevent.emit_dna_collected(1)
+	queue_free()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k673e"]
+radius = 71.007
+
+[node name="DNA" type="Node2D"]
+script = SubResource("GDScript_14oti")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_k673e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.28407
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_14oti")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxso2p2yfmnhd"]
+
+[ext_resource type="Script" uid="uid://cp14i7acpqh75" path="res://scripts/upgrade(cyy)/dnaManager.gd" id="1_h8odf"]
+
+[node name="dnamanager" type="Node"]
+script = ExtResource("1_h8odf")
