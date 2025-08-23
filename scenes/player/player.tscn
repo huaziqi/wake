@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://qi8cxx074bja"]
+[gd_scene load_steps=28 format=3 uid="uid://qi8cxx074bja"]
 
 [ext_resource type="Script" uid="uid://nl1ip673o7un" path="res://scripts/player/player.gd" id="1_0owmy"]
 [ext_resource type="Shader" uid="uid://gax1k8tg58fm" path="res://scripts/shader/outline.gdshader" id="3_0owmy"]
@@ -8,8 +8,10 @@
 [ext_resource type="Script" uid="uid://d1pjl8s55angd" path="res://scripts/state/state_machine.gd" id="5_0owmy"]
 [ext_resource type="Script" uid="uid://brnqdgwx2vnle" path="res://scripts/player/scan_enemy.gd" id="5_h17s1"]
 [ext_resource type="Script" uid="uid://cnvl78m6lfcr1" path="res://scripts/state/move.gd" id="5_p47bc"]
+[ext_resource type="Script" uid="uid://bgrscboem4ywy" path="res://scripts/player/player_hurt_box.gd" id="6_fm80t"]
 [ext_resource type="Script" uid="uid://7trakc2bxru" path="res://scripts/player/camera.gd" id="8_5gtgg"]
 [ext_resource type="Script" uid="uid://klxvq0rlepha" path="res://scripts/player/attack_manager.gd" id="8_qek5x"]
+[ext_resource type="Texture2D" uid="uid://byqa41uko1tng" path="res://assets/UI/HUD.png" id="11_je7p5"]
 
 [sub_resource type="Animation" id="Animation_p47bc"]
 length = 0.001
@@ -149,6 +151,7 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id="Animation_5gtgg"]
 resource_name = "shaking"
+loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -446,16 +449,71 @@ shader_parameter/outline_color = Color(10.497, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gtgg"]
 size = Vector2(71, 76)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h17s1"]
+radius = 40.0125
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_je7p5"]
+radius = 25.0799
+
+[sub_resource type="Animation" id="Animation_je7p5"]
+resource_name = "collisionbox"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionPolygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.7, 0.799785, 0.90286, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1), Vector2(0, 3), Vector2(0, 3), Vector2(0, 1), Vector2(0, -0.37), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fm80t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionPolygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gx1jg"]
+_data = {
+&"RESET": SubResource("Animation_fm80t"),
+&"collisionbox": SubResource("Animation_je7p5")
+}
+
 [sub_resource type="Environment" id="Environment_75vfm"]
 background_mode = 3
 glow_enabled = true
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h17s1"]
-radius = 97.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm80t"]
+atlas = ExtResource("11_je7p5")
+region = Rect2(307, 21, 58, 6)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx1jg"]
+atlas = ExtResource("11_je7p5")
+region = Rect2(308, 86, 56, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugbui"]
+atlas = ExtResource("11_je7p5")
+region = Rect2(308, 86, 56, 4)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "eased_progress")]
 collision_mask = 2
 script = ExtResource("1_0owmy")
+health_bar = NodePath("HealthProgress/HealthBar")
+eased_progress = NodePath("HealthProgress/HealthBar/EasedProgress")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -464,6 +522,7 @@ libraries = {
 autoplay = "idle_0"
 
 [node name="graphics" type="Node2D" parent="."]
+scale = Vector2(1.5, 1.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="graphics"]
 material = SubResource("ShaderMaterial_qek5x")
@@ -475,6 +534,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 495, 476)
 
 [node name="scan_enemy" type="Area2D" parent="graphics"]
+visible = false
 collision_mask = 4
 script = ExtResource("5_h17s1")
 
@@ -482,8 +542,38 @@ script = ExtResource("5_h17s1")
 position = Vector2(18.5, -4)
 shape = SubResource("RectangleShape2D_5gtgg")
 
+[node name="Pickup_Area(cyy)" type="Area2D" parent="graphics"]
+visible = false
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/Pickup_Area(cyy)"]
+shape = SubResource("CircleShape2D_h17s1")
+
+[node name="Interactive" type="Area2D" parent="graphics"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/Interactive"]
+position = Vector2(7, -4)
+shape = SubResource("CircleShape2D_je7p5")
+
+[node name="HurtBox" type="Area2D" parent="graphics"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("6_fm80t")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="graphics/HurtBox"]
+polygon = PackedVector2Array(-6, -10, -16, -1, -20, 10, -19, 12, -7, 11, 9, 0, 11, -9, 17.3333, -10.6667, 20.6667, -20.6667, 16, -27, 12, -28, 3, -27, -1, -22, -3, -14)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="graphics/HurtBox"]
+libraries = {
+&"": SubResource("AnimationLibrary_gx1jg")
+}
+autoplay = "collisionbox"
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 2.295)
+scale = Vector2(1.5, 1.5)
 polygon = PackedVector2Array(-6, -10, -16, -1, -20, 10, -19, 12, -7, 11, 9, 0, 11, -9, 29, 0, 34, 0, 19, -11, 22, -20, 16, -27, 12, -28, 3, -27, -1, -22, -3, -14)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -509,12 +599,32 @@ metadata/_edit_lock_ = true
 script = ExtResource("8_qek5x")
 scan_enemy = NodePath("../graphics/scan_enemy")
 
-[node name="Pickup_Area(cyy)" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 0
+[node name="HealthProgress" type="VBoxContainer" parent="."]
+offset_left = -46.0
+offset_top = -73.0
+offset_right = 12.0
+offset_bottom = -33.0
+scale = Vector2(2, 2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup_Area(cyy)"]
-shape = SubResource("CircleShape2D_h17s1")
+[node name="HealthBar" type="TextureProgressBar" parent="HealthProgress"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+texture_over = SubResource("AtlasTexture_fm80t")
+texture_progress = SubResource("AtlasTexture_gx1jg")
+texture_progress_offset = Vector2(1, 1)
+
+[node name="EasedProgress" type="TextureProgressBar" parent="HealthProgress/HealthBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 1.0
+step = 0.0
+page = 1.0
+texture_progress = SubResource("AtlasTexture_ugbui")
+texture_progress_offset = Vector2(1, 1)
 
 [connection signal="area_entered" from="graphics/scan_enemy" to="graphics/scan_enemy" method="_on_area_entered"]
 [connection signal="area_exited" from="graphics/scan_enemy" to="graphics/scan_enemy" method="_on_area_exited"]
+[connection signal="area_entered" from="graphics/HurtBox" to="graphics/HurtBox" method="_on_area_entered"]

@@ -1,49 +1,90 @@
-[gd_scene load_steps=6 format=3 uid="uid://drgw74diqbyt6"]
+[gd_scene load_steps=11 format=3 uid="uid://drgw74diqbyt6"]
 
 [ext_resource type="Texture2D" uid="uid://rrlnb4j1n2ed" path="res://assets/temp_assets/enemy.png" id="1_4a83h"]
 [ext_resource type="Script" uid="uid://dqhhitl3vrx7d" path="res://scripts/enemy/enemy.gd" id="1_a3pup"]
 [ext_resource type="Script" uid="uid://dtivwkkond1dn" path="res://scripts/enemy/enemy_hurtbox.gd" id="3_40wdo"]
+[ext_resource type="Script" uid="uid://pvlgd7babwgw" path="res://scripts/enemy/enemy_hitbox.gd" id="4_tjssy"]
+[ext_resource type="Texture2D" uid="uid://byqa41uko1tng" path="res://assets/UI/HUD.png" id="5_gl05p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4a83h"]
 size = Vector2(20, 18)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
-size = Vector2(42, 37)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwlon"]
+atlas = ExtResource("5_gl05p")
+region = Rect2(307, 21, 58, 6)
 
-[node name="enemy" type="CharacterBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbhyu"]
+atlas = ExtResource("5_gl05p")
+region = Rect2(308, 86, 56, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13gj6"]
+atlas = ExtResource("5_gl05p")
+region = Rect2(308, 86, 56, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
+size = Vector2(42.5, 24.25)
+
+[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "eased_progress")]
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_a3pup")
+health_bar = NodePath("UI/HealthBar")
+eased_progress = NodePath("UI/HealthBar/EasedProgress")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_4a83h")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -29.0
+offset_top = -27.0
+offset_right = 11.0
+offset_bottom = 13.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI"]
+max_value = 1.0
+step = 0.0
+value = 1.0
+texture_over = SubResource("AtlasTexture_cwlon")
+texture_progress = SubResource("AtlasTexture_nbhyu")
+texture_progress_offset = Vector2(1, 1)
+
+[node name="EasedProgress" type="TextureProgressBar" parent="UI/HealthBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 1.0
+step = 0.0
+page = 1.0
+texture_progress = SubResource("AtlasTexture_13gj6")
+texture_progress_offset = Vector2(1, 1)
+
+[node name="graphics" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="graphics"]
 scale = Vector2(3, 3)
 texture = ExtResource("1_4a83h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_4a83h")
-
-[node name="hurtbox" type="Area2D" parent="."]
+[node name="hurtbox" type="Area2D" parent="graphics" node_paths=PackedStringArray("enemy")]
+visible = false
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("3_40wdo")
+enemy = NodePath("../..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hurtbox"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_a3pup")
 
-[node name="hitbox" type="Area2D" parent="."]
-collision_layer = 0
+[node name="hitbox" type="Area2D" parent="graphics"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_tjssy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(0, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hitbox"]
+position = Vector2(-0.5, 1.75)
 shape = SubResource("RectangleShape2D_a3pup")
 
-[node name="TextEdit" type="TextEdit" parent="."]
-offset_left = 4.0
-offset_top = -51.0
-offset_right = 103.0
-offset_bottom = -19.0
-text = "11
-"
-
-[connection signal="area_entered" from="hurtbox" to="hurtbox" method="_on_area_entered"]
+[connection signal="area_entered" from="graphics/hurtbox" to="graphics/hurtbox" method="_on_area_entered"]

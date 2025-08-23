@@ -1,13 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlo3n7hvwctoc"]
+[gd_scene load_steps=8 format=3 uid="uid://dlo3n7hvwctoc"]
 
 [ext_resource type="Texture2D" uid="uid://2i1o7elerejg" path="res://assets/towers/bed.png" id="1_jnl8p"]
+[ext_resource type="Script" uid="uid://c21r1cp8x7y0h" path="res://scripts/tower/master.gd" id="1_vmqmf"]
+[ext_resource type="Texture2D" uid="uid://byqa41uko1tng" path="res://assets/UI/HUD.png" id="2_5556a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnl8p"]
 size = Vector2(525, 785)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5556a"]
+size = Vector2(167, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmqmf"]
+atlas = ExtResource("2_5556a")
+region = Rect2(307, 21, 58, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0brv"]
+atlas = ExtResource("2_5556a")
+region = Rect2(308, 86, 56, 4)
+
 [node name="master" type="StaticBody2D"]
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("1_vmqmf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_jnl8p")
@@ -18,11 +32,33 @@ texture = ExtResource("1_jnl8p")
 position = Vector2(-14.5, 64.5)
 shape = SubResource("RectangleShape2D_jnl8p")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="blood_area" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = -279.0
-offset_top = -369.0
-offset_right = -26.0
-offset_bottom = -342.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blood_area"]
+position = Vector2(-7.5, -139)
+shape = SubResource("RectangleShape2D_5556a")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BloodBar" type="TextureProgressBar" parent="UI"]
+offset_left = 126.0
+offset_top = -272.0
+offset_right = 184.0
+offset_bottom = -263.0
+rotation = 1.5708
+scale = Vector2(4.06, 4.06)
 value = 100.0
+texture_over = SubResource("AtlasTexture_vmqmf")
+texture_progress = SubResource("AtlasTexture_t0brv")
+texture_progress_offset = Vector2(1, 1)
+
+[node name="EasedBar" type="TextureProgressBar" parent="UI/BloodBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

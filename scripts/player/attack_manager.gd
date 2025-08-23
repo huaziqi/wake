@@ -18,7 +18,7 @@ func _ready() -> void:
 	shootTimer.wait_time = 0.3 #间隔时间为0
 	shootTimer.start()
 	shootTimer.one_shot = false
-	shootTimer.timeout.connect(on_timer_timeout.bind("shoot_timer"))
+	#shootTimer.timeout.connect(on_timer_timeout.bind("shoot_timer"))
 	
 	#rotate_weapon = ROTATE_WEAPON.instantiate()
 	#rotate_weapon.player = player
@@ -26,7 +26,7 @@ func _ready() -> void:
 	
 	hand_knife = Hand_Knife.instantiate()
 	hand_knife.player = player
-	hand_knife.position = player.position
+	hand_knife.position = player.position + Vector2(10, 0)
 	graphics.add_child.call_deferred(hand_knife)
 	hand_knife.visible = false
 
