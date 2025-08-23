@@ -1,7 +1,7 @@
 extends Area2D
 
-var base_damage : int = 60 #基础伤害
-var current_damage : int #现在的伤害
+var base_damage : float = 60 #基础伤害
+var current_damage : float #现在的伤害
 
 var penetrate_time : int = 3 #可穿透次数
 
@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func check_penetrate() -> bool: #返回是否销毁掉了
 	if(penetrate_time == 0):
-		queue_free()
+		pass
 	elif(penetrate_time > 0):
 		penetrate_time -= 1
 	elif(penetrate_time < -1): #考虑到有些武器不应该有消失判定，可以设置为-1
