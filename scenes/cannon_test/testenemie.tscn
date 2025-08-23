@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_uhdr1"]
 radius = 81.615
 
-[node name="testenemie" type="Area2D" groups=["enemies"]]
+[node name="testenemie" type="Area2D" groups=["enemy"]]
 script = ExtResource("1_mafbc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
