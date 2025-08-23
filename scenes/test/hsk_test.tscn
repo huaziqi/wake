@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnj5604mns0c0"]
+
+[ext_resource type="PackedScene" uid="uid://qi8cxx074bja" path="res://scenes/player/player.tscn" id="1_bodk4"]
+[ext_resource type="PackedScene" uid="uid://dlo3n7hvwctoc" path="res://scenes/tower/master.tscn" id="2_4pj8c"]
+[ext_resource type="Script" uid="uid://cru01rprfqcsl" path="res://scripts/enemy/enemy_generator.gd" id="3_7o6qk"]
+
+[node name="HskTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_bodk4")]
+z_index = 20
+
+[node name="master" parent="." instance=ExtResource("2_4pj8c")]
+
+[node name="EnemyGenerator" type="Node" parent="."]
+script = ExtResource("3_7o6qk")
+metadata/_custom_type_script = "uid://cru01rprfqcsl"

@@ -25,7 +25,7 @@ func set_direction(dir : Vector2) -> void:
 	direction = dir
 
 func trace_decision(delta: float) -> void:
-	if(dead):
+	if(dead): #已经死亡，不再移动
 		return
 	if(enemy == null):
 		find_enemy()

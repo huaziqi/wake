@@ -46,3 +46,15 @@ position = Vector2(315, 402)
 
 [node name="DNABAR" parent="." node_paths=PackedStringArray("dna_manager") instance=ExtResource("1_0eyv0")]
 dna_manager = NodePath("../dnamanager(cyy)")
+
+[node name="DNA(cyyTest)6" parent="." instance=ExtResource("5_cntqm")]
+position = Vector2(284, -160)
+
+[node name="DNA(cyyTest)7" parent="." instance=ExtResource("5_cntqm")]
+position = Vector2(528, -140)
+
+[node name="DNA(cyyTest)8" parent="." instance=ExtResource("5_cntqm")]
+position = Vector2(328, 298)
+
+[node name="DNA(cyyTest)9" parent="." instance=ExtResource("5_cntqm")]
+position = Vector2(609, 141)

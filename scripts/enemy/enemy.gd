@@ -3,12 +3,12 @@ class_name Enemy
 
 var ACCELRATION : float = 20000
 var MAX_SPEED : float = 200
-var MAX_HEALTH : int = 100
+var MAX_HEALTH : float = 1000000
 const ENEMY_TYPE : String = "enemy"
 
 var player: Player
 var direction : Vector2
-var current_health : int
+var current_health : float
 
 signal enemy_die_signal(enemy_name : String)
 
