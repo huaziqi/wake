@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://eisk158kli6j"]
+[gd_scene load_steps=7 format=3 uid="uid://eisk158kli6j"]
 
 [ext_resource type="Script" uid="uid://bcay0pu2do22u" path="res://scripts/cannon/cannon.gd" id="1_pxhkx"]
 [ext_resource type="Texture2D" uid="uid://dhmscpfavdp1y" path="res://assets/cannon/cannon.png" id="2_yjxeu"]
 [ext_resource type="Script" uid="uid://gumc2mpsejyn" path="res://scripts/cannon/range.gd" id="3_yjxeu"]
+[ext_resource type="Script" uid="uid://d38cwytb2s2qb" path="res://scenes/cannon_test/canoon_shoot_manager.gd" id="4_un2bf"]
+[ext_resource type="PackedScene" uid="uid://3l3mnax20jj8" path="res://scenes/cannon_test/canoon_bullet.tscn" id="5_2mci5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jfr8q"]
 radius = 1550.57
@@ -21,5 +23,13 @@ script = ExtResource("3_yjxeu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="range"]
 shape = SubResource("CircleShape2D_jfr8q")
 
-[connection signal="area_entered" from="range" to="." method="_on_range_area_entered"]
-[connection signal="area_exited" from="range" to="." method="_on_range_area_exited"]
+[node name="shoot_manager" type="Node" parent="."]
+script = ExtResource("4_un2bf")
+bullet = ExtResource("5_2mci5")
+
+[node name="Timer" type="Timer" parent="shoot_manager"]
+autostart = true
+
+[connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="range" to="." method="_on_range_body_exited"]
+[connection signal="timeout" from="shoot_manager/Timer" to="shoot_manager" method="_on_timer_timeout"]
