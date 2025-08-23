@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1wko1rfba2e7"]
+[gd_scene load_steps=10 format=3 uid="uid://c1wko1rfba2e7"]
 
 [ext_resource type="PackedScene" uid="uid://8n8fpbivhjj1" path="res://scenes/dna/dnabar.tscn" id="1_0eyv0"]
 [ext_resource type="Texture2D" uid="uid://4kqfpwwjof27" path="res://assets/temp_assets/back.png" id="1_4b6mq"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c5vlefp6jef5n" path="res://scenes/dna/dna.tscn" id="5_cntqm"]
 [ext_resource type="PackedScene" uid="uid://014pne6gavek" path="res://scenes/dna/upgrade_manager.tscn" id="7_k0t8k"]
 [ext_resource type="PackedScene" uid="uid://cxso2p2yfmnhd" path="res://scenes/dna/dnamanager.tscn" id="8_coxib"]
+[ext_resource type="PackedScene" uid="uid://eisk158kli6j" path="res://scenes/cannon_test/cannon.tscn" id="9_coxib"]
 
 [node name="test_scene" type="Node2D"]
 
@@ -29,21 +30,6 @@ texture = ExtResource("1_4b6mq")
 script = ExtResource("4_omf4g")
 metadata/_custom_type_script = "uid://cru01rprfqcsl"
 
-[node name="DNA(cyyTest)" parent="." instance=ExtResource("5_cntqm")]
-position = Vector2(894, 113)
-
-[node name="DNA(cyyTest)2" parent="." instance=ExtResource("5_cntqm")]
-position = Vector2(645, 260)
-
-[node name="DNA(cyyTest)4" parent="." instance=ExtResource("5_cntqm")]
-position = Vector2(810, 442)
-
-[node name="DNA(cyyTest)5" parent="." instance=ExtResource("5_cntqm")]
-position = Vector2(305, 133)
-
-[node name="DNA(cyyTest)3" parent="." instance=ExtResource("5_cntqm")]
-position = Vector2(315, 402)
-
 [node name="DNABAR" parent="." node_paths=PackedStringArray("dna_manager") instance=ExtResource("1_0eyv0")]
 dna_manager = NodePath("../dnamanager(cyy)")
 
@@ -58,3 +44,6 @@ position = Vector2(328, 298)
 
 [node name="DNA(cyyTest)9" parent="." instance=ExtResource("5_cntqm")]
 position = Vector2(609, 141)
+
+[node name="Cannon" parent="." instance=ExtResource("9_coxib")]
+position = Vector2(380, -4)

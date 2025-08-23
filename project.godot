@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Gameevent="*res://scenes/dna/gameevent.gd"
+Gameevent="*res://scripts/gameevent.gd"
 
 [display]
 

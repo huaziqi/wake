@@ -18,7 +18,7 @@ func _ready() -> void:
 	shootTimer.wait_time = 0.3 #间隔时间为0
 	shootTimer.start()
 	shootTimer.one_shot = false
-	#shootTimer.timeout.connect(on_timer_timeout.bind("shoot_timer"))
+	shootTimer.timeout.connect(on_timer_timeout.bind("shoot_timer"))
 	
 	#rotate_weapon = ROTATE_WEAPON.instantiate()
 	#rotate_weapon.player = player

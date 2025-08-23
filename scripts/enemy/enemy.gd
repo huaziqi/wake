@@ -1,9 +1,11 @@
 extends CharacterBody2D
 class_name Enemy
 
+const DNA = preload("res://scenes/dna/dna.tscn")
+
 var ACCELRATION : float = 20000
 var MAX_SPEED : float = 200
-var MAX_HEALTH : float = 1000000
+var MAX_HEALTH : float = 100
 const ENEMY_TYPE : String = "enemy"
 
 var player: Player
@@ -32,4 +34,10 @@ func _physics_process(delta: float) -> void:
 func check_health() -> void:
 	if(current_health <= 0):
 		enemy_die_signal.emit(ENEMY_TYPE)
-		queue_free()
+		death_drops()
+
+func death_drops() -> void:
+	var dna = DNA.instantiate()
+	get_tree().current_scene.add_child(dna)
+	dna.position = position
+	queue_free()

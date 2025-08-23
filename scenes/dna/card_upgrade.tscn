@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cpo0g0g17pov7"]
 
-[ext_resource type="Script" uid="uid://phibdtwb5knl" path="res://scenes/dna/card_upgrade.gd" id="1_govi8"]
+[ext_resource type="Script" uid="uid://phibdtwb5knl" path="res://scripts/upgrade(cyy)/card_upgrade.gd" id="1_govi8"]
 
 [node name="card_upgrade" type="PanelContainer"]
 custom_minimum_size = Vector2(100, 150)
