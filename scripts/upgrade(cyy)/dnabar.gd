@@ -7,7 +7,7 @@ func _ready():
 	progeress_bar.value=0
 	dna_manager.dna_updated.connect(_on_dna_updated)
 	
-func _on_dna_updated(current_dna:float,target_dna:float):
+func _on_dna_updated(current_dna:float,target_dna:float):    #经验条随捡到而增加（这里是ui显示条）
 	var percent_v=(current_dna/target_dna)
 	progeress_bar.value=percent_v 
 	
