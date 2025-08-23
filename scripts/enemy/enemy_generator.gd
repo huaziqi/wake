@@ -7,9 +7,9 @@ var enemy_num_list : Dictionary = {}
 
 var enemyInfo : Dictionary = { #将敌人数据通过字典导入
 	"enemy" : {
-		"update_time": 0.5, #更新时间
-		"max_update_num": 1, #每次生成最大数量
-		"max_num": 1 #场中最多存在数量
+		"update_time": 2, #更新时间
+		"max_update_num": 5, #每次生成最大数量
+		"max_num": 20 #场中最多存在数量
 	}
 }
 
