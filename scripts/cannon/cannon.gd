@@ -23,10 +23,10 @@ func find_closest_enemy():
 
 func _on_range_body_entered(body: Node2D) -> void:
 	print("wiw")
-	if body.is_in_group("player"):
+	if body.is_in_group("enemy"):
 		targets.append(body)
 
 
 func _on_range_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("enemy"):
 		targets.erase(body)

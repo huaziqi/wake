@@ -1,6 +1,6 @@
 extends Area2D
 var base_position : Vector2
-var base_damage : float = 60 #基础伤害
+var base_damage : float = 100000000 #基础伤害
 var current_damage : float #现在的伤害
 @export var rotation_angle:float
 var move_dir
@@ -13,6 +13,5 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	position+=move_dir*bullet_speed
 	
-	
-	
-	
+func _on_timer_timeout() -> void:
+	queue_free()
