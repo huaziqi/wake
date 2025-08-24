@@ -22,7 +22,7 @@ atlas = ExtResource("5_gl05p")
 region = Rect2(308, 86, 56, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
-size = Vector2(42.5, 24.25)
+size = Vector2(24, 19.125)
 
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "eased_progress")]
 collision_layer = 4
@@ -44,6 +44,7 @@ offset_right = 11.0
 offset_bottom = 13.0
 
 [node name="HealthBar" type="TextureProgressBar" parent="UI"]
+layout_mode = 0
 max_value = 1.0
 step = 0.0
 value = 1.0
@@ -84,7 +85,7 @@ collision_mask = 0
 script = ExtResource("4_tjssy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hitbox"]
-position = Vector2(-0.5, 1.75)
+position = Vector2(0, 1.75)
 shape = SubResource("RectangleShape2D_a3pup")
 
 [connection signal="area_entered" from="graphics/hurtbox" to="graphics/hurtbox" method="_on_area_entered"]

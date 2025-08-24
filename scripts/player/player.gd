@@ -4,7 +4,7 @@ class_name Player
 @onready var graphics: Node2D = $graphics
 @onready var collision_2d: CollisionPolygon2D = $CollisionPolygon2D
 @export var health_bar: TextureProgressBar
-@export var eased_progress: TextureProgressBar
+@export var eased_bar: TextureProgressBar
 
 const ACCELERATION := 9000
 const MAXSPEED := 500
@@ -28,4 +28,4 @@ func _ready() -> void:
 func health_update() -> void: #
 	var percent = 1.0 * current_health / current_max_health
 	health_bar.value = percent
-	create_tween().tween_property(eased_progress, "value", percent, 0.3)
+	create_tween().tween_property(eased_bar, "value", percent, 0.3)

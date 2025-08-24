@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlo3n7hvwctoc"]
+[gd_scene load_steps=15 format=3 uid="uid://dlo3n7hvwctoc"]
 
 [ext_resource type="Texture2D" uid="uid://2i1o7elerejg" path="res://assets/towers/bed.png" id="1_jnl8p"]
 [ext_resource type="Script" uid="uid://c21r1cp8x7y0h" path="res://scripts/tower/master.gd" id="1_vmqmf"]
 [ext_resource type="Texture2D" uid="uid://byqa41uko1tng" path="res://assets/UI/HUD.png" id="2_5556a"]
+[ext_resource type="Script" uid="uid://db0gj2m3q033o" path="res://scripts/tower/master_blood_area.gd" id="3_bw8ck"]
+[ext_resource type="Texture2D" uid="uid://cvqmhva0amow5" path="res://assets/UI/gdb-keyboard-2.png" id="4_t0brv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnl8p"]
 size = Vector2(525, 785)
@@ -18,10 +20,50 @@ region = Rect2(307, 21, 58, 6)
 atlas = ExtResource("2_5556a")
 region = Rect2(308, 86, 56, 4)
 
-[node name="master" type="StaticBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw8ck"]
+atlas = ExtResource("4_t0brv")
+region = Rect2(96, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omkjs"]
+atlas = ExtResource("4_t0brv")
+region = Rect2(96, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47se1"]
+atlas = ExtResource("4_t0brv")
+region = Rect2(96, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teudm"]
+atlas = ExtResource("4_t0brv")
+region = Rect2(96, 384, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d50av"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw8ck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omkjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47se1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teudm")
+}],
+"loop": true,
+"name": &"blood",
+"speed": 5.0
+}]
+
+[node name="Master" type="StaticBody2D" node_paths=PackedStringArray("interaction_icon", "blood_bar", "eased_bar", "recover_timer")]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_vmqmf")
+interaction_icon = NodePath("UI/InteractionIcon")
+blood_bar = NodePath("UI/BloodBar")
+eased_bar = NodePath("UI/BloodBar/EasedBar")
+recover_timer = NodePath("RecoverTimer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_jnl8p")
@@ -32,9 +74,11 @@ texture = ExtResource("1_jnl8p")
 position = Vector2(-14.5, 64.5)
 shape = SubResource("RectangleShape2D_jnl8p")
 
-[node name="blood_area" type="Area2D" parent="."]
+[node name="blood_area" type="Area2D" parent="." node_paths=PackedStringArray("master")]
+visible = false
 collision_layer = 32
-collision_mask = 0
+script = ExtResource("3_bw8ck")
+master = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="blood_area"]
 position = Vector2(-7.5, -139)
@@ -47,13 +91,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="BloodBar" type="TextureProgressBar" parent="UI"]
+layout_mode = 0
 offset_left = 126.0
 offset_top = -272.0
 offset_right = 184.0
 offset_bottom = -263.0
 rotation = 1.5708
 scale = Vector2(4.06, 4.06)
-value = 100.0
+max_value = 1.0
+step = 0.0
+value = 1.0
 texture_over = SubResource("AtlasTexture_vmqmf")
 texture_progress = SubResource("AtlasTexture_t0brv")
 texture_progress_offset = Vector2(1, 1)
@@ -62,3 +109,21 @@ texture_progress_offset = Vector2(1, 1)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="InteractionIcon" type="AnimatedSprite2D" parent="UI"]
+visible = false
+position = Vector2(60, -292)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_d50av")
+animation = &"blood"
+autoplay = "blood"
+
+[node name="RecoverTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="area_entered" from="blood_area" to="." method="_on_blood_area_area_entered"]
+[connection signal="area_exited" from="blood_area" to="." method="_on_blood_area_area_exited"]

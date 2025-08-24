@@ -18,6 +18,7 @@ dna_manager = NodePath("../dnamanager(cyy)")
 [node name="master" parent="." instance=ExtResource("2_omf4g")]
 
 [node name="Player" parent="." instance=ExtResource("2_lpkca")]
+position = Vector2(-1304, -947)
 
 [node name="EnemyGenerator" type="Node" parent="."]
 script = ExtResource("4_omf4g")

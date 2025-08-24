@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://qi8cxx074bja"]
+[gd_scene load_steps=29 format=3 uid="uid://qi8cxx074bja"]
 
 [ext_resource type="Script" uid="uid://nl1ip673o7un" path="res://scripts/player/player.gd" id="1_0owmy"]
 [ext_resource type="Shader" uid="uid://gax1k8tg58fm" path="res://scripts/shader/outline.gdshader" id="3_0owmy"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://brnqdgwx2vnle" path="res://scripts/player/scan_enemy.gd" id="5_h17s1"]
 [ext_resource type="Script" uid="uid://cnvl78m6lfcr1" path="res://scripts/state/move.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://bgrscboem4ywy" path="res://scripts/player/player_hurt_box.gd" id="6_fm80t"]
+[ext_resource type="Script" uid="uid://b5c3r34h73eml" path="res://scripts/player/player_interact_area.gd" id="6_gx1jg"]
 [ext_resource type="Script" uid="uid://7trakc2bxru" path="res://scripts/player/camera.gd" id="8_5gtgg"]
 [ext_resource type="Script" uid="uid://klxvq0rlepha" path="res://scripts/player/attack_manager.gd" id="8_qek5x"]
 [ext_resource type="Texture2D" uid="uid://byqa41uko1tng" path="res://assets/UI/HUD.png" id="11_je7p5"]
@@ -455,6 +456,21 @@ radius = 40.0125
 [sub_resource type="CircleShape2D" id="CircleShape2D_je7p5"]
 radius = 25.0799
 
+[sub_resource type="Animation" id="Animation_fm80t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionPolygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_je7p5"]
 resource_name = "collisionbox"
 loop_mode = 1
@@ -470,21 +486,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 1), Vector2(0, 3), Vector2(0, 3), Vector2(0, 1), Vector2(0, -0.37), Vector2(0, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_fm80t"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionPolygon2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gx1jg"]
@@ -509,11 +510,10 @@ region = Rect2(308, 86, 56, 4)
 atlas = ExtResource("11_je7p5")
 region = Rect2(308, 86, 56, 4)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "eased_progress")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_bar")]
 collision_mask = 2
 script = ExtResource("1_0owmy")
 health_bar = NodePath("HealthProgress/HealthBar")
-eased_progress = NodePath("HealthProgress/HealthBar/EasedProgress")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -550,10 +550,12 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/Pickup_Area(cyy)"]
 shape = SubResource("CircleShape2D_h17s1")
 
-[node name="Interactive" type="Area2D" parent="graphics"]
-visible = false
+[node name="InteractArea" type="Area2D" parent="graphics" node_paths=PackedStringArray("player")]
+collision_mask = 32
+script = ExtResource("6_gx1jg")
+player = NodePath("../..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/Interactive"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/InteractArea"]
 position = Vector2(7, -4)
 shape = SubResource("CircleShape2D_je7p5")
 
@@ -615,7 +617,7 @@ texture_over = SubResource("AtlasTexture_fm80t")
 texture_progress = SubResource("AtlasTexture_gx1jg")
 texture_progress_offset = Vector2(1, 1)
 
-[node name="EasedProgress" type="TextureProgressBar" parent="HealthProgress/HealthBar"]
+[node name="EasedBar" type="TextureProgressBar" parent="HealthProgress/HealthBar"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -627,4 +629,6 @@ texture_progress_offset = Vector2(1, 1)
 
 [connection signal="area_entered" from="graphics/scan_enemy" to="graphics/scan_enemy" method="_on_area_entered"]
 [connection signal="area_exited" from="graphics/scan_enemy" to="graphics/scan_enemy" method="_on_area_exited"]
+[connection signal="area_entered" from="graphics/InteractArea" to="graphics/InteractArea" method="_on_area_entered"]
+[connection signal="area_exited" from="graphics/InteractArea" to="graphics/InteractArea" method="_on_area_exited"]
 [connection signal="area_entered" from="graphics/HurtBox" to="graphics/HurtBox" method="_on_area_entered"]

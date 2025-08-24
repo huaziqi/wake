@@ -7,7 +7,7 @@ class_name Enemy
 const DNA = preload("res://scenes/dna/dna.tscn")
 
 var ACCELRATION : float = 20000
-var MAX_SPEED : float = 200
+var MAX_SPEED : float = 150
 var MAX_HEALTH : float = 50
 const ENEMY_TYPE : String = "enemy"
 
@@ -24,6 +24,9 @@ func random_dis(minn : int, maxn : int) -> Vector2:
 	return rand_vec2 * dis
 
 func _ready() -> void:
+	init()
+
+func init() -> void:
 	add_to_group("enemy")
 	current_health = MAX_HEALTH
 	current_max_health = MAX_HEALTH

@@ -26,7 +26,6 @@ func _ready() -> void:
 	
 	hand_knife = Hand_Knife.instantiate()
 	hand_knife.player = player
-	hand_knife.position = player.position + Vector2(10, 0)
 	graphics.add_child.call_deferred(hand_knife)
 	hand_knife.visible = false
 

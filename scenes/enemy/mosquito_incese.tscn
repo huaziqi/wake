@@ -11,7 +11,8 @@ radius = 57.0088
 script = ExtResource("2_kmun3")
 
 [node name="HealthBar" parent="UI" index="0"]
-layout_mode = 0
+offset_right = 1.0
+offset_bottom = 1.0
 
 [node name="Sprite2D" parent="graphics" index="0"]
 scale = Vector2(0.8, 0.8)
@@ -25,4 +26,4 @@ position = Vector2(-1, 4)
 shape = SubResource("CircleShape2D_kmun3")
 
 [node name="CollisionShape2D" parent="graphics/hitbox" index="0"]
-position = Vector2(-1, 2)
+position = Vector2(-0.625, -0.5625)
