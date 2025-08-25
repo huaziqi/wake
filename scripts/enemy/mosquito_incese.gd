@@ -31,10 +31,10 @@ func _ready() -> void:
 	add_child(attack_timer)
 	attack_timer.timeout.connect(func():
 		var barrage = ENEMY_BARRAGE.instantiate()
-		add_child(barrage)
+		get_tree().current_scene.add_child.call_deferred(barrage)
 		barrage.particles.process_material.gravity = Vector3(98 * cos(rotation), 98 * sin(rotation), 0)
-		barrage.position = Vector2(incense_radius * cos(rotation), incense_radius * sin(rotation))
-		barrage.velocity = 10
+		barrage.position = position + Vector2(incense_radius * cos(rotation), incense_radius * sin(rotation))
+		barrage.velocity = 0.7
 		barrage.direction = Vector2(cos(rotation), sin(rotation))
 	)
 	

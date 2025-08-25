@@ -7,8 +7,8 @@
 radius = 8.0
 
 [sub_resource type="Gradient" id="Gradient_djrtb"]
-offsets = PackedFloat32Array(0.115523, 0.570397, 1)
-colors = PackedColorArray(0.485703, 0.485704, 0.485703, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.187726, 0.718412, 1)
+colors = PackedColorArray(0.78, 0.18512, 0.0936, 1, 0.924817, 0.553064, 0.381391, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_4r4d7"]
 gradient = SubResource("Gradient_djrtb")
@@ -30,6 +30,7 @@ turbulence_noise_strength = 7.13
 turbulence_noise_scale = 1.5
 
 [node name="EnemyBarrage" type="StaticBody2D" node_paths=PackedStringArray("particles")]
+position = Vector2(48, 46)
 script = ExtResource("1_h85jo")
 particles = NodePath("GPUParticles2D")
 
@@ -43,3 +44,14 @@ amount = 50
 texture = ExtResource("1_xdq0b")
 lifetime = 1.8
 process_material = SubResource("ParticleProcessMaterial_scjq6")
+
+[node name="StopTimer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
+[node name="FreeTimer" type="Timer" parent="."]
+wait_time = 1.8
+one_shot = true
+
+[connection signal="timeout" from="StopTimer" to="." method="_on_stop_timer_timeout"]
+[connection signal="timeout" from="FreeTimer" to="." method="_on_free_timer_timeout"]
