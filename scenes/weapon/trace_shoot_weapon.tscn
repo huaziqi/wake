@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dxxr0gapxb7s7" path="res://scripts/weapon/trace_shoot_weapon.gd" id="1_l0d5i"]
 [ext_resource type="PackedScene" uid="uid://dtvteogckdglk" path="res://scenes/weapon/shoot_weapon.tscn" id="1_s0nty"]
 [ext_resource type="Script" uid="uid://cpdtne07hknhu" path="res://scripts/weapon/trace_shoot_weapon_area.gd" id="3_qeoqj"]
-[ext_resource type="Texture2D" uid="uid://d323yjcakhi1w" path="res://assets/temp_assets/particle.png" id="4_ehy4j"]
+[ext_resource type="Texture2D" uid="uid://d323yjcakhi1w" path="res://assets/particles/particle.png" id="4_ehy4j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s0nty"]
 radius = 300.0

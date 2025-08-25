@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbirf2hppiksu"]
+
+[ext_resource type="Script" uid="uid://by47hps8fcce" path="res://scripts/enemy/enemy_barrage.gd" id="1_h85jo"]
+[ext_resource type="Texture2D" uid="uid://0uvkij128bri" path="res://assets/particles/white_particle_0.png" id="1_xdq0b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h85jo"]
+radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_djrtb"]
+offsets = PackedFloat32Array(0.115523, 0.570397, 1)
+colors = PackedColorArray(0.485703, 0.485704, 0.485703, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4r4d7"]
+gradient = SubResource("Gradient_djrtb")
+
+[sub_resource type="Curve" id="Curve_1rnd6"]
+_data = [Vector2(0.0594059, 1), 0.0, 0.0, 0, 0, Vector2(0.785479, 0.209225), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_v5muk"]
+curve = SubResource("Curve_1rnd6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_scjq6"]
+particle_flag_disable_z = true
+gravity = Vector3(0, -98, 0)
+scale_curve = SubResource("CurveTexture_v5muk")
+color_ramp = SubResource("GradientTexture1D_4r4d7")
+turbulence_enabled = true
+turbulence_noise_strength = 7.13
+turbulence_noise_scale = 1.5
+
+[node name="EnemyBarrage" type="StaticBody2D" node_paths=PackedStringArray("particles")]
+script = ExtResource("1_h85jo")
+particles = NodePath("GPUParticles2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h85jo")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 50
+texture = ExtResource("1_xdq0b")
+lifetime = 1.8
+process_material = SubResource("ParticleProcessMaterial_scjq6")
