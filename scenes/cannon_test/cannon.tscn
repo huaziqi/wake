@@ -28,6 +28,7 @@ script = ExtResource("4_un2bf")
 bullet = ExtResource("5_2mci5")
 
 [node name="Timer" type="Timer" parent="shoot_manager"]
+wait_time = 5.0
 autostart = true
 
 [connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]

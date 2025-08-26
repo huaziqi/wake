@@ -1,6 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://8n8fpbivhjj1"]
+[gd_scene load_steps=5 format=3 uid="uid://8n8fpbivhjj1"]
 
 [ext_resource type="Script" uid="uid://cvha8usqt0xy6" path="res://scripts/upgrade(cyy)/dnabar.gd" id="1_1kudr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsxg8"]
+bg_color = Color(0, 0, 1, 1)
+
+[sub_resource type="Theme" id="Theme_ae5t8"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_hsxg8")
 
 [sub_resource type="Theme" id="Theme_etuql"]
 
@@ -21,6 +27,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
+theme = SubResource("Theme_ae5t8")
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
 custom_minimum_size = Vector2(0, 8)

@@ -3,7 +3,7 @@ extends Node
 
 signal dna_updated(current_dna:float,target_dna:float)
 signal level_up(new_level:int)
-const TARGET_GROWTH : float = 5           #每一级增加的所需经验量
+const TARGET_GROWTH : float =1         #每一级增加的所需经验量
 
 var current_dna : float = 0 
 var current_level=1

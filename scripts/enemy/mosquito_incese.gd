@@ -24,12 +24,12 @@ func _ready() -> void:
 	)
 
 func trace_decision(delta : float) -> void:
-	print(begin_rotate_timer.time_left)
+	#print(begin_rotate_timer.time_left)
 	rotate_attack(delta)
 
 func rotate_attack(delta : float) -> void:
 	if(rotate_timer.time_left > 0):
 		mosquito_incese.rotate(delta * rotate_rate)
-		print("rotation", mosquito_incese.rotation)
+		#print("rotation", mosquito_incese.rotation)
 	elif(rotate_timer.is_stopped() and begin_rotate_timer.is_stopped()):
 		begin_rotate_timer.start()

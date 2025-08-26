@@ -10,6 +10,9 @@ height = 65.9261
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_hn4tu")
+bullet_speed = 10.0
+
+[node name="Node" type="Node" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2, -1)
@@ -22,7 +25,6 @@ rotation = 1.58238
 shape = SubResource("CapsuleShape2D_cqb03")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

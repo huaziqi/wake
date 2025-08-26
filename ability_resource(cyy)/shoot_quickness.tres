@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_3xphk")
-id = "shoot_rate"
-name = "shoot_quickness"
-description = "射击速度"
+id = "cannon_quickness"
+name = "cannon_quickness"
+description = "逆天加农炮核爆"

@@ -6,6 +6,7 @@ var current_damage : float #现在的伤害
 var move_dir
 @export var bullet_speed:float=50
 func _ready() -> void:
+	
 	add_to_group("cannon")
 	global_position=base_position
 	current_damage = base_damage
@@ -14,5 +15,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	position+=move_dir*bullet_speed
 	
+
 func _on_timer_timeout() -> void:
 	queue_free()
