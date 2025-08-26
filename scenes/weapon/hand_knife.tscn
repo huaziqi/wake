@@ -284,10 +284,10 @@ tracks/8/path = NodePath("hitbox/CollisionShape2D:shape:size")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.304681, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(47, 35), Vector2(50, 32), Vector2(50, 31), Vector2(44, 51), Vector2(38.0739, 47.5579), Vector2(36.1479, 44.1157), Vector2(0.1, 0.1), Vector2(79, 40), Vector2(84, 39), Vector2(74, 33.4525), Vector2(70, 33.905)]
+"values": [Vector2(89, 60), Vector2(86, 52), Vector2(50, 31), Vector2(83.6363, 94), Vector2(71.931, 82.2858), Vector2(36.1479, 44.1157), Vector2(0.1, 0.1), Vector2(136, 53), Vector2(133, 47.25), Vector2(132, 46.4525), Vector2(70, 33.905)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -296,10 +296,10 @@ tracks/9/path = NodePath("hitbox/CollisionShape2D:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.304681, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(17.5, -9.5), Vector2(16, -7), Vector2(17, -9.5), Vector2(23, -13.5), Vector2(25.1059, -12.4932), Vector2(25.2118, -11.4864), Vector2(25.3177, -10.4796), Vector2(2.5, -9), Vector2(-1, -7.5), Vector2(3, -6.72625), Vector2(4, -2.9525)]
+"values": [Vector2(29.5, -11), Vector2(34, -8), Vector2(17, -9.5), Vector2(41.1819, -26), Vector2(38, -27), Vector2(25.2118, -11.4864), Vector2(25.3177, -10.4796), Vector2(-7, -2.5), Vector2(-6.5, -5.625), Vector2(-2, -0.22625), Vector2(4, -2.9525)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -308,7 +308,7 @@ tracks/10/path = NodePath("hitbox/CollisionShape2D:shape")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.304681, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [SubResource("RectangleShape2D_st013"), SubResource("RectangleShape2D_st013"), SubResource("RectangleShape2D_st013"), SubResource("RectangleShape2D_st013"), SubResource("RectangleShape2D_st013"), SubResource("RectangleShape2D_st013"), SubResource("RectangleShape2D_st013"), SubResource("RectangleShape2D_st013"), SubResource("RectangleShape2D_st013"), SubResource("RectangleShape2D_st013"), SubResource("RectangleShape2D_st013")]
@@ -393,5 +393,6 @@ shape = SubResource("RectangleShape2D_st013")
 visible = false
 position = Vector2(15.5, -5.5)
 shape = SubResource("RectangleShape2D_cy1t2")
+disabled = true
 
 [connection signal="area_entered" from="hitbox" to="hitbox" method="_on_area_entered"]

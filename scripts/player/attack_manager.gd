@@ -4,9 +4,12 @@ extends Node
 @onready var player: Player = $".."
 @export var scan_enemy: Area2D
 @onready var sprite_2d: Sprite2D = $"../graphics/Sprite2D"
-const SHOOT_WEAPON = preload("res://scenes/weapon/trace_shoot_weapon.tscn")
+const SHOOT_WEAPON = preload("res://scenes/weapon/hurricane.tscn")
 const ROTATE_WEAPON = preload("res://scenes/weapon/rotate_weapon.tscn")
 const Hand_Knife = preload("res://scenes/weapon/hand_knife.tscn")
+
+@export var weapon_array : Array[PackedScene]
+
 
 var shootTimer : Timer
 var rotate_weapon : Rotate_Weapon
@@ -15,10 +18,10 @@ var hand_knife : HandKnife
 func _ready() -> void:
 	shootTimer = Timer.new() #定时发射
 	add_child(shootTimer)
-	shootTimer.wait_time = 0.3 #间隔时间为0
+	shootTimer.wait_time = 1 #间隔时间为0
 	shootTimer.start()
 	shootTimer.one_shot = false
-	#shootTimer.timeout.connect(on_timer_timeout.bind("shoot_timer"))
+	shootTimer.timeout.connect(on_timer_timeout.bind("shoot_timer"))
 	
 	#rotate_weapon = ROTATE_WEAPON.instantiate()
 	#rotate_weapon.player = player

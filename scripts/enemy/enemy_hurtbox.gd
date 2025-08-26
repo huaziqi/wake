@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var enemy: Enemy
-
+var area_name : String = "hurt_box"
 
 func _on_area_entered(area: Area2D) -> void:
 	if("real_damage" in area):

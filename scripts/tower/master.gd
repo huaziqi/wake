@@ -16,7 +16,6 @@ func init() -> void:
 	current_max_blood = MAX_BLOOD
 	current_blood = current_max_blood
 	interaction_icon.visible = false
-	print(interaction_icon.visible)
 	
 func _ready() -> void:
 	init()
@@ -25,7 +24,6 @@ func _ready() -> void:
 	)
 
 func _on_blood_area_area_entered(area: Area2D) -> void:
-	print("enter")
 	interaction_icon.visible = true
 
 func _on_blood_area_area_exited(area: Area2D) -> void:
