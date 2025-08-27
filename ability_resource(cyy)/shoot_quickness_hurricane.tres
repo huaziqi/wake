@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://c5lhiv1h4nogg"]
+
+[ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource(cyy)/ability.gd" id="1_i661u"]
+
+[resource]
+script = ExtResource("1_i661u")
+id = "shoot_quickness"
+name = "风暴龙王"
+description = "八级大狂风"
+metadata/_custom_type_script = "uid://bptee7m2xdmm5"

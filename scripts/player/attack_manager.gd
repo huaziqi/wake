@@ -22,6 +22,7 @@ func get_scene_name(scene : PackedScene) -> String:
 	return scene.resource_path.get_file().get_basename()
 
 func _ready() -> void:
+	#Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)#升级系统信号(cyy)
 	for weapon in weapon_array:
 		var weapon_name = get_scene_name(weapon) #武器名字
 		name_to_index_dic[weapon_name] = weapon_idx 
@@ -44,6 +45,8 @@ func _ready() -> void:
 	hand_knife.player = player
 	graphics.add_child.call_deferred(hand_knife)
 	hand_knife.visible = false
+	#Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added_basicvalue())#连接升级系统(cyy)
+
 
 #添加武器 index : 在weapon_array中的索引值
 func add_weapon_by_index(index : int) -> void:
@@ -78,3 +81,4 @@ func _physics_process(delta: float) -> void:
 	if(not hand_knife.animation_player.is_playing()):
 		if(scan_enemy.enemy_num > 0):
 			hand_knife.animation_player.play("attack_0")
+			

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://dunnrberb7i8o"]
+
+[ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource(cyy)/ability.gd" id="1_ap3h5"]
+
+[resource]
+script = ExtResource("1_ap3h5")
+id = "rotate_weapon"
+name = "螺旋桨武器"
+description = "提升旋转武器能力"
+metadata/_custom_type_script = "uid://bptee7m2xdmm5"

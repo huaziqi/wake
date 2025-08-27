@@ -4,7 +4,7 @@ extends Node
 @export var dna_manager:Node
 @export var upgrade_scene:PackedScene
 
-var current_upgrades={} #储存已经升级的相关所有数据（这个我有点不清楚了，可能描述的不准确）
+var current_upgrades={} #储存已经升级的相关所有数据
 
 func _ready():
 	dna_manager.level_up.connect(on_level_up)       
@@ -34,6 +34,6 @@ func apply_upgrade(upgrade:AbilityUpgrade):
 		current_upgrades[upgrade.id]["quantity"]+=1            #能力有则＋1，无则添加
 	Gameevent.emit_ability_upgrade_added(upgrade,current_upgrades)
 	
-	print(current_upgrades)
+	#print(current_upgrades)
 func on_upgrade_selected(upgrade:AbilityUpgrade):
 	apply_upgrade(upgrade)

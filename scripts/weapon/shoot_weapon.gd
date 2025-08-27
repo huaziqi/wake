@@ -16,6 +16,7 @@ func init_scene(_player : Player, _graphics : Node2D):
 	global_position = player.position
 
 func _ready() -> void:
+
 	add_to_group("weapon")
 	z_index = 100
 	init()
@@ -38,6 +39,7 @@ func free_action():
 
 func attack_func() -> void:
 	pass
+	
 
 #func _on_attack_shape_area_entered(area: Area2D) -> void:
 	#var node = area.get_parent()

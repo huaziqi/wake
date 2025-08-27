@@ -37,6 +37,33 @@ position = Vector2(394, -486)
 [node name="DNA2" parent="." instance=ExtResource("8_k0t8k")]
 position = Vector2(1294, 5)
 
+[node name="DNA5" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1294, 5)
+
+[node name="DNA6" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1294, 5)
+
+[node name="DNA7" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1294, 5)
+
+[node name="DNA8" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1572, -111)
+
+[node name="DNA9" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1178, 318)
+
+[node name="DNA10" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(963, 59)
+
+[node name="DNA11" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1249, -255)
+
+[node name="DNA12" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1446, 274)
+
+[node name="DNA13" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1858, -523)
+
 [node name="DNA3" parent="." instance=ExtResource("8_k0t8k")]
 position = Vector2(807, -372)
 

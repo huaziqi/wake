@@ -8,7 +8,7 @@ class_name Player
 
 const ACCELERATION := 9000
 const MAXSPEED := 500
-const MAX_HEALTH : float = 100
+var MAX_HEALTH : float = 100
 
 var direction : Vector2 = Vector2.DOWN
 var last_direction : Vector2 = Vector2.DOWN #记录最后一次的位置
@@ -23,9 +23,17 @@ func _ready() -> void:
 	current_health = MAX_HEALTH
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	z_index = 99 # 保证显示在大部分图片上方
+	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)#连接升级系统（cyy）
 	
 
 func health_update() -> void: #
 	var percent = 1.0 * current_health / current_max_health
 	health_bar.value = percent
 	create_tween().tween_property(eased_bar, "value", percent, 0.3)
+	
+func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):#血条升级(cyy)
+	if upgrade.id!="healthbar":#连接升级系统
+		return
+	MAX_HEALTH*=1.2
+	print(MAX_HEALTH)
+	#$Timer.start()

@@ -18,6 +18,7 @@ func init_scene(_player : Player, _graphics : Node2D):
 	_graphics.add_child.call_deferred(self)
 
 func _ready():
+	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)#升级系统的测试(cyy)
 	add_to_group("weapon")
 	current_damage = base_damage
 	copy_weapon()
@@ -48,4 +49,11 @@ func control_weapon(delta : float):
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	#print("enter")
 	pass
+
+func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):#(cyy)gong转速的测试
+	if upgrade.id!="rotate_weapon":#连接升级系统
+		return
+	print(rotation_speed)
+	var precent_reduction=current_upgrades["rotate_weapon"]["quantity"]
+	rotation_speed=rotation_speed*1.6*(precent_reduction)
 	
