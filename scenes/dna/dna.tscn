@@ -4,7 +4,8 @@
 
 [sub_resource type="GDScript" id="GDScript_14oti"]
 script/source = "extends Node2D
-
+@onready var collision_shape_2d=$Area2D/CollisionShape2D
+@onready var sprite=$Sprite2D
 func _ready() -> void:
 	$Area2D.area_entered.connect(on_area_entered)
 	
@@ -13,23 +14,30 @@ func tween_collect(percent:float,start_position:Vector2):
 	if player==null:
 		return
 	
-	global_position=start_position.lerp(player.global_position,percent)
-	var direction_from_start=global_position-start_position
-	rotation= direction_from_start.angle()
 	
 func collect():
 	Gameevent.emit_dna_collected(1)
 	queue_free()
+	
+func disable_collision():
+	collision_shape_2d.disabled=true
+	
 func on_area_entered(other_area:Area2D):
-	var tween=create_tween()
-	tween.tween_method(tween_collect.bind(global_position),0.0,1.0,1)\\
+	Callable(disable_collision).call_deferred()
+	
+	var tween=create_tween()     #tween函数类似于ppt里的平滑一样的功能，适合制作丝滑小动画
+	tween.set_parallel()     #如果没paralle，会让所有tween函数依次执行
+	tween.tween_method(tween_collect.bind(global_position),0.0,1.0,.5)\\
 	.set_ease(Tween.EASE_IN)\\
 	.set_trans(Tween.TRANS_BACK)
-	tween.tween_callback(collect)
+	#曲线#飞向玩家
+	tween.tween_property(sprite,\"scale\",Vector2.ZERO,.15).set_delay(.35) #缩放动画，在0.35秒后进行，0.15秒内完成动画，也就是共0.5s
+	tween.chain()	#chain是等上面先执行了后执行下面
+	tween.tween_callback(collect)	#动画结束，并执行collect函数
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k673e"]
-radius = 71.007
+radius = 131.095
 
 [node name="DNA" type="Node2D"]
 script = SubResource("GDScript_14oti")

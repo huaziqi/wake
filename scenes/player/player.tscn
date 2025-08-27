@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://djgma2uaxxmru" path="res://assets/player/idle_0.png" id="3_qek5x"]
 [ext_resource type="Script" uid="uid://5g33a5nsapcy" path="res://scripts/state/idle.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://d1pjl8s55angd" path="res://scripts/state/state_machine.gd" id="5_0owmy"]
-[ext_resource type="Script" uid="uid://brnqdgwx2vnle" path="res://scripts/player/scan_enemy.gd" id="5_h17s1"]
+[ext_resource type="Script" path="res://scripts/player/scan_enemy.gd" id="5_h17s1"]
 [ext_resource type="Script" uid="uid://cnvl78m6lfcr1" path="res://scripts/state/move.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://bgrscboem4ywy" path="res://scripts/player/player_hurt_box.gd" id="6_fm80t"]
-[ext_resource type="Script" uid="uid://b5c3r34h73eml" path="res://scripts/player/player_interact_area.gd" id="6_gx1jg"]
+[ext_resource type="Script" path="res://scripts/player/player_interact_area.gd" id="6_gx1jg"]
 [ext_resource type="Script" uid="uid://7trakc2bxru" path="res://scripts/player/camera.gd" id="8_5gtgg"]
 [ext_resource type="Script" uid="uid://klxvq0rlepha" path="res://scripts/player/attack_manager.gd" id="8_qek5x"]
 [ext_resource type="Texture2D" uid="uid://byqa41uko1tng" path="res://assets/UI/HUD.png" id="11_je7p5"]
@@ -453,7 +453,7 @@ shader_parameter/outline_color = Color(10.497, 0, 0, 1)
 size = Vector2(104.333, 84.6667)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h17s1"]
-radius = 40.0125
+radius = 267.666
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_je7p5"]
 radius = 25.0799
