@@ -5,17 +5,24 @@ var direction : Vector2 = Vector2.ZERO
 var shoot_speed : float = 800.0
 var player : Player
 var shoot_gap_time : float = 1.0
+var shoot_gap_timer : Timer = null
 
 func init():
-	add_to_group("weapon")
-	z_index = 100
+	pass
+
+func init_scene(_player : Player, _graphics : Node2D):
+	player = _player
+	set_direction(player.last_direction)
+	global_position = player.position
 
 func _ready() -> void:
+	add_to_group("weapon")
+	z_index = 100
 	init()
 
 func set_direction(dir : Vector2) -> void:
 	direction = dir
-	rotation += direction.angle() + PI / 2 #武器初始方向
+	rotation = direction.angle() #武器初始方向
 
 func _physics_process(delta: float) -> void:
 	trace_decision(delta)

@@ -45,13 +45,11 @@ func _ready() -> void:
 	begin_rotate_timer.start()
 
 func trace_decision(delta : float) -> void:
-	print(begin_rotate_timer.time_left)
 	rotate_attack(delta)
 
 func rotate_attack(delta : float) -> void:
 	if(rotate_timer.time_left > 0):
 		rotate(delta * rotate_rate)
-		print("rotation", rotation)
 	elif(rotate_timer.is_stopped() and begin_rotate_timer.is_stopped()):
 		begin_rotate_timer.start()
 		attack_timer.stop()

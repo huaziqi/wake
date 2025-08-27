@@ -13,6 +13,9 @@ var weapon_array : Array = []
 
 @onready var graphics: Node2D = $graphics
 
+func init_scene(_player : Player, _graphics : Node2D):
+	player = _player
+	_graphics.add_child.call_deferred(self)
 
 func _ready():
 	add_to_group("weapon")
