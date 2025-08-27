@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://qi8cxx074bja"]
+[gd_scene load_steps=33 format=3 uid="uid://qi8cxx074bja"]
 
 [ext_resource type="Script" uid="uid://nl1ip673o7un" path="res://scripts/player/player.gd" id="1_0owmy"]
 [ext_resource type="Shader" uid="uid://gax1k8tg58fm" path="res://scripts/shader/outline.gdshader" id="3_0owmy"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://byqa41uko1tng" path="res://assets/UI/HUD.png" id="11_je7p5"]
 [ext_resource type="PackedScene" uid="uid://dtvteogckdglk" path="res://scenes/weapon/shoot_weapon.tscn" id="13_fcs02"]
 [ext_resource type="PackedScene" uid="uid://cyi75rrptcqfs" path="res://scenes/weapon/trace_shoot_weapon.tscn" id="14_myrg7"]
+[ext_resource type="PackedScene" uid="uid://cc006t2ujquda" path="res://scenes/weapon/rotate_weapon.tscn" id="15_myrg7"]
+[ext_resource type="PackedScene" uid="uid://ds8rcoyb5iedd" path="res://scenes/weapon/hurricane.tscn" id="16_kvlxm"]
 
 [sub_resource type="Animation" id="Animation_p47bc"]
 length = 0.001
@@ -602,10 +604,17 @@ visible = false
 script = ExtResource("8_5gtgg")
 metadata/_edit_lock_ = true
 
-[node name="AttackManager" type="Node" parent="." node_paths=PackedStringArray("scan_enemy")]
+[node name="AttackManager" type="Node" parent="." node_paths=PackedStringArray("scan_enemy", "timers")]
 script = ExtResource("8_qek5x")
 scan_enemy = NodePath("../graphics/scan_enemy")
-weapon_array = Array[PackedScene]([ExtResource("13_fcs02"), ExtResource("14_myrg7")])
+timers = NodePath("../Timers")
+weapon_array = Array[PackedScene]([ExtResource("13_fcs02"), ExtResource("14_myrg7"), ExtResource("15_myrg7"), ExtResource("16_kvlxm")])
+weapon_property = {
+"all_property": {
+"shoot_gap_time": 1.0
+},
+"in_use": [null]
+}
 
 [node name="HealthProgress" type="VBoxContainer" parent="."]
 offset_left = -46.0
@@ -634,6 +643,8 @@ texture_progress = SubResource("AtlasTexture_ugbui")
 texture_progress_offset = Vector2(1, 1)
 
 [node name="CardUI" type="CanvasLayer" parent="."]
+
+[node name="Timers" type="Node" parent="."]
 
 [connection signal="area_entered" from="graphics/scan_enemy" to="graphics/scan_enemy" method="_on_area_entered"]
 [connection signal="area_exited" from="graphics/scan_enemy" to="graphics/scan_enemy" method="_on_area_exited"]
