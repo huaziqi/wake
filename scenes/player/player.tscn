@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://qi8cxx074bja"]
+[gd_scene load_steps=34 format=3 uid="uid://qi8cxx074bja"]
 
 [ext_resource type="Script" uid="uid://nl1ip673o7un" path="res://scripts/player/player.gd" id="1_0owmy"]
 [ext_resource type="Shader" uid="uid://gax1k8tg58fm" path="res://scripts/shader/outline.gdshader" id="3_0owmy"]
@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://djgma2uaxxmru" path="res://assets/player/idle_0.png" id="3_qek5x"]
 [ext_resource type="Script" uid="uid://5g33a5nsapcy" path="res://scripts/state/idle.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://d1pjl8s55angd" path="res://scripts/state/state_machine.gd" id="5_0owmy"]
-[ext_resource type="Script" path="res://scripts/player/scan_enemy.gd" id="5_h17s1"]
+[ext_resource type="Script" uid="uid://brnqdgwx2vnle" path="res://scripts/player/scan_enemy.gd" id="5_h17s1"]
 [ext_resource type="Script" uid="uid://cnvl78m6lfcr1" path="res://scripts/state/move.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://bgrscboem4ywy" path="res://scripts/player/player_hurt_box.gd" id="6_fm80t"]
-[ext_resource type="Script" path="res://scripts/player/player_interact_area.gd" id="6_gx1jg"]
+[ext_resource type="Script" uid="uid://b5c3r34h73eml" path="res://scripts/player/player_interact_area.gd" id="6_gx1jg"]
 [ext_resource type="Script" uid="uid://7trakc2bxru" path="res://scripts/player/camera.gd" id="8_5gtgg"]
 [ext_resource type="Script" uid="uid://klxvq0rlepha" path="res://scripts/player/attack_manager.gd" id="8_qek5x"]
 [ext_resource type="Texture2D" uid="uid://byqa41uko1tng" path="res://assets/UI/HUD.png" id="11_je7p5"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cyi75rrptcqfs" path="res://scenes/weapon/trace_shoot_weapon.tscn" id="14_myrg7"]
 [ext_resource type="PackedScene" uid="uid://cc006t2ujquda" path="res://scenes/weapon/rotate_weapon.tscn" id="15_myrg7"]
 [ext_resource type="PackedScene" uid="uid://ds8rcoyb5iedd" path="res://scenes/weapon/hurricane.tscn" id="16_kvlxm"]
+[ext_resource type="PackedScene" uid="uid://l1eecd8v05hm" path="res://scenes/UI/tower_card.tscn" id="17_uf5tr"]
 
 [sub_resource type="Animation" id="Animation_p47bc"]
 length = 0.001
@@ -517,7 +518,7 @@ region = Rect2(308, 86, 56, 4)
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_bar")]
 collision_mask = 2
 script = ExtResource("1_0owmy")
-health_bar = NodePath("HealthProgress/HealthBar")
+health_bar = NodePath("UI/HealthProgress/HealthBar")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -538,6 +539,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 495, 476)
 
 [node name="scan_enemy" type="Area2D" parent="graphics"]
+visible = false
 collision_mask = 4
 script = ExtResource("5_h17s1")
 
@@ -549,6 +551,8 @@ shape = SubResource("RectangleShape2D_5gtgg")
 visible = false
 collision_layer = 16
 collision_mask = 0
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/Pickup_Area(cyy)"]
 shape = SubResource("CircleShape2D_h17s1")
@@ -616,14 +620,47 @@ weapon_property = {
 "in_use": [null]
 }
 
-[node name="HealthProgress" type="VBoxContainer" parent="."]
+[node name="CardUI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CardUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 53.0
+offset_bottom = 64.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardUI/Control"]
+layout_mode = 0
+offset_right = 1140.0
+offset_bottom = 150.0
+alignment = 1
+
+[node name="TowerCard" parent="CardUI/Control/HBoxContainer" instance=ExtResource("17_uf5tr")]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="TowerCard2" parent="CardUI/Control/HBoxContainer" instance=ExtResource("17_uf5tr")]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthProgress" type="VBoxContainer" parent="UI"]
+layout_mode = 0
 offset_left = -46.0
 offset_top = -73.0
 offset_right = 12.0
 offset_bottom = -33.0
 scale = Vector2(2, 2)
 
-[node name="HealthBar" type="TextureProgressBar" parent="HealthProgress"]
+[node name="HealthBar" type="TextureProgressBar" parent="UI/HealthProgress"]
 layout_mode = 2
 max_value = 1.0
 step = 0.0
@@ -632,7 +669,7 @@ texture_over = SubResource("AtlasTexture_fm80t")
 texture_progress = SubResource("AtlasTexture_gx1jg")
 texture_progress_offset = Vector2(1, 1)
 
-[node name="EasedBar" type="TextureProgressBar" parent="HealthProgress/HealthBar"]
+[node name="EasedBar" type="TextureProgressBar" parent="UI/HealthProgress/HealthBar"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -641,10 +678,6 @@ step = 0.0
 page = 1.0
 texture_progress = SubResource("AtlasTexture_ugbui")
 texture_progress_offset = Vector2(1, 1)
-
-[node name="CardUI" type="CanvasLayer" parent="."]
-
-[node name="Timers" type="Node" parent="."]
 
 [connection signal="area_entered" from="graphics/scan_enemy" to="graphics/scan_enemy" method="_on_area_entered"]
 [connection signal="area_exited" from="graphics/scan_enemy" to="graphics/scan_enemy" method="_on_area_exited"]

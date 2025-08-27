@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="wake"
-run/main_scene="uid://qi8cxx074bja"
+run/main_scene="uid://c1wko1rfba2e7"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -78,6 +78,9 @@ interact={
 2d_physics/layer_4="weapon"
 2d_physics/layer_5="prop"
 2d_physics/layer_6="interaction"
+2d_physics/layer_7="tower_put_able"
+2d_physics/layer_8="tower_forbidden"
+2d_physics/layer_9="tower"
 
 [rendering]
 

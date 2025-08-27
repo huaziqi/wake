@@ -7,7 +7,6 @@ func _ready() -> void:
 	base_wait_time=$Timer.wait_time
 	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)#升级系统
 
-
 func _on_timer_timeout() -> void:
 	var targets=get_parent().targets
 	if targets.size()!=0:

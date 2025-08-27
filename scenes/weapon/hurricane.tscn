@@ -23,10 +23,10 @@ disabled = true
 
 [node name="TextureRect" type="TextureRect" parent="." index="1"]
 material = SubResource("ShaderMaterial_l5nl3")
-offset_left = -89.0
-offset_top = -109.0
-offset_right = 96.0
-offset_bottom = 112.0
+offset_left = -90.0
+offset_top = -111.0
+offset_right = 95.0
+offset_bottom = 110.0
 texture = ExtResource("3_kj7se")
 stretch_mode = 5
 

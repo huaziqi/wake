@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://l1eecd8v05hm"]
+
+[ext_resource type="Script" uid="uid://bc11q2ysd25kx" path="res://scripts/UI/tower_card.gd" id="1_6140h"]
+[ext_resource type="Texture2D" uid="uid://dhmscpfavdp1y" path="res://assets/cannon/cannon.png" id="1_inx6f"]
+[ext_resource type="FontFile" uid="uid://ccgedpoalv6cc" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_vcf6s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hu7se"]
+font = ExtResource("2_vcf6s")
+font_size = 17
+font_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oqt0"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_187ce"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.328956, 0.922732, 0.683425, 1)
+
+[sub_resource type="Theme" id="Theme_qtrnw"]
+Button/styles/hover = SubResource("StyleBoxFlat_4oqt0")
+Button/styles/normal = null
+Button/styles/pressed = SubResource("StyleBoxFlat_187ce")
+
+[node name="TowerCard" type="Control"]
+layout_mode = 3
+anchor_right = 0.109
+anchor_bottom = 0.236
+offset_right = -125.568
+offset_bottom = -152.928
+script = ExtResource("1_6140h")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 123.0
+offset_bottom = 147.0
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 114.0
+offset_bottom = 142.0
+color = Color(0.759079, 0.977389, 0.65269, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Panel/ColorRect"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 13.0
+offset_right = 92.0
+offset_bottom = 86.0
+texture = ExtResource("1_inx6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/ColorRect"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 89.0
+offset_right = 79.0
+offset_bottom = 113.0
+text = "加农炮"
+label_settings = SubResource("LabelSettings_hu7se")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_left = 5.0
+offset_right = 122.0
+offset_bottom = 149.0
+theme = SubResource("Theme_qtrnw")
+theme_type_variation = &"FlatButton"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

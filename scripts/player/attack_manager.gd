@@ -36,15 +36,15 @@ func _ready() -> void:
 	
 	print(weapon_property)	
 	
-	add_weapon_by_index(0)
-	add_weapon_by_index(1)
-	add_weapon_by_index(2)
-	add_weapon_by_index(3)
+	#add_weapon_by_index(0)
+	#add_weapon_by_index(1)
+	#add_weapon_by_index(2)
+	#add_weapon_by_index(3)
 	
-	hand_knife = Hand_Knife.instantiate()
-	hand_knife.player = player
-	graphics.add_child.call_deferred(hand_knife)
-	hand_knife.visible = false
+	#hand_knife = Hand_Knife.instantiate()
+	#hand_knife.player = player
+	#graphics.add_child.call_deferred(hand_knife)
+	#hand_knife.visible = false
 	#Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added_basicvalue())#连接升级系统(cyy)
 
 
@@ -77,8 +77,8 @@ func time_gap_weapon(weapon_scene : PackedScene,  weapon : Node) -> void:
 	)
 	timer.start()
 
-func _physics_process(delta: float) -> void:
-	if(not hand_knife.animation_player.is_playing()):
-		if(scan_enemy.enemy_num > 0):
-			hand_knife.animation_player.play("attack_0")
-			
+#func _physics_process(delta: float) -> void:
+	#if(not hand_knife.animation_player.is_playing()):
+		#if(scan_enemy.enemy_num > 0):
+			#hand_knife.animation_player.play("attack_0")
+			#

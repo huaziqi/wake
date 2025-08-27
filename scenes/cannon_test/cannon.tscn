@@ -1,28 +1,79 @@
-[gd_scene load_steps=7 format=3 uid="uid://eisk158kli6j"]
+[gd_scene load_steps=12 format=3 uid="uid://eisk158kli6j"]
 
 [ext_resource type="Script" uid="uid://bcay0pu2do22u" path="res://scripts/cannon/cannon.gd" id="1_pxhkx"]
 [ext_resource type="Texture2D" uid="uid://dhmscpfavdp1y" path="res://assets/cannon/cannon.png" id="2_yjxeu"]
 [ext_resource type="Script" uid="uid://gumc2mpsejyn" path="res://scripts/cannon/range.gd" id="3_yjxeu"]
 [ext_resource type="Script" uid="uid://d38cwytb2s2qb" path="res://scenes/cannon_test/canoon_shoot_manager.gd" id="4_un2bf"]
+[ext_resource type="Shader" uid="uid://bqtnqlaffjjjs" path="res://scripts/shader/circle_color.gdshader" id="4_xd5c1"]
 [ext_resource type="PackedScene" uid="uid://3l3mnax20jj8" path="res://scenes/cannon_test/canoon_bullet.tscn" id="5_2mci5"]
+[ext_resource type="Texture2D" uid="uid://x3j3f4irbsit" path="res://assets/UI/unable_plant.png" id="5_8o11w"]
+[ext_resource type="Texture2D" uid="uid://wvk10p72kp8a" path="res://assets/UI/able_plant.png" id="6_euu4e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jfr8q"]
 radius = 1550.57
 
-[node name="Cannon" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j31hf"]
+shader = ExtResource("4_xd5c1")
+shader_parameter/circle_color = Color(1, 1, 1, 0.458824)
+shader_parameter/rect_size = Vector2(256, 256)
+shader_parameter/center_ratio = Vector2(0.5, 0.5)
+shader_parameter/radius = 200.0
+shader_parameter/edge_softness = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xd5c1"]
+radius = 77.0065
+
+[node name="Cannon" type="Node2D" node_paths=PackedStringArray("plant_area_rect")]
 script = ExtResource("1_pxhkx")
+plant_area_rect = NodePath("graphics/PlantGraphics/ColorRect")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -1.19209e-07)
-texture = ExtResource("2_yjxeu")
+[node name="graphics" type="Node2D" parent="."]
 
-[node name="range" type="Area2D" parent="."]
+[node name="range" type="Area2D" parent="graphics"]
+visible = false
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_yjxeu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="range"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/range"]
 shape = SubResource("CircleShape2D_jfr8q")
+
+[node name="Sprite2D" type="Sprite2D" parent="graphics"]
+position = Vector2(1, -1.19209e-07)
+texture = ExtResource("2_yjxeu")
+
+[node name="PlantGraphics" type="Node2D" parent="graphics"]
+
+[node name="ColorRect" type="ColorRect" parent="graphics/PlantGraphics"]
+z_index = -90
+material = SubResource("ShaderMaterial_j31hf")
+offset_left = -101.0
+offset_top = -93.0
+offset_right = 99.0
+offset_bottom = 107.0
+scale = Vector2(0.98, 0.98)
+
+[node name="PlantArea" type="Area2D" parent="graphics/PlantGraphics"]
+collision_layer = 256
+collision_mask = 448
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/PlantGraphics/PlantArea"]
+position = Vector2(-3, 5)
+shape = SubResource("CircleShape2D_xd5c1")
+
+[node name="unable" type="Sprite2D" parent="graphics/PlantGraphics"]
+visible = false
+z_index = -90
+position = Vector2(-3.5, 5)
+scale = Vector2(5.34375, 5.25)
+texture = ExtResource("5_8o11w")
+
+[node name="able" type="Sprite2D" parent="graphics/PlantGraphics"]
+visible = false
+z_index = -99
+position = Vector2(-3, 5.25)
+scale = Vector2(5.25, 5.10938)
+texture = ExtResource("6_euu4e")
 
 [node name="shoot_manager" type="Node" parent="."]
 script = ExtResource("4_un2bf")
@@ -30,8 +81,9 @@ bullet = ExtResource("5_2mci5")
 
 [node name="Timer" type="Timer" parent="shoot_manager"]
 wait_time = 5.0
-autostart = true
 
-[connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]
-[connection signal="body_exited" from="range" to="." method="_on_range_body_exited"]
+[connection signal="body_entered" from="graphics/range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="graphics/range" to="." method="_on_range_body_exited"]
+[connection signal="area_entered" from="graphics/PlantGraphics/PlantArea" to="." method="_on_plant_area_area_entered"]
+[connection signal="area_exited" from="graphics/PlantGraphics/PlantArea" to="." method="_on_plant_area_area_exited"]
 [connection signal="timeout" from="shoot_manager/Timer" to="shoot_manager" method="_on_timer_timeout"]
