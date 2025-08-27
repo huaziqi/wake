@@ -8,28 +8,32 @@
 size = Vector2(15, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y63p1"]
-size = Vector2(15, 30)
+size = Vector2(473.5, 427)
 
 [node name="ShootWeapon" type="StaticBody2D"]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_y63p1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_6qi8r")
+
+[node name="graphics" type="Sprite2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="graphics"]
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_hc1my")
 region_enabled = true
 region_rect = Rect2(198, 0, 99, 119)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_6qi8r")
-
-[node name="hitbox" type="Area2D" parent="."]
+[node name="hitbox" type="Area2D" parent="graphics"]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("3_hc1my")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hitbox"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_y63p1")
+
+[node name="ShootTimer" type="Timer" parent="."]

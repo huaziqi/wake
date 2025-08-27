@@ -20,6 +20,7 @@ func set_direction(dir : Vector2) -> void:
 func _physics_process(delta: float) -> void:
 	trace_decision(delta)
 	free_action()
+	attack_func()
 
 func trace_decision(delta: float) -> void:
 	position += delta * direction * shoot_speed
@@ -27,6 +28,9 @@ func trace_decision(delta: float) -> void:
 func free_action():
 	if(player and player.position.distance_to(self.position) > 1500): #当武器距离玩家足够远
 		queue_free()
+
+func attack_func() -> void:
+	pass
 
 #func _on_attack_shape_area_entered(area: Area2D) -> void:
 	#var node = area.get_parent()

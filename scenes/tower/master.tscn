@@ -10,7 +10,7 @@
 size = Vector2(525, 785)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5556a"]
-size = Vector2(167, 260)
+size = Vector2(167, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmqmf"]
 atlas = ExtResource("2_5556a")
@@ -75,13 +75,12 @@ position = Vector2(-14.5, 64.5)
 shape = SubResource("RectangleShape2D_jnl8p")
 
 [node name="blood_area" type="Area2D" parent="." node_paths=PackedStringArray("master")]
-visible = false
 collision_layer = 32
 script = ExtResource("3_bw8ck")
 master = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="blood_area"]
-position = Vector2(-7.5, -139)
+position = Vector2(-7.5, -153.5)
 shape = SubResource("RectangleShape2D_5556a")
 
 [node name="UI" type="Control" parent="."]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d323yjcakhi1w"
-path="res://.godot/imported/particle.png-dc2bcf92edc748913e8ad13858cd8a13.ctex"
+uid="uid://c61y1youbvur2"
+path="res://.godot/imported/mosface.png-a6fb973a89cac7fc54486ef39e9d3389.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/temp_assets/particle.png"
-dest_files=["res://.godot/imported/particle.png-dc2bcf92edc748913e8ad13858cd8a13.ctex"]
+source_file="res://assets/unused_sprite/mosquito/mosface.png"
+dest_files=["res://.godot/imported/mosface.png-a6fb973a89cac7fc54486ef39e9d3389.ctex"]
 
 [params]
 

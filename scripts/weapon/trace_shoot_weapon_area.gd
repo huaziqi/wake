@@ -1,6 +1,7 @@
 extends Area2D
 
-@onready var weapon: StaticBody2D = $".."
+@onready var weapon : StaticBody2D = $"../.."
+
 var enemy_num : int = 0
 var enemys : Array[Enemy]
 
@@ -12,11 +13,13 @@ func get_closest() -> Enemy:
 	return enemys[0]
 
 func _on_area_entered(area: Area2D) -> void:
-	enemys.append(area.get_parent())
+	if("area_name" in area and area.area_name == "hurt_box"):
+		enemys.append(area.enemy)
 	#print(area.get_parent())
 	#print("enter:", enemys.size())
 	enemy_num += 1
 
 func _on_area_exited(area: Area2D) -> void:
-	enemys.erase(area.get_parent())
+	if("area_name" in area and area.area_name == "hurt_box"):
+		enemys.erase(area.enemy)
 	enemy_num -= 1	

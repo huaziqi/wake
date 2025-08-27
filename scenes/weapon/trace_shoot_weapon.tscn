@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dxxr0gapxb7s7" path="res://scripts/weapon/trace_shoot_weapon.gd" id="1_l0d5i"]
 [ext_resource type="PackedScene" uid="uid://dtvteogckdglk" path="res://scenes/weapon/shoot_weapon.tscn" id="1_s0nty"]
 [ext_resource type="Script" uid="uid://cpdtne07hknhu" path="res://scripts/weapon/trace_shoot_weapon_area.gd" id="3_qeoqj"]
-[ext_resource type="Texture2D" uid="uid://d323yjcakhi1w" path="res://assets/temp_assets/particle.png" id="4_ehy4j"]
+[ext_resource type="Texture2D" uid="uid://d323yjcakhi1w" path="res://assets/particles/particle.png" id="4_ehy4j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s0nty"]
 radius = 300.0
@@ -26,27 +26,19 @@ scale_curve = SubResource("CurveTexture_a8fua")
 [node name="TraceShootWeapon" instance=ExtResource("1_s0nty")]
 script = ExtResource("1_l0d5i")
 
-[node name="Sprite2D" parent="." index="0"]
-position = Vector2(8, 19)
-
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 0)
 
-[node name="Area2D" type="Area2D" parent="." index="2"]
-visible = false
+[node name="TraceArea" type="Area2D" parent="graphics" index="2"]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_qeoqj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/TraceArea" index="0"]
 position = Vector2(2, 4)
 shape = SubResource("CircleShape2D_s0nty")
 
-[node name="hitbox" parent="." index="3"]
-visible = false
-position = Vector2(0, 1)
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="4"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
 z_index = -20
 emitting = false
 amount = 100
@@ -56,5 +48,5 @@ one_shot = true
 explosiveness = 0.25
 process_material = SubResource("ParticleProcessMaterial_vstgt")
 
-[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
-[connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="graphics/TraceArea" to="graphics/TraceArea" method="_on_area_entered"]
+[connection signal="area_exited" from="graphics/TraceArea" to="graphics/TraceArea" method="_on_area_exited"]

@@ -11,7 +11,7 @@ var enemyInfo : Dictionary = { #将敌人数据通过字典导入
 		"max_update_num": 5, #每次生成最大数量
 		"max_num": 20 #场中最多存在数量
 	},
-	"mosquito_incese" : {
+	"mosquito_incense" : {
 		"update_time": 1, #更新时间
 		"max_update_num": 5, #每次生成最大数量
 		"max_num": 10 #场中最多存在数量
