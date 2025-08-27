@@ -50,8 +50,8 @@ func trace_decision(delta : float) -> void:
 
 func rotate_attack(delta : float) -> void:
 	if(rotate_timer.time_left > 0):
-		mosquito_incese.rotate(delta * rotate_rate)
-		print("rotation", mosquito_incese.rotation)
+		rotate(delta * rotate_rate)
+		print("rotation", rotation)
 	elif(rotate_timer.is_stopped() and begin_rotate_timer.is_stopped()):
 		begin_rotate_timer.start()
 		attack_timer.stop()

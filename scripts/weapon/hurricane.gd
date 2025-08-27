@@ -11,6 +11,7 @@ func trace_decision(delta: float) -> void:
 		var dir = (global_position - enemy.global_position).normalized()
 		var pull_strength = 400.0  # 可调的吸引力度
 		enemy.velocity += dir * pull_strength
+		
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if "area_name" in area and area.area_name == "hurt_box":
