@@ -13,6 +13,12 @@ func tween_collect(percent:float,start_position:Vector2):
 	var player=get_tree().get_first_node_in_group(\"player\")
 	if player==null:
 		return
+		
+	global_position=start_position.lerp(player.global_position,percent)#percent插值增进
+	var direction_from_start=global_position-start_position  #获取玩家的位置，
+	
+	var target_rotation= direction_from_start.angle()	+deg_to_rad(90)
+	rotation=lerp_angle(rotation,target_rotation,1-exp(-2*get_process_delta_time() ))#吸收dna，先让dna旋转指向玩家
 	
 	
 func collect():
