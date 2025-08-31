@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://phibdtwb5knl" path="res://scripts/upgrade(cyy)/card_upgrade.gd" id="1_govi8"]
 
 [node name="card_upgrade" type="PanelContainer"]
-custom_minimum_size = Vector2(100, 150)
+custom_minimum_size = Vector2(180, 250)
 offset_right = 100.0
 offset_bottom = 150.0
 script = ExtResource("1_govi8")
