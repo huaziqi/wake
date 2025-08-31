@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgc228cadvhxn"]
+
+[ext_resource type="PackedScene" uid="uid://db3s31iru8on2" path="res://scenes/enemy/feng_you_jing.tscn" id="1_4g23p"]
+[ext_resource type="Script" uid="uid://dpfjqxkqfoovb" path="res://scripts/enemy/feng_you_jing_pro.gd" id="2_2wp44"]
+[ext_resource type="Texture2D" uid="uid://c760cu18nslce" path="res://assets/enemy/feng_you_jing_pro.png" id="2_8l8r5"]
+
+[node name="FengYouJingPro" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_4g23p")]
+rotation = 0.0
+script = ExtResource("2_2wp44")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="graphics" parent="." index="2"]
+rotation = 0.0
+
+[node name="Sprite2D" parent="graphics" index="0"]
+texture = ExtResource("2_8l8r5")

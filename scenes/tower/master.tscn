@@ -97,15 +97,15 @@ metadata/_edit_use_anchors_ = true
 [node name="BloodBar" type="TextureProgressBar" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.475
-anchor_top = -1.025
-anchor_right = -0.475
-anchor_bottom = -1.025
+anchor_left = -1.35
+anchor_top = -1.275
+anchor_right = -1.35
+anchor_bottom = -1.275
 offset_left = 126.0
 offset_top = -272.0
 offset_right = 184.0
 offset_bottom = -263.0
-rotation = 1.5708
+rotation = 1.01404
 scale = Vector2(3.44, 3.44)
 max_value = 1.0
 step = 0.0
@@ -118,13 +118,18 @@ metadata/_edit_use_anchors_ = true
 [node name="EasedBar" type="TextureProgressBar" parent="UI/BloodBar"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.00501203
-anchor_right = 0.00501205
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_left = 0.474003
+anchor_top = -5.21317
+anchor_right = 0.749865
+anchor_bottom = -5.21317
+offset_left = -27.3386
+offset_top = 46.6718
+offset_right = 12.6614
+offset_bottom = 86.6718
 max_value = 1.0
 step = 0.0
 value = 1.0
+texture_progress_offset = Vector2(1, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="InteractionIcon" type="AnimatedSprite2D" parent="UI"]

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="eed8ad46-6dc4-4095-8346-04081e7905ee" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/scenes/test/test_scene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/test/test_scene.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/weapon/hand_knife.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/weapon/hand_knife.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/weapon/trace_shoot_weapon.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/weapon/trace_shoot_weapon.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/upgrade(cyy)/dnaManager.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/upgrade(cyy)/dnaManager.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/weapon/hand_knife.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/weapon/hand_knife.gd" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="322wHMlPkd7j7uZhUJBVZd4HvNt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="eed8ad46-6dc4-4095-8346-04081e7905ee" name="更改" comment="" />
+      <created>1756631886798</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756631886798</updated>
+    </task>
+    <servers />
+  </component>
+</project>

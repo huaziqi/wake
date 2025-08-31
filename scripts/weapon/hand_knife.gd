@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
 			MusicManager.play_sfx(attack_0_audio)
 			animation_index = 0
 		elif(animation_index == 0):
+			
 			animation_player.play("attack_1")
 			MusicManager.play_sfx(attack_1_audio)
 			animation_index = 1
