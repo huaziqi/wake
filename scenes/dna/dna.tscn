@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5vlefp6jef5n"]
+[gd_scene load_steps=5 format=3 uid="uid://c5vlefp6jef5n"]
 
 [ext_resource type="Texture2D" uid="uid://ta52kvsxl3of" path="res://assets/DNA.png" id="1_14oti"]
+[ext_resource type="AudioStream" uid="uid://cpv5ptnrq0duc" path="res://assets/sound_effect/player/adsorption_0.wav" id="1_om8ne"]
 
 [sub_resource type="GDScript" id="GDScript_14oti"]
 script/source = "extends Node2D
 @onready var collision_shape_2d=$Area2D/CollisionShape2D
 @onready var sprite=$Sprite2D
+@export var adsorption_audio : AudioStream
 func _ready() -> void:
 	$Area2D.area_entered.connect(on_area_entered)
 	
@@ -23,6 +25,7 @@ func tween_collect(percent:float,start_position:Vector2):
 	
 func collect():
 	Gameevent.emit_dna_collected(1)
+	MusicManager.play_sfx(adsorption_audio)
 	queue_free()
 	
 func disable_collision():
@@ -47,12 +50,15 @@ radius = 131.095
 
 [node name="DNA" type="Node2D"]
 script = SubResource("GDScript_14oti")
+adsorption_audio = ExtResource("1_om8ne")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("CircleShape2D_k673e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -16,8 +16,8 @@ func update_state(delta): #判断何时需要改变状态
 func tick_physics(delta):
 	if(not animation_player.is_playing()): 
 		var posi = randf();
-		if(posi < 0.1): #随机眨眼
-			animation_player.play("idle_1")
+		if(posi > 0): #随机眨眼
+			animation_player.play("idle_0")
 		else:
 			animation_player.play("idle_0")
 

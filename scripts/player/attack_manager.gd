@@ -26,20 +26,21 @@ func _ready() -> void:
 	for weapon in weapon_array:
 		var weapon_name = get_scene_name(weapon) #武器名字
 		name_to_index_dic[weapon_name] = weapon_idx 
-		weapon_idx += 1
+		weapon_idx += 1 #武器id进一
 		var inited_weapon = weapon.instantiate()
-		if(not weapon_property.has(weapon_name)):
+		if(not weapon_property.has(weapon_name)): #如果字典中没有该武器
 			weapon_property[weapon_name] = {}
-		for key in weapon_property["all_property"]:
-			if(key in inited_weapon):
+		for key in weapon_property["all_property"]: #遍历所有属性
+			if(key in inited_weapon): #如果该武器有这个属性
 				weapon_property[weapon_name][key] = weapon_property["all_property"][key]
 	
-	print(weapon_property)	
+	#print(weapon_property)	
 	
 	#add_weapon_by_index(0)
 	#add_weapon_by_index(1)
 	#add_weapon_by_index(2)
 	#add_weapon_by_index(3)
+	add_weapon_by_index(4)
 	
 	#hand_knife = Hand_Knife.instantiate()
 	#hand_knife.player = player

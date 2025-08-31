@@ -1,16 +1,16 @@
 [gd_scene load_steps=15 format=3 uid="uid://dlo3n7hvwctoc"]
 
-[ext_resource type="Texture2D" uid="uid://2i1o7elerejg" path="res://assets/towers/bed.png" id="1_jnl8p"]
 [ext_resource type="Script" uid="uid://c21r1cp8x7y0h" path="res://scripts/tower/master.gd" id="1_vmqmf"]
 [ext_resource type="Texture2D" uid="uid://byqa41uko1tng" path="res://assets/UI/HUD.png" id="2_5556a"]
+[ext_resource type="Texture2D" uid="uid://d24d42qirc608" path="res://assets/unused_sprite/1.png" id="2_bw8ck"]
 [ext_resource type="Script" uid="uid://db0gj2m3q033o" path="res://scripts/tower/master_blood_area.gd" id="3_bw8ck"]
 [ext_resource type="Texture2D" uid="uid://cvqmhva0amow5" path="res://assets/UI/gdb-keyboard-2.png" id="4_t0brv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnl8p"]
-size = Vector2(525, 785)
+size = Vector2(478, 434)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5556a"]
-size = Vector2(167, 231)
+size = Vector2(120, 154.188)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmqmf"]
 atlas = ExtResource("2_5556a")
@@ -66,13 +66,17 @@ eased_bar = NodePath("UI/BloodBar/EasedBar")
 recover_timer = NodePath("RecoverTimer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_jnl8p")
+position = Vector2(-9, -144)
+scale = Vector2(2.035, 2.035)
+texture = ExtResource("2_bw8ck")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-14.5, 64.5)
+visible = false
+position = Vector2(-6, 0)
 shape = SubResource("RectangleShape2D_jnl8p")
+disabled = true
 
 [node name="blood_area" type="Area2D" parent="." node_paths=PackedStringArray("master")]
 collision_layer = 32
@@ -80,7 +84,7 @@ script = ExtResource("3_bw8ck")
 master = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="blood_area"]
-position = Vector2(-7.5, -153.5)
+position = Vector2(0, -216.094)
 shape = SubResource("RectangleShape2D_5556a")
 
 [node name="UI" type="Control" parent="."]
@@ -88,29 +92,40 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="BloodBar" type="TextureProgressBar" parent="UI"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.475
+anchor_top = -1.025
+anchor_right = -0.475
+anchor_bottom = -1.025
 offset_left = 126.0
 offset_top = -272.0
 offset_right = 184.0
 offset_bottom = -263.0
 rotation = 1.5708
-scale = Vector2(4.06, 4.06)
+scale = Vector2(3.44, 3.44)
 max_value = 1.0
 step = 0.0
 value = 1.0
 texture_over = SubResource("AtlasTexture_vmqmf")
 texture_progress = SubResource("AtlasTexture_t0brv")
 texture_progress_offset = Vector2(1, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="EasedBar" type="TextureProgressBar" parent="UI/BloodBar"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00501203
+anchor_right = 0.00501205
 offset_right = 40.0
 offset_bottom = 40.0
 max_value = 1.0
 step = 0.0
 value = 1.0
+metadata/_edit_use_anchors_ = true
 
 [node name="InteractionIcon" type="AnimatedSprite2D" parent="UI"]
 visible = false

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+@onready var scan_enemy: Area2D = $graphics/scan_enemy
 @onready var graphics: Node2D = $graphics
 @onready var collision_2d: CollisionPolygon2D = $CollisionPolygon2D
 @export var health_bar: TextureProgressBar

@@ -1,5 +1,7 @@
 extends ShootWeapon
 
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $graphics/AnimatedSprite2D
 @onready var sprite_2d: Sprite2D = $graphics/Sprite2D
 @onready var death_particles: GPUParticles2D = $GPUParticles2D
 @onready var trace_area: Area2D = $graphics/TraceArea
@@ -84,7 +86,7 @@ func free_action():
 			death_animation()
 	
 func death_animation() -> void:
-	sprite_2d.visible = false
+	animated_sprite_2d.visible = false
 	death_particles.emitting = true
 	death_particles.visible = true
 	death_particles.restart()

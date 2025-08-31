@@ -11,6 +11,7 @@
 [node name="test_scene" type="Node2D"]
 
 [node name="Node2D" type="Node2D" parent="."]
+position = Vector2(15, 10)
 
 [node name="TowerArea" type="Area2D" parent="Node2D"]
 collision_layer = 64
@@ -36,7 +37,7 @@ dna_manager = NodePath("../dnamanager(cyy)")
 [node name="master" parent="." instance=ExtResource("2_omf4g")]
 
 [node name="Player" parent="." instance=ExtResource("2_lpkca")]
-position = Vector2(-379, -622)
+position = Vector2(194, 120)
 
 [node name="EnemyGenerator" type="Node" parent="."]
 script = ExtResource("4_omf4g")
