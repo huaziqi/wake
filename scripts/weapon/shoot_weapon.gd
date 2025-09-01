@@ -16,7 +16,7 @@ func init_scene(_player : Player, _graphics : Node2D):
 	global_position = player.position
 
 func _ready() -> void:
-
+	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)
 	add_to_group("weapon")
 	z_index = 100
 	init()
@@ -40,7 +40,13 @@ func free_action():
 func attack_func() -> void:
 	pass
 	
-
+func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):#cyy
+	if upgrade.id!="shoot_weapon":#连接升级系统
+		return
+	print(shoot_gap_time)
+	var precent_reduction=current_upgrades["shoot_weapon"]["quantity"]
+	shoot_gap_time=shoot_gap_time*0.8**(precent_reduction)
+	
 #func _on_attack_shape_area_entered(area: Area2D) -> void:
 	#var node = area.get_parent()
 	#if(node.is_in_group("enemy")):

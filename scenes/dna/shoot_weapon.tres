@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://c1l67s1avafc0"]
+
+[ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource(cyy)/ability.gd" id="1_p2g2k"]
+
+[resource]
+script = ExtResource("1_p2g2k")
+id = "shoot_weapon"
+name = "射击武器"
+description = "增强射击武器速度"
+metadata/_custom_type_script = "uid://bptee7m2xdmm5"

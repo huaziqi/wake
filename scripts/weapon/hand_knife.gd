@@ -16,6 +16,7 @@ func init_scene(_player : Player, _graphics : Node2D):
 	self.visible = false
 
 func _ready() -> void:
+
 	attack_0_timer.timeout.connect(func():
 		animation_index = -1
 	)
@@ -34,3 +35,7 @@ func _physics_process(delta: float) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if(anim_name == "attack_0"):
 		attack_0_timer.start()
+		
+
+	
+	

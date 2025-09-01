@@ -8,5 +8,5 @@ script = ExtResource("1_xk0cq")
 weapon_controller_scenea = ExtResource("2_hrjuh")
 id = "rotate_weapon"
 name = "螺旋桨武器"
-description = "提升旋转武器能力"
+description = "提升旋转武器素的"
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Abilities" load_steps=2 format=3 uid="uid://c5lhiv1h4nogg"]
 
-[ext_resource type="Script" uid="uid://c5pq5gkkm7yor" path="res://scripts/ability_attached.gd" id="1_co6gg"]
+[ext_resource type="Script" uid="uid://c5pq5gkkm7yor" path="res://scripts/ability_attached.gd" id="1_mxexv"]
 
 [resource]
-script = ExtResource("1_co6gg")
+script = ExtResource("1_mxexv")
 id = "hurricane"
 name = "风暴"
-description = "八级大狂风"
+description = "八级大狂风，增加攻击素的"
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

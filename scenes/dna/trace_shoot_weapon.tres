@@ -6,5 +6,5 @@
 script = ExtResource("1_5smo8")
 id = "trace_shoot_weapon"
 name = "轨道？"
-description = ""
+description = "增加轨道武器素的"
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

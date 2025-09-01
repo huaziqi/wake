@@ -1,11 +1,9 @@
-[gd_resource type="Resource" script_class="Abilities" load_steps=3 format=3 uid="uid://b075hiqka1of"]
+[gd_resource type="Resource" script_class="Abilities" load_steps=2 format=3 uid="uid://b075hiqka1of"]
 
 [ext_resource type="Script" uid="uid://c5pq5gkkm7yor" path="res://scripts/ability_attached.gd" id="1_ow1ab"]
-[ext_resource type="PackedScene" uid="uid://eisk158kli6j" path="res://scenes/cannon_test/cannon.tscn" id="2_x4r6o"]
 
 [resource]
 script = ExtResource("1_ow1ab")
-weapon_controller_scenea = ExtResource("2_x4r6o")
 id = "cannon_quickness"
 name = "cannon_quickness"
 description = "加强加农炮"
