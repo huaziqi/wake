@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://dunnrberb7i8o"]
+[gd_resource type="Resource" script_class="Abilities" load_steps=3 format=3 uid="uid://dunnrberb7i8o"]
 
-[ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource(cyy)/ability.gd" id="1_ap3h5"]
+[ext_resource type="Script" uid="uid://c5pq5gkkm7yor" path="res://scripts/ability_attached.gd" id="1_xk0cq"]
+[ext_resource type="PackedScene" uid="uid://cc006t2ujquda" path="res://scenes/weapon/rotate_weapon.tscn" id="2_hrjuh"]
 
 [resource]
-script = ExtResource("1_ap3h5")
+script = ExtResource("1_xk0cq")
+weapon_controller_scenea = ExtResource("2_hrjuh")
 id = "rotate_weapon"
 name = "螺旋桨武器"
 description = "提升旋转武器能力"

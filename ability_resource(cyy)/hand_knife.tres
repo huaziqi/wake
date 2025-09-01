@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://b6fhtuv5mtnce"]
+
+[ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource(cyy)/ability.gd" id="1_5om0x"]
+
+[resource]
+script = ExtResource("1_5om0x")
+id = "hand_knife"
+name = "手刀"
+description = "提升手刀能力"
+metadata/_custom_type_script = "uid://bptee7m2xdmm5"

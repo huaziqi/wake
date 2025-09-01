@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1wko1rfba2e7"]
+
+[ext_resource type="PackedScene" uid="uid://8n8fpbivhjj1" path="res://scenes/dna/dnabar.tscn" id="1_0eyv0"]
+[ext_resource type="PackedScene" uid="uid://qi8cxx074bja" path="res://scenes/player/player.tscn" id="2_lpkca"]
+[ext_resource type="PackedScene" uid="uid://dlo3n7hvwctoc" path="res://scenes/tower/master.tscn" id="2_omf4g"]
+[ext_resource type="Script" uid="uid://cru01rprfqcsl" path="res://scripts/enemy/enemy_generator.gd" id="4_omf4g"]
+[ext_resource type="PackedScene" uid="uid://014pne6gavek" path="res://scenes/dna/upgrade_manager.tscn" id="7_k0t8k"]
+[ext_resource type="PackedScene" uid="uid://cxso2p2yfmnhd" path="res://scenes/dna/dnamanager.tscn" id="8_coxib"]
+[ext_resource type="PackedScene" uid="uid://c5vlefp6jef5n" path="res://scenes/dna/dna.tscn" id="8_k0t8k"]
+
+[node name="test_scene" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(15, 10)
+
+[node name="TowerArea" type="Area2D" parent="Node2D"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/TowerArea"]
+position = Vector2(510, 271)
+scale = Vector2(0.758451, 0.819209)
+polygon = PackedVector2Array(-2457, -762, -1913, -957, -1638, -639, -1375, -64, -1497, 88, -2427, 254, -2647, -358)
+
+[node name="ForbiddenArea" type="Area2D" parent="Node2D"]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/ForbiddenArea"]
+polygon = PackedVector2Array(-1496, -25, -1354, -357, -943, -512, -730, -251, -533, 217, -623, 342, -1330, 481, -1497, -19, -1509, -14, -1341, 493, -610, 350, -519, 218, -718, -264, -932, -532, -1362, -377, -1511, -20)
+
+[node name="upgrade_manager(cyy)" parent="." node_paths=PackedStringArray("dna_manager") instance=ExtResource("7_k0t8k")]
+dna_manager = NodePath("../dnamanager(cyy)")
+
+[node name="dnamanager(cyy)" parent="." instance=ExtResource("8_coxib")]
+
+[node name="master" parent="." instance=ExtResource("2_omf4g")]
+
+[node name="Player" parent="." instance=ExtResource("2_lpkca")]
+position = Vector2(194, 120)
+
+[node name="EnemyGenerator" type="Node" parent="."]
+script = ExtResource("4_omf4g")
+metadata/_custom_type_script = "uid://cru01rprfqcsl"
+
+[node name="DNABAR" parent="." node_paths=PackedStringArray("dna_manager") instance=ExtResource("1_0eyv0")]
+dna_manager = NodePath("../dnamanager(cyy)")
+
+[node name="DNA" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(394, -486)
+
+[node name="DNA2" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1294, 5)
+
+[node name="DNA5" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1294, 5)
+
+[node name="DNA6" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1294, 5)
+
+[node name="DNA7" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1294, 5)
+
+[node name="DNA8" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1572, -111)
+
+[node name="DNA9" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1178, 318)
+
+[node name="DNA10" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(963, 59)
+
+[node name="DNA11" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1249, -255)
+
+[node name="DNA12" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1446, 274)
+
+[node name="DNA13" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(1858, -523)
+
+[node name="DNA3" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(807, -372)
+
+[node name="DNA4" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(715, 377)

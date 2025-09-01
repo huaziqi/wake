@@ -1,14 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://014pne6gavek"]
+[gd_scene load_steps=9 format=3 uid="uid://014pne6gavek"]
 
 [ext_resource type="Script" uid="uid://clgp5a3kchh6o" path="res://scripts/upgrade(cyy)/upgrade_Manager.gd" id="1_373v4"]
 [ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource(cyy)/ability.gd" id="2_c5ovp"]
 [ext_resource type="Resource" uid="uid://b075hiqka1of" path="res://ability_resource(cyy)/shoot_quickness.tres" id="3_q5smk"]
 [ext_resource type="PackedScene" uid="uid://4mmjyi8gjurk" path="res://scenes/dna/upgrade_screen.tscn" id="4_ihlby"]
 [ext_resource type="Resource" uid="uid://dunnrberb7i8o" path="res://ability_resource(cyy)/rotate_weapon.tres" id="5_1ucnb"]
-[ext_resource type="Resource" uid="uid://b1epoxeqxeamu" path="res://ability_resource(cyy)/healthbar.tres" id="6_8egjj"]
+[ext_resource type="Resource" uid="uid://c5lhiv1h4nogg" path="res://ability_resource(cyy)/hurricane.tres" id="6_1ucnb"]
+[ext_resource type="Resource" uid="uid://r82eekbxtowy" path="res://scenes/dna/trace_shoot_weapon.tres" id="6_4gvu7"]
+[ext_resource type="Resource" uid="uid://b6fhtuv5mtnce" path="res://ability_resource(cyy)/hand_knife.tres" id="7_60qx0"]
 
 [node name="upgrade_manager" type="Node" node_paths=PackedStringArray("dna_manager")]
 script = ExtResource("1_373v4")
-upgrade_pool = Array[ExtResource("2_c5ovp")]([ExtResource("3_q5smk"), ExtResource("6_8egjj"), ExtResource("5_1ucnb")])
+upgrade_pool = Array[ExtResource("2_c5ovp")]([ExtResource("3_q5smk"), ExtResource("5_1ucnb"), ExtResource("6_1ucnb"), ExtResource("6_4gvu7"), ExtResource("7_60qx0")])
 dna_manager = NodePath(".")
 upgrade_scene = ExtResource("4_ihlby")

@@ -4,6 +4,7 @@ class_name Player
 @onready var scan_enemy: Area2D = $graphics/scan_enemy
 @onready var graphics: Node2D = $graphics
 @onready var collision_2d: CollisionPolygon2D = $CollisionPolygon2D
+@onready var attackways=$AttackManager#cyy（test）
 @export var health_bar: TextureProgressBar
 @export var eased_bar: TextureProgressBar
 
@@ -32,9 +33,8 @@ func health_update() -> void: #
 	health_bar.value = percent
 	create_tween().tween_property(eased_bar, "value", percent, 0.3)
 	
-func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):#血条升级(cyy)
-	if upgrade.id!="healthbar":#连接升级系统
-		return
-	MAX_HEALTH*=1.2
-	print(MAX_HEALTH)
-	#$Timer.start()
+func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):#升级系统初始化武器(cyy)
+	for i in attackways.weapon_array.size():
+		if upgrade.id==attackways.get_scene_name(attackways.weapon_array[i]) and current_upgrades[upgrade.id]["quantity"]==1:
+			attackways.add_weapon_by_index(i)
+	
