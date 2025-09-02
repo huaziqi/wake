@@ -41,7 +41,7 @@ func attack_func() -> void:
 	pass
 	
 func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):#cyy
-	if upgrade.id!="shoot_weapon":#连接升级系统
+	if upgrade.id!="shoot_weapon":#连接升级系统，不是shoot就返回，除此之外就照常升级
 		return
 	print(shoot_gap_time)
 	var precent_reduction=current_upgrades["shoot_weapon"]["quantity"]

@@ -55,7 +55,7 @@ func add_weapon_by_index(index : int) -> void:
 	var weapon : Node = weapon_array[index].instantiate()
 	if("shoot_gap_time" in weapon):
 		time_gap_weapon(weapon_array[index], weapon)
-	elif("init_scene" in weapon):
+	if("init_scene" in weapon):
 		weapon.init_scene(player, graphics)
 	weapon_property["in_use"].append(index)
 	

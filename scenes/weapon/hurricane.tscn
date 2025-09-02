@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ds8rcoyb5iedd"]
+[gd_scene load_steps=7 format=3 uid="uid://ds8rcoyb5iedd"]
 
 [ext_resource type="PackedScene" uid="uid://dtvteogckdglk" path="res://scenes/weapon/shoot_weapon.tscn" id="1_jkuyc"]
 [ext_resource type="Shader" uid="uid://2ke8yl68lpq4" path="res://rotate.gdshader" id="2_kj7se"]
@@ -11,9 +11,6 @@ shader = ExtResource("2_kj7se")
 shader_parameter/intensity = 19.012
 shader_parameter/mask_radius = 0.5
 shader_parameter/offset = 2.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ymjcf"]
-radius = 90.6697
 
 [node name="Hurricane" instance=ExtResource("1_jkuyc")]
 script = ExtResource("2_ymjcf")
@@ -36,13 +33,13 @@ visible = false
 [node name="hitbox" parent="graphics" index="1"]
 script = ExtResource("5_l5nl3")
 
-[node name="CollisionShape2D" parent="graphics/hitbox" index="0"]
-position = Vector2(0, 3)
-shape = SubResource("CircleShape2D_ymjcf")
-
 [node name="FreeTimer" type="Timer" parent="." index="3"]
 wait_time = 7.0
 one_shot = true
+autostart = true
+
+[node name="gap_timer_hurricane" type="Timer" parent="." index="4"]
+wait_time = 3.0
 autostart = true
 
 [connection signal="area_entered" from="graphics/hitbox" to="." method="_on_hitbox_area_entered"]

@@ -3,7 +3,12 @@ extends ShootWeapon
 var meet_enemy : bool = false
 
 var enemys : Array[Enemy]
+var hurricane_wait_time=shoot_gap_time*3
 
+func _ready() -> void:
+	.wait_time=hurricane_wait_time
+	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)#升级系统
+	
 func trace_decision(delta: float) -> void:
 	if(not meet_enemy):
 		position += delta * direction * shoot_speed
@@ -26,3 +31,13 @@ func _on_hitbox_area_exited(area: Area2D) -> void:
 
 func _on_free_timer_timeout() -> void:
 	queue_free()
+	
+	
+
+func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):
+	if upgrade.id!="hurricane":#连接升级系统
+		
+		return
+	print(shoot_gap_timer.wait_time)
+	var precent_reduction=current_upgrades["hurricane"]["quantity"]
+	$gap_timer_hurricane.wait_time=hurricane_wait_time*0.8**(precent_reduction)

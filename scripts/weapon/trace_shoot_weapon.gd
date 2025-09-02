@@ -14,7 +14,7 @@ var dead : bool = false
 
 func _ready() -> void:
 	init()
-	shoot_gap_time = 0.5
+#	shoot_gap_time = 0.5
 	death_particles.emitting = false
 	death_particles.one_shot = true
 	death_particles.finished.connect(queue_free)
