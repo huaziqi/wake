@@ -1,20 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtvteogckdglk"]
+[gd_scene load_steps=4 format=3 uid="uid://dtvteogckdglk"]
 
 [ext_resource type="Script" uid="uid://el8e18berfa7" path="res://scripts/weapon/shoot_weapon.gd" id="1_y63p1"]
 [ext_resource type="Texture2D" uid="uid://djgma2uaxxmru" path="res://assets/player/idle_0.png" id="2_hc1my"]
 [ext_resource type="Script" uid="uid://c13aa1fanxbog" path="res://scripts/weapon/shoot_weapon_hitbox.gd" id="3_hc1my"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qi8r"]
-size = Vector2(15, 30)
-
 [node name="ShootWeapon" type="StaticBody2D"]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_y63p1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -2)
-shape = SubResource("RectangleShape2D_6qi8r")
 
 [node name="graphics" type="Sprite2D" parent="."]
 

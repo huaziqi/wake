@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://byhtkq50vmvmh"]
+
+[ext_resource type="PackedScene" uid="uid://bniwmrxrmpas4" path="res://scenes/weapon/shoot_weapon_manager.tscn" id="1_78vtj"]
+[ext_resource type="Script" uid="uid://ma6ibvtr4bs6" path="res://scripts/weapon/trace_shoot_weapon_manager.gd" id="2_yb1pc"]
+[ext_resource type="PackedScene" uid="uid://cyi75rrptcqfs" path="res://scenes/weapon/trace_shoot_weapon.tscn" id="3_ohkbe"]
+
+[node name="TraceShootWeaponManager" instance=ExtResource("1_78vtj")]
+script = ExtResource("2_yb1pc")
+weapon = ExtResource("3_ohkbe")

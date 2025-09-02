@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwqg4fvc31j4a"]
+
+[ext_resource type="PackedScene" uid="uid://drgw74diqbyt6" path="res://scenes/enemy/enemy.tscn" id="1_vplr8"]
+[ext_resource type="Texture2D" uid="uid://dh3a45hhfra6w" path="res://assets/enemy/ballon.png" id="2_vhvep"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vplr8"]
+radius = 49.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vhvep"]
+radius = 37.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jcfor"]
+radius = 33.8223
+
+[node name="ballon" instance=ExtResource("1_vplr8")]
+position = Vector2(3, 1)
+
+[node name="Sprite2D" parent="graphics" index="0"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_vhvep")
+
+[node name="hurtbox" parent="graphics" index="1"]
+visible = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hurtbox" index="0"]
+position = Vector2(1, -36)
+shape = SubResource("CircleShape2D_vplr8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hitbox" index="0"]
+position = Vector2(-2, -32)
+shape = SubResource("CircleShape2D_vhvep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+visible = false
+position = Vector2(3, -27)
+shape = SubResource("CircleShape2D_jcfor")

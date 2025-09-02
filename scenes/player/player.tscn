@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://qi8cxx074bja"]
+[gd_scene load_steps=33 format=3 uid="uid://qi8cxx074bja"]
 
 [ext_resource type="Script" uid="uid://nl1ip673o7un" path="res://scripts/player/player.gd" id="1_0owmy"]
 [ext_resource type="Shader" uid="uid://gax1k8tg58fm" path="res://scripts/shader/outline.gdshader" id="3_0owmy"]
@@ -13,9 +13,10 @@
 [ext_resource type="Script" uid="uid://7trakc2bxru" path="res://scripts/player/camera.gd" id="8_5gtgg"]
 [ext_resource type="Script" uid="uid://klxvq0rlepha" path="res://scripts/player/attack_manager.gd" id="8_qek5x"]
 [ext_resource type="Texture2D" uid="uid://byqa41uko1tng" path="res://assets/UI/HUD.png" id="11_je7p5"]
-[ext_resource type="PackedScene" uid="uid://cyi75rrptcqfs" path="res://scenes/weapon/trace_shoot_weapon.tscn" id="14_myrg7"]
 [ext_resource type="PackedScene" uid="uid://cc006t2ujquda" path="res://scenes/weapon/rotate_weapon.tscn" id="15_myrg7"]
-[ext_resource type="PackedScene" uid="uid://ds8rcoyb5iedd" path="res://scenes/weapon/hurricane.tscn" id="16_kvlxm"]
+[ext_resource type="PackedScene" uid="uid://byhtkq50vmvmh" path="res://scenes/weapon/trace_shoot_weapon_manager.tscn" id="16_uf5tr"]
+[ext_resource type="PackedScene" uid="uid://cficymkooyicx" path="res://scenes/weapon/hurricane_manager.tscn" id="17_3j4b4"]
+[ext_resource type="PackedScene" uid="uid://bniwmrxrmpas4" path="res://scenes/weapon/shoot_weapon_manager.tscn" id="17_8ydkj"]
 [ext_resource type="PackedScene" uid="uid://coby5s04d7my5" path="res://scenes/weapon/hand_knife.tscn" id="17_lgqa7"]
 [ext_resource type="PackedScene" uid="uid://l1eecd8v05hm" path="res://scenes/UI/tower_card.tscn" id="17_uf5tr"]
 
@@ -254,7 +255,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-27.3333, -20)]
+"values": [Vector2(-12.6667, -20)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -450,10 +451,6 @@ radius = 267.666
 [sub_resource type="CircleShape2D" id="CircleShape2D_je7p5"]
 radius = 23.3333
 
-[sub_resource type="Environment" id="Environment_75vfm"]
-background_mode = 3
-glow_enabled = true
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_fm80t"]
 atlas = ExtResource("11_je7p5")
 region = Rect2(306, 21, 59, 8)
@@ -470,6 +467,10 @@ region = Rect2(306, 21, 59, 8)
 atlas = ExtResource("11_je7p5")
 region = Rect2(307, 85, 57, 7)
 
+[sub_resource type="Environment" id="Environment_uf5tr"]
+background_mode = 3
+glow_enabled = true
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "eased_bar")]
 collision_mask = 2
 script = ExtResource("1_0owmy")
@@ -483,7 +484,7 @@ libraries = {
 autoplay = "idle_0"
 
 [node name="graphics" type="Node2D" parent="."]
-position = Vector2(-11, -10)
+position = Vector2(0, -8)
 scale = Vector2(1.5, 1.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="graphics"]
@@ -498,6 +499,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 495, 476)
 
 [node name="scan_enemy" type="Area2D" parent="graphics"]
+position = Vector2(8, 0)
 collision_mask = 4
 script = ExtResource("5_h17s1")
 
@@ -506,7 +508,7 @@ position = Vector2(35.1667, -4.33333)
 shape = SubResource("RectangleShape2D_5gtgg")
 
 [node name="Pickup_Area(cyy)" type="Area2D" parent="graphics"]
-visible = false
+position = Vector2(0.666667, 1.33333)
 collision_layer = 16
 collision_mask = 0
 
@@ -514,31 +516,29 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_h17s1")
 
 [node name="InteractArea" type="Area2D" parent="graphics" node_paths=PackedStringArray("player")]
-position = Vector2(-84, 20.6667)
+position = Vector2(-4, 2.66667)
 collision_mask = 32
 script = ExtResource("6_gx1jg")
 player = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/InteractArea"]
-position = Vector2(85.3333, -17.3333)
+position = Vector2(17.3333, 6)
 shape = SubResource("CircleShape2D_je7p5")
 
 [node name="HurtBox" type="Area2D" parent="graphics"]
+position = Vector2(14, -2)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("6_fm80t")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="graphics/HurtBox"]
-polygon = PackedVector2Array(-40, -11.3333, -37.3333, -16.6667, -27.3333, -18.6667, -14, -18.6667, 0.666666, -14.6667, 2.66667, -8, 12, -2.66667, 10.6667, 7.33333, 4.66667, 22, -2, 24, 2, 14.6667, -0.666668, 8, -18.6667, -5.33333, -28.6667, -11.3333)
+polygon = PackedVector2Array(-40, -11.3333, -37.3333, -16.6667, -27.3333, -18.6667, -14, -18.6667, 0.666666, -14.6667, 2.66667, -8, 12, -2.66667, 10.6667, 7.33333, 2, 14.6667, -0.666668, 8, -18.6667, -5.33333, -28.6667, -11.3333)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
 position = Vector2(0, 2.295)
 scale = Vector2(1.5, 1.5)
 polygon = PackedVector2Array(-110, -48.6667, -98.6667, -53.3333, -85.3333, -56.6667, -74, -55.3333, -59.3333, -50, -58, -44, -48.6667, -37.3333, -48.6667, -30.6667, -54, -16.6667, -60, -9.33333, -62.6667, -10, -58.6667, -25.3333, -66, -30.6667, -78, -40, -88, -44.6667, -88.6667, -47.3333, -106, -44, -112.667, -41.3333)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_75vfm")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_0owmy")
@@ -560,7 +560,7 @@ metadata/_edit_lock_ = true
 script = ExtResource("8_qek5x")
 scan_enemy = NodePath("../graphics/scan_enemy")
 timers = NodePath("../Timers")
-weapon_array = Array[PackedScene]([ExtResource("14_myrg7"), ExtResource("15_myrg7"), ExtResource("16_kvlxm"), ExtResource("17_lgqa7")])
+weapon_array = Array[PackedScene]([ExtResource("15_myrg7"), ExtResource("17_lgqa7"), ExtResource("17_8ydkj"), ExtResource("16_uf5tr"), ExtResource("17_3j4b4")])
 weapon_property = {
 "all_property": {
 "shoot_gap_time": 1.0
@@ -603,10 +603,10 @@ offset_bottom = 40.0
 
 [node name="HealthProgress" type="VBoxContainer" parent="UI"]
 layout_mode = 0
-offset_left = -85.0
-offset_top = -88.0
-offset_right = -27.0
-offset_bottom = -48.0
+offset_left = -60.0
+offset_top = -77.0
+offset_right = -1.0
+offset_bottom = -37.0
 scale = Vector2(2, 2)
 
 [node name="HealthBar" type="TextureProgressBar" parent="UI/HealthProgress"]
@@ -628,6 +628,9 @@ value = 1.0
 texture_over = SubResource("AtlasTexture_uf5tr")
 texture_progress = SubResource("AtlasTexture_ugbui")
 texture_progress_offset = Vector2(1, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uf5tr")
 
 [connection signal="area_entered" from="graphics/scan_enemy" to="graphics/scan_enemy" method="_on_area_entered"]
 [connection signal="area_exited" from="graphics/scan_enemy" to="graphics/scan_enemy" method="_on_area_exited"]

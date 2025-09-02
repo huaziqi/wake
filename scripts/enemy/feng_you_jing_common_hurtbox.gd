@@ -1,4 +1,4 @@
-extends "res://scripts/enemy/enemy_hurtbox.gd"
+extends enemy_hurtbox
 
 @export var hurt_audio : AudioStream
 @onready var graphics: Node2D = $".."
@@ -6,6 +6,5 @@ extends "res://scripts/enemy/enemy_hurtbox.gd"
 
 func hurt_event(area: Area2D) -> void:
 	MusicManager.play_sfx(hurt_audio)
-	
 	if(not animation_player.is_playing()):
 		animation_player.play("hurt")

@@ -1,0 +1,1 @@
+extends shoot_weapon_manager

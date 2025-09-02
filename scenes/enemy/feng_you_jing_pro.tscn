@@ -1,16 +1,87 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgc228cadvhxn"]
+[gd_scene load_steps=16 format=3 uid="uid://bgc228cadvhxn"]
 
 [ext_resource type="PackedScene" uid="uid://db3s31iru8on2" path="res://scenes/enemy/feng_you_jing.tscn" id="1_4g23p"]
 [ext_resource type="Script" uid="uid://dpfjqxkqfoovb" path="res://scripts/enemy/feng_you_jing_pro.gd" id="2_2wp44"]
 [ext_resource type="Texture2D" uid="uid://c760cu18nslce" path="res://assets/enemy/feng_you_jing_pro.png" id="2_8l8r5"]
+[ext_resource type="Script" uid="uid://2r4tt8ii8a3x" path="res://scripts/enemy/feng_you_jing_pro_hitbox.gd" id="4_fatku"]
+[ext_resource type="Texture2D" uid="uid://bef0ngvytj1r" path="res://assets/enemy/feng_you_jing_damage.png" id="5_i6a4j"]
+[ext_resource type="Texture2D" uid="uid://cmew3ny2v75oo" path="res://assets/particles/feng_you_jing.png" id="5_j7ap0"]
+[ext_resource type="Shader" uid="uid://gax1k8tg58fm" path="res://scripts/shader/outline.gdshader" id="5_w4csg"]
 
-[node name="FengYouJingPro" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_4g23p")]
-rotation = 0.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fatku"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w4csg"]
+radius = 57.3033
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhncs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6a4j"]
+shader = ExtResource("5_w4csg")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = Color(5.525, 2.21, 9.392, 1)
+
+[sub_resource type="Curve" id="Curve_i6a4j"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.890566, 0.0977918), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mhncs"]
+curve = SubResource("Curve_i6a4j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wpbdn"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(100, 100, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, -30, 0)
+scale_min = 0.1
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_mhncs")
+
+[sub_resource type="Environment" id="Environment_j7ap0"]
+background_mode = 3
+glow_enabled = true
+
+[node name="FengYouJingPro" node_paths=PackedStringArray("animation_player", "dead_particles", "hit_collision", "hurt_collision", "dead_damage_area") instance=ExtResource("1_4g23p")]
+collision_mask = 6
 script = ExtResource("2_2wp44")
 animation_player = NodePath("AnimationPlayer")
+dead_particles = NodePath("graphics/GPUParticles2D")
+hit_collision = NodePath("graphics/hitbox/CollisionShape2D")
+hurt_collision = NodePath("graphics/hurtbox/CollisionShape2D")
+dead_damage_area = NodePath("graphics/hitbox/DeadArea")
 
-[node name="graphics" parent="." index="2"]
-rotation = 0.0
+[node name="HealthBar" parent="UI" index="0"]
+visible = false
 
 [node name="Sprite2D" parent="graphics" index="0"]
+material = SubResource("ShaderMaterial_fatku")
+position = Vector2(-1.42857, 0)
 texture = ExtResource("2_8l8r5")
+
+[node name="hurtbox" parent="graphics" index="1"]
+visible = false
+
+[node name="hitbox" parent="graphics" index="2"]
+script = ExtResource("4_fatku")
+
+[node name="DeadArea" type="CollisionShape2D" parent="graphics/hitbox" index="1"]
+shape = SubResource("CircleShape2D_w4csg")
+
+[node name="Sprite2D" type="Sprite2D" parent="graphics/hitbox" index="2"]
+visible = false
+material = SubResource("ShaderMaterial_mhncs")
+position = Vector2(1.42857, -4.76837e-07)
+scale = Vector2(4.30022, 4.22768)
+texture = ExtResource("5_i6a4j")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="graphics" index="3"]
+material = SubResource("ShaderMaterial_i6a4j")
+position = Vector2(0, -1.42857)
+emitting = false
+amount = 200
+texture = ExtResource("5_j7ap0")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_wpbdn")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
+environment = SubResource("Environment_j7ap0")

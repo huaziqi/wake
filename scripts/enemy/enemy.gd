@@ -8,13 +8,16 @@ const DNA = preload("res://scenes/dna/dna.tscn")
 
 var ACCELRATION : float = 20000
 var MAX_SPEED : float = 150
-var MAX_HEALTH : float = 200
+var MAX_HEALTH : float = 100
 var ENEMY_TYPE : String
 
 var player: Player
 var direction : Vector2
 var current_health : float
 var current_max_health : float
+
+var has_dropped : bool = false
+var has_dead : bool = false
 
 signal enemy_die_signal(enemy_name : String)
 
@@ -49,14 +52,25 @@ func attack_event(delta : float) -> void:
 	pass	
 
 func trace_decision(delta : float) -> void:
-	direction = self.position.direction_to(player.position)
-	velocity = velocity.move_toward(MAX_SPEED * direction, delta * ACCELRATION)
-	move_and_slide()
+	if(not has_dead):
+		direction = self.position.direction_to(player.position)
+		velocity = velocity.move_toward(MAX_SPEED * direction, delta * ACCELRATION)
+		move_and_slide()
 
 func check_health() -> void:
 	if(current_health <= 0):
 		enemy_die_signal.emit(ENEMY_TYPE)
-		death_drops()
+		has_dead = true
+		before_dead()
+		
+
+func before_dead() -> void:
+	death_drops()
+	dead_damage()
+	
+
+func dead_damage() -> void: #亡语
+	queue_free()
 
 func health_update() -> void:
 	var percent : float = max(current_health / current_max_health, 0)
@@ -64,7 +78,10 @@ func health_update() -> void:
 	create_tween().tween_property(eased_progress, "value", percent, 0.2)
 
 func death_drops() -> void:
+	if(has_dropped):
+		return
+	has_dropped = true
 	var dna = DNA.instantiate()
 	get_tree().current_scene.add_child(dna)
 	dna.position = position
-	queue_free()
+	

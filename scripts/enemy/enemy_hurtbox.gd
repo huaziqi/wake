@@ -1,4 +1,5 @@
 extends Area2D
+class_name enemy_hurtbox
 
 @export var enemy: Enemy
 var area_name : String = "hurt_box"

@@ -36,14 +36,15 @@ func _ready() -> void:
 	#add_weapon_by_index(1)
 	#add_weapon_by_index(2)
 	#add_weapon_by_index(3)
+	add_weapon_by_index(2)
 	add_weapon_by_index(3)
+	add_weapon_by_index(4)
 	
-	#hand_knife = Hand_Knife.instantiate()
-	#hand_knife.player = player
-	#graphics.add_child.call_deferred(hand_knife)
-	#hand_knife.visible = false
-	#Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added_basicvalue())#连接升级系统(cyy)
-
+func add_weapon_by_name(name : String) -> void:
+	if(name in name_to_index_dic):
+		add_weapon_by_index(name_to_index_dic[name])
+	else:
+		print("不存在", name, "in attack_manager : add_weapon_by_name")
 
 #添加武器 index : 在weapon_array中的索引值
 func add_weapon_by_index(index : int) -> void:
@@ -53,10 +54,11 @@ func add_weapon_by_index(index : int) -> void:
 		print(get_scene_name(weapon_array[index]), "已经被添加了", ": file in attack_manager")
 		return
 	var weapon : Node = weapon_array[index].instantiate()
-	if("shoot_gap_time" in weapon):
-		time_gap_weapon(weapon_array[index], weapon)
+
 	if("init_scene" in weapon):
 		weapon.init_scene(player, graphics)
+		
+	
 	weapon_property["in_use"].append(index)
 	
 func time_gap_weapon(weapon_scene : PackedScene,  weapon : Node) -> void:

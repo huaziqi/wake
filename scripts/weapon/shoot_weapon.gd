@@ -13,7 +13,7 @@ func init():
 func init_scene(_player : Player, _graphics : Node2D):
 	player = _player
 	set_direction(player.last_direction)
-	global_position = player.position
+	global_position = player.global_position
 
 func _ready() -> void:
 	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)

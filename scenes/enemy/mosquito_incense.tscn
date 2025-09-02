@@ -26,6 +26,7 @@ offset_bottom = 1.0
 position = Vector2(-0.727655, 0.888459)
 scale = Vector2(0.745779, 1.00666)
 texture = ExtResource("3_80y0w")
+flip_h = true
 
 [node name="hurtbox" parent="graphics" index="1"]
 visible = true

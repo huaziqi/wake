@@ -6,7 +6,6 @@ var enemys : Array[Enemy]
 var hurricane_wait_time=shoot_gap_time*3
 
 func _ready() -> void:
-	.wait_time=hurricane_wait_time
 	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)#升级系统
 	
 func trace_decision(delta: float) -> void:

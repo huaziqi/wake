@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://cficymkooyicx"]
+
+[ext_resource type="PackedScene" uid="uid://bniwmrxrmpas4" path="res://scenes/weapon/shoot_weapon_manager.tscn" id="1_r7swo"]
+[ext_resource type="Script" uid="uid://dgxtbryp1kelo" path="res://scripts/weapon/hurricane_manager.gd" id="2_jqna4"]
+[ext_resource type="PackedScene" uid="uid://ds8rcoyb5iedd" path="res://scenes/weapon/hurricane.tscn" id="3_uwh0n"]
+
+[node name="HurricaneManager" instance=ExtResource("1_r7swo")]
+script = ExtResource("2_jqna4")
+weapon = ExtResource("3_uwh0n")

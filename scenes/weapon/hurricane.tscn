@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ds8rcoyb5iedd"]
+[gd_scene load_steps=8 format=3 uid="uid://ds8rcoyb5iedd"]
 
 [ext_resource type="PackedScene" uid="uid://dtvteogckdglk" path="res://scenes/weapon/shoot_weapon.tscn" id="1_jkuyc"]
 [ext_resource type="Shader" uid="uid://2ke8yl68lpq4" path="res://rotate.gdshader" id="2_kj7se"]
 [ext_resource type="Script" uid="uid://tr8iojbakqes" path="res://scripts/weapon/hurricane.gd" id="2_ymjcf"]
 [ext_resource type="Texture2D" uid="uid://dycn5jcdiru5e" path="res://assets/weapon/star_45.png" id="3_kj7se"]
 [ext_resource type="Script" uid="uid://743vnp1xjxil" path="res://scripts/weapon/hurricane_hitbox.gd" id="5_l5nl3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5nl3"]
+radius = 71.0211
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l5nl3"]
 shader = ExtResource("2_kj7se")
@@ -15,8 +18,14 @@ shader_parameter/offset = 2.0
 [node name="Hurricane" instance=ExtResource("1_jkuyc")]
 script = ExtResource("2_ymjcf")
 
-[node name="CollisionShape2D" parent="." index="0"]
-disabled = true
+[node name="Sprite2D" parent="graphics" index="0"]
+visible = false
+
+[node name="hitbox" parent="graphics" index="1"]
+script = ExtResource("5_l5nl3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hitbox" index="0"]
+shape = SubResource("CircleShape2D_l5nl3")
 
 [node name="TextureRect" type="TextureRect" parent="." index="1"]
 material = SubResource("ShaderMaterial_l5nl3")
@@ -27,18 +36,12 @@ offset_bottom = 110.0
 texture = ExtResource("3_kj7se")
 stretch_mode = 5
 
-[node name="Sprite2D" parent="graphics" index="0"]
-visible = false
-
-[node name="hitbox" parent="graphics" index="1"]
-script = ExtResource("5_l5nl3")
-
-[node name="FreeTimer" type="Timer" parent="." index="3"]
+[node name="FreeTimer" type="Timer" parent="." index="2"]
 wait_time = 7.0
 one_shot = true
 autostart = true
 
-[node name="gap_timer_hurricane" type="Timer" parent="." index="4"]
+[node name="gap_timer_hurricane" type="Timer" parent="." index="3"]
 wait_time = 3.0
 autostart = true
 
