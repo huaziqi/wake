@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyi75rrptcqfs"]
+[gd_scene load_steps=15 format=3 uid="uid://cyi75rrptcqfs"]
 
 [ext_resource type="Script" uid="uid://dxxr0gapxb7s7" path="res://scripts/weapon/trace_shoot_weapon.gd" id="1_l0d5i"]
 [ext_resource type="PackedScene" uid="uid://dtvteogckdglk" path="res://scenes/weapon/shoot_weapon.tscn" id="1_s0nty"]
@@ -28,6 +28,9 @@ animations = [{
 "name": &"default",
 "speed": 10.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8fua"]
+size = Vector2(51, 49.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s0nty"]
 radius = 300.0
@@ -64,8 +67,9 @@ visible = false
 texture = ExtResource("4_vstgt")
 region_rect = Rect2(0, 0, 168, 77)
 
-[node name="CollisionShape2D" parent="graphics/hitbox" index="0"]
-position = Vector2(-14.2695, 7)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hitbox" index="0"]
+position = Vector2(-12.5, 18.25)
+shape = SubResource("RectangleShape2D_a8fua")
 
 [node name="TraceArea" type="Area2D" parent="graphics" index="3"]
 collision_layer = 0

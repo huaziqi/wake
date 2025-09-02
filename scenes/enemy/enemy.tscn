@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://drgw74diqbyt6"]
+[gd_scene load_steps=10 format=3 uid="uid://drgw74diqbyt6"]
 
 [ext_resource type="Texture2D" uid="uid://rrlnb4j1n2ed" path="res://assets/temp_assets/enemy.png" id="1_4a83h"]
 [ext_resource type="Script" uid="uid://dqhhitl3vrx7d" path="res://scripts/enemy/enemy.gd" id="1_a3pup"]
@@ -6,23 +6,21 @@
 [ext_resource type="Script" uid="uid://pvlgd7babwgw" path="res://scripts/enemy/enemy_hitbox.gd" id="4_tjssy"]
 [ext_resource type="Texture2D" uid="uid://byqa41uko1tng" path="res://assets/UI/HUD.png" id="5_gl05p"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4a83h"]
-size = Vector2(20, 18)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_cwlon"]
 atlas = ExtResource("5_gl05p")
-region = Rect2(307, 21, 58, 6)
+region = Rect2(306, 21, 59, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nbhyu"]
 atlas = ExtResource("5_gl05p")
-region = Rect2(308, 86, 56, 4)
+region = Rect2(307, 85, 57, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl05p"]
+atlas = ExtResource("5_gl05p")
+region = Rect2(306, 21, 59, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_13gj6"]
 atlas = ExtResource("5_gl05p")
-region = Rect2(308, 86, 56, 4)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
-size = Vector2(24, 19.125)
+region = Rect2(307, 85, 57, 7)
 
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "eased_progress")]
 collision_layer = 4
@@ -30,10 +28,6 @@ collision_mask = 6
 script = ExtResource("1_a3pup")
 health_bar = NodePath("UI/HealthBar")
 eased_progress = NodePath("UI/HealthBar/EasedProgress")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_4a83h")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -58,7 +52,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 max_value = 1.0
 step = 0.0
-page = 1.0
+value = 1.0
+texture_under = SubResource("AtlasTexture_gl05p")
+texture_over = SubResource("AtlasTexture_gl05p")
 texture_progress = SubResource("AtlasTexture_13gj6")
 texture_progress_offset = Vector2(1, 1)
 
@@ -75,17 +71,9 @@ collision_mask = 8
 script = ExtResource("3_40wdo")
 enemy = NodePath("../..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hurtbox"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_a3pup")
-
 [node name="hitbox" type="Area2D" parent="graphics"]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("4_tjssy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hitbox"]
-position = Vector2(0, 1.75)
-shape = SubResource("RectangleShape2D_a3pup")
 
 [connection signal="area_entered" from="graphics/hurtbox" to="graphics/hurtbox" method="_on_area_entered"]

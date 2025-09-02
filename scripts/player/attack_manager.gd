@@ -5,10 +5,6 @@ extends Node
 @export var scan_enemy: Area2D
 @export var timers : Node
 
-const SHOOT_WEAPON = preload("res://scenes/weapon/hurricane.tscn")
-const ROTATE_WEAPON = preload("res://scenes/weapon/rotate_weapon.tscn")
-const Hand_Knife = preload("res://scenes/weapon/hand_knife.tscn")
-
 @export var weapon_array : Array[PackedScene] #存储所有武器
 var name_to_index_dic : Dictionary #名字转索引
 @export var weapon_property : Dictionary
@@ -40,7 +36,7 @@ func _ready() -> void:
 	#add_weapon_by_index(1)
 	#add_weapon_by_index(2)
 	#add_weapon_by_index(3)
-	add_weapon_by_index(4)
+	add_weapon_by_index(3)
 	
 	#hand_knife = Hand_Knife.instantiate()
 	#hand_knife.player = player

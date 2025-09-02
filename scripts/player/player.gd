@@ -31,7 +31,7 @@ func _ready() -> void:
 func health_update() -> void: #
 	var percent = 1.0 * current_health / current_max_health
 	health_bar.value = percent
-	create_tween().tween_property(eased_bar, "value", percent, 0.3)
+	create_tween().tween_property(eased_bar, "value", percent, 0.2)
 	
 func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):#升级系统初始化武器(cyy)
 	for i in attackways.weapon_array.size():
