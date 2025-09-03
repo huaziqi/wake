@@ -1,3 +1,4 @@
+
 extends Area2D
 
 @onready var weapon : StaticBody2D = $"../.."

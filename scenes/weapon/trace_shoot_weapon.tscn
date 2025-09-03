@@ -53,9 +53,6 @@ scale_curve = SubResource("CurveTexture_a8fua")
 [node name="TraceShootWeapon" instance=ExtResource("1_s0nty")]
 script = ExtResource("1_l0d5i")
 
-[node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0, 0)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="graphics" index="0"]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_5cq0n")
@@ -80,7 +77,7 @@ script = ExtResource("3_qeoqj")
 position = Vector2(2, 4)
 shape = SubResource("CircleShape2D_s0nty")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="1"]
 z_index = -20
 emitting = false
 amount = 100

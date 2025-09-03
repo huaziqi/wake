@@ -3,11 +3,11 @@ extends Node
 
 signal dna_updated(current_dna:float,target_dna:float)
 signal level_up(new_level:int)
-const TARGET_GROWTH : float =1         #每一级增加的所需经验量
+const TARGET_GROWTH : float =3         #每一级增加的所需经验量
 
 var current_dna : float = 0 
 var current_level=1
-var target_dna : float = 1                  #初始化等级，经验，所需经验量
+var target_dna : float = 2                  #初始化等级，经验，所需经验量
 
 func _ready():	
 	Gameevent.dna_collected.connect(on_dna_collected)     

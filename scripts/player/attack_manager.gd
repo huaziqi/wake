@@ -37,8 +37,8 @@ func _ready() -> void:
 	#add_weapon_by_index(2)
 	#add_weapon_by_index(3)
 	#add_weapon_by_index(2)
-	add_weapon_by_index(3)
-	add_weapon_by_index(4)
+	#add_weapon_by_index(3)
+	#add_weapon_by_index(4)
 	
 func add_weapon_by_name(name : String) -> void:
 	if(name in name_to_index_dic):

@@ -34,8 +34,9 @@ func health_update() -> void: #
 	create_tween().tween_property(eased_bar, "value", percent, 0.2)
 	
 func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):#升级系统初始化武器(cyy)
-	
 	for i in attackways.weapon_array.size():
+
 		if upgrade.id==attackways.get_scene_name(attackways.weapon_array[i]) and current_upgrades[upgrade.id]["quantity"]==1:
+			
 			attackways.add_weapon_by_index(i)
 	

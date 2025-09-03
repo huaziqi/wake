@@ -13,7 +13,7 @@ func _ready():
 func pick_upgrades():
 	var chosen_upgrades:Array[AbilityUpgrade]=[]#用实现卡牌互不相同
 	var filtered_upgrades=upgrade_pool.duplicate()
-	for i in 2:
+	for i in 3:
 		var chosen_upgrade=filtered_upgrades.pick_random() as AbilityUpgrade   #如果返回true则保留括号内的参数                                #随机生成能力卡牌
 		chosen_upgrades.append(chosen_upgrade)
 		filtered_upgrades=filtered_upgrades.filter(func(upgrade): return upgrade.id!=chosen_upgrade.id) 

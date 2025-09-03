@@ -11,16 +11,18 @@ func _ready() -> void:
 
 	
 func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):
-	if upgrade.id=="hurricane":#连接升级系统		
+	if upgrade.id=="hurricane_manager":#连接升级系统		
 
-		var precent_reduction=current_upgrades["hurricane"]["quantity"]
+		var precent_reduction=current_upgrades["hurricane_manager"]["quantity"]
 		shoot_gap_timer.wait_time=shoot_gap_time*0.8**(precent_reduction)
 		print(shoot_gap_time)
 		print(shoot_gap_timer.wait_time)
-	if upgrade.id=="shoot_weapon":
-		var precent_reduction=current_upgrades["shoot_weapon"]["quantity"]
+	if upgrade.id=="shoot_weapon_manager":
+		var precent_reduction=current_upgrades["shoot_weapon_manager"]["quantity"]
 		shoot_gap_time=shoot_gap_time*(1-0.05*precent_reduction)
 		shoot_gap_timer.wait_time=(shoot_gap_timer.wait_time)*0.95
 		print("全体射击武器基础速度加5%",shoot_gap_time)
 		print(shoot_gap_timer.wait_time)
+	else:
+		return
 	

@@ -42,7 +42,7 @@ func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary
 		return
 	var precent_reduction=current_upgrades["hand_knife"]["quantity"]
 	hitbox.real_damage=hitbox.real_damage*(1.2**precent_reduction)
-	print(hitbox.real_damage)
+	print("手刀伤害为",hitbox.real_damage)
 	
 	
 	

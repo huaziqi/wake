@@ -1,7 +1,7 @@
 extends PanelContainer
 
-@onready var name_label:Label=$VBoxContainer/name
-@onready var description_label:Label=$VBoxContainer/description
+@onready var name_label:Label=$MarginContainer/VBoxContainer/PanelContainer/name
+@onready var description_label:Label=$MarginContainer/VBoxContainer/description
 
 signal selected
 
