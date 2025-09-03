@@ -4,12 +4,20 @@ class_name Enemy
 @export var health_bar: TextureProgressBar
 @export var eased_progress: TextureProgressBar
 
+
 const DNA = preload("res://scenes/dna/dna.tscn")
+@onready var hurtbox: enemy_hurtbox = $graphics/hurtbox
+@onready var hitbox: enemy_hitbox = $graphics/hitbox
+@onready var sprite_2d: Sprite2D = $graphics/Sprite2D
+@onready var ui: Control = $UI
 
 var ACCELRATION : float = 20000
 var MAX_SPEED : float = 150
 var MAX_HEALTH : float = 100
 var ENEMY_TYPE : String
+
+var death_time : float = 1.0 #死亡时间 因为死亡之后还有分解动画，亡语等等
+
 
 var player: Player
 var direction : Vector2
@@ -18,6 +26,7 @@ var current_max_health : float
 
 var has_dropped : bool = false
 var has_dead : bool = false
+
 
 signal enemy_die_signal(enemy_name : String)
 
@@ -41,7 +50,6 @@ func _ready() -> void:
 func init() -> void:
 	pass
 	
-
 func _physics_process(delta: float) -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING #避免敌人将玩家看作平台，这样会卡住
 	trace_decision(delta)
@@ -59,23 +67,31 @@ func trace_decision(delta : float) -> void:
 
 func check_health() -> void:
 	if(current_health <= 0):
-		enemy_die_signal.emit(ENEMY_TYPE)
-		has_dead = true
 		before_dead()
 		
-
 func before_dead() -> void:
+	if(not has_dead):
+		enemy_die_signal.emit(ENEMY_TYPE)
+		has_dead = true
 	death_drops()
-	dead_damage()
+	death_event()
+
+func death_event() -> void: #亡语
+	sprite_2d.visible = false
+	ui.visible = false
+	hitbox.monitorable = false
+	hitbox.monitoring = false
+	hurtbox.monitorable = false
+	hurtbox.monitoring = false
+	death_anime()
+	get_tree().create_timer(death_time, false).timeout.connect(Callable(self, "queue_free"))
+	extend_death_event()
 	
-
-func dead_damage() -> void: #亡语
-	queue_free()
-
-func health_update() -> void:
-	var percent : float = max(current_health / current_max_health, 0)
-	health_bar.value = percent
-	create_tween().tween_property(eased_progress, "value", percent, 0.2)
+func death_anime() -> void:
+	pass
+	
+func extend_death_event() -> void:
+	pass
 
 func death_drops() -> void:
 	if(has_dropped):
@@ -85,3 +101,7 @@ func death_drops() -> void:
 	get_tree().current_scene.add_child(dna)
 	dna.position = position
 	
+func health_update() -> void:
+	var percent : float = max(current_health / current_max_health, 0)
+	health_bar.value = percent
+	create_tween().tween_property(eased_progress, "value", percent, 0.2)

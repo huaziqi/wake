@@ -6,11 +6,11 @@ var enemy_num_list : Dictionary = {}
 @onready var player: Player = $"../Player"
 
 var enemyInfo : Dictionary = { #将敌人数据通过字典导入
-	"mosquito_incense" : {
-		"update_time": 2, #更新时间
-		"max_update_num": 5, #每次生成最大数量
-		"max_num": 10 #场中最多存在数量
-	},
+	#"mosquito_incense" : {
+		#"update_time": 2, #更新时间
+		#"max_update_num": 5, #每次生成最大数量
+		#"max_num": 10 #场中最多存在数量
+	#},
 	"feng_you_jing" : {
 		"update_time": 1, #更新时间
 		"max_update_num": 5, #每次生成最大数量
@@ -33,6 +33,7 @@ func _physics_process(delta: float) -> void:
 		
 func handle_enemy_die(enemy_name : String):
 	enemy_num_list[enemy_name] -= 1
+	print(enemy_num_list[enemy_name])
 
 func handle_enemy_info(): #处理一下敌人数据
 	for key in enemyInfo:

@@ -17,14 +17,12 @@ func init_scene(_player : Player, _graphics : Node) -> void:
 func init():
 	pass
 func _ready() -> void:
-	print("ready")
 	init()
 	shoot_gap_timer.wait_time = shoot_gap_time
 	shoot_gap_timer.start()
 	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)
 	
 func _on_shoot_gap_timer_timeout() -> void:
-	#print("okk")
 	var new_weapon = weapon.instantiate()
 	if("init_scene" in new_weapon):
 		new_weapon.init_scene(player, graphics)

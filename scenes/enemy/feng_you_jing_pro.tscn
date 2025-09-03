@@ -41,17 +41,13 @@ scale_curve = SubResource("CurveTexture_mhncs")
 background_mode = 3
 glow_enabled = true
 
-[node name="FengYouJingPro" node_paths=PackedStringArray("animation_player", "dead_particles", "hit_collision", "hurt_collision", "dead_damage_area") instance=ExtResource("1_4g23p")]
+[node name="FengYouJingPro" node_paths=PackedStringArray("animation_player", "dead_particles", "hit_collision", "dead_damage_area") instance=ExtResource("1_4g23p")]
 collision_mask = 6
 script = ExtResource("2_2wp44")
 animation_player = NodePath("AnimationPlayer")
 dead_particles = NodePath("graphics/GPUParticles2D")
 hit_collision = NodePath("graphics/hitbox/CollisionShape2D")
-hurt_collision = NodePath("graphics/hurtbox/CollisionShape2D")
 dead_damage_area = NodePath("graphics/hitbox/DeadArea")
-
-[node name="HealthBar" parent="UI" index="0"]
-visible = false
 
 [node name="Sprite2D" parent="graphics" index="0"]
 material = SubResource("ShaderMaterial_fatku")

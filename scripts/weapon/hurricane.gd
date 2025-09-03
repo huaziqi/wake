@@ -28,7 +28,12 @@ func _on_hitbox_area_exited(area: Area2D) -> void:
 func _on_free_timer_timeout() -> void:
 	queue_free()
 	
+	
 
-	
-	
-	
+func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):
+	if upgrade.id!="hurricane":#连接升级系统
+		
+		return
+	#print(shoot_gap_timer.wait_time)
+	var precent_reduction=current_upgrades["hurricane"]["quantity"]
+	$gap_timer_hurricane.wait_time=hurricane_wait_time*0.8**(precent_reduction)

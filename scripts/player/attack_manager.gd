@@ -33,7 +33,7 @@ func _ready() -> void:
 	#print(weapon_property)	
 	
 	#add_weapon_by_index(0)
-	#add_weapon_by_index(1)
+	add_weapon_by_index(1)
 	#add_weapon_by_index(2)
 	#add_weapon_by_index(3)
 	#add_weapon_by_index(2)
