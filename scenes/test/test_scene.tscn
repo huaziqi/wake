@@ -68,4 +68,31 @@ metadata/_custom_type_script = "uid://cru01rprfqcsl"
 dna_manager = NodePath("../dnamanager(cyy)")
 
 [node name="DNA" parent="." instance=ExtResource("8_k0t8k")]
-position = Vector2(394, -486)
+position = Vector2(469, -513)
+
+[node name="DNA2" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(422, -632)
+
+[node name="DNA3" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(252, -418)
+
+[node name="DNA4" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(394, -384)
+
+[node name="DNA5" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(550, -602)
+
+[node name="DNA6" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(668, -507)
+
+[node name="DNA7" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(278, -596)
+
+[node name="DNA8" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(474, -354)
+
+[node name="DNA9" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(96, -479)
+
+[node name="DNA10" parent="." instance=ExtResource("8_k0t8k")]
+position = Vector2(685, -376)

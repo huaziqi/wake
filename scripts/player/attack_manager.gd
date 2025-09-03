@@ -36,7 +36,7 @@ func _ready() -> void:
 	#add_weapon_by_index(1)
 	#add_weapon_by_index(2)
 	#add_weapon_by_index(3)
-	add_weapon_by_index(2)
+	#add_weapon_by_index(2)
 	add_weapon_by_index(3)
 	add_weapon_by_index(4)
 	

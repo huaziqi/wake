@@ -16,7 +16,7 @@ func init_scene(_player : Player, _graphics : Node2D):
 	self.visible = false
 
 func _ready() -> void:
-
+	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)#升级系统
 	attack_0_timer.timeout.connect(func():
 		animation_index = -1
 	)
@@ -37,6 +37,12 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if(anim_name == "attack_0"):
 		attack_0_timer.start()
 		
-
+func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):
+	if upgrade.id!="hand_knife":#连接升级系统		
+		return
+	var precent_reduction=current_upgrades["hand_knife"]["quantity"]
+	hitbox.real_damage=hitbox.real_damage*(1.2**precent_reduction)
+	print(hitbox.real_damage)
+	
 	
 	
