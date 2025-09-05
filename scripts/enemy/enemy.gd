@@ -18,8 +18,8 @@ var ENEMY_TYPE : String
 
 var death_time : float = 1.0 #死亡时间 因为死亡之后还有分解动画，亡语等等
 
-
 var player: Player
+var master: Master
 var direction : Vector2
 var current_health : float
 var current_max_health : float
@@ -61,7 +61,8 @@ func attack_event(delta : float) -> void:
 
 func trace_decision(delta : float) -> void:
 	if(not has_dead):
-		direction = self.position.direction_to(player.position)
+		var target : Node = master if is_in_group("master_enemy") else player
+		direction = self.position.direction_to(target.position)
 		velocity = velocity.move_toward(MAX_SPEED * direction, delta * ACCELRATION)
 		move_and_slide()
 

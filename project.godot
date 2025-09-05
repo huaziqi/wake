@@ -28,6 +28,10 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/gamedev_assistant/plugin.cfg")
 
+[global_group]
+
+master_enemy=""
+
 [input]
 
 move_left={
@@ -82,6 +86,7 @@ interact={
 2d_physics/layer_7="tower_put_able"
 2d_physics/layer_8="tower_forbidden"
 2d_physics/layer_9="tower"
+2d_physics/layer_10="master"
 
 [rendering]
 

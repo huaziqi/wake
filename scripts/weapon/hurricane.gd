@@ -36,4 +36,4 @@ func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary
 		return
 	#print(shoot_gap_timer.wait_time)
 	var precent_reduction=current_upgrades["hurricane"]["quantity"]
-	$gap_timer_hurricane.wait_time=hurricane_wait_time*0.8**(precent_reduction)
+	#$gap_timer_hurricane.wait_time=hurricane_wait_time*0.8**(precent_reduction)

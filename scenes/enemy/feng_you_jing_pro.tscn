@@ -42,6 +42,7 @@ background_mode = 3
 glow_enabled = true
 
 [node name="FengYouJingPro" node_paths=PackedStringArray("animation_player", "dead_particles", "hit_collision", "dead_damage_area") instance=ExtResource("1_4g23p")]
+material = null
 collision_mask = 6
 script = ExtResource("2_2wp44")
 animation_player = NodePath("AnimationPlayer")
@@ -79,5 +80,5 @@ texture = ExtResource("5_j7ap0")
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_wpbdn")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
 environment = SubResource("Environment_j7ap0")

@@ -14,8 +14,6 @@ func _on_area_entered(area: Area2D) -> void:
 func _on_area_exited(area: Area2D) -> void:
 	if(area.area_name == "blood_area"):
 		in_blood_area = false
-		if(master):
-			master.recover_timer.start()
 	
 func _physics_process(delta: float) -> void:
 	if(Input.is_action_pressed("interact") and in_blood_area):
@@ -29,4 +27,7 @@ func _physics_process(delta: float) -> void:
 			master.blood_update()
 			player.current_health += increase_blood
 			player.health_update()
-		
+	else:
+		if master and not master.in_recover and master.recover_timer.is_stopped():
+			master.recover_timer.start()
+			

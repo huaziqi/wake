@@ -30,7 +30,7 @@ turbulence_noise_strength = 7.13
 turbulence_noise_scale = 1.5
 
 [node name="EnemyBarrage" type="StaticBody2D" node_paths=PackedStringArray("particles")]
-position = Vector2(48, 46)
+position = Vector2(0, 1)
 script = ExtResource("1_h85jo")
 particles = NodePath("GPUParticles2D")
 

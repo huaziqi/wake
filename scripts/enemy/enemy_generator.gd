@@ -3,21 +3,22 @@ class_name EnemyGenerator
 
 var scene_list : Dictionary = {}
 var enemy_num_list : Dictionary = {}
-@onready var player: Player = $"../Player"
+@export var player: Player
+@export var master: Master
 
 var enemyInfo : Dictionary = { #将敌人数据通过字典导入
-	#"mosquito_incense" : {
-		#"update_time": 2, #更新时间
-		#"max_update_num": 5, #每次生成最大数量
-		#"max_num": 10 #场中最多存在数量
-	#},
+	"ballon" : {
+		"update_time": 2, #更新时间
+		"max_update_num": 5, #每次生成最大数量
+		"max_num": 10 #场中最多存在数量
+	},
 	"feng_you_jing" : {
-		"update_time": 1, #更新时间
+		"update_time": 3, #更新时间
 		"max_update_num": 5, #每次生成最大数量
 		"max_num": 20 #场中最多存在数量
 	},
 	"feng_you_jing_pro" : {
-		"update_time": 1, #更新时间
+		"update_time": 3, #更新时间
 		"max_update_num": 5, #每次生成最大数量
 		"max_num": 20 #场中最多存在数量
 	}
@@ -33,7 +34,6 @@ func _physics_process(delta: float) -> void:
 		
 func handle_enemy_die(enemy_name : String):
 	enemy_num_list[enemy_name] -= 1
-	print(enemy_num_list[enemy_name])
 
 func handle_enemy_info(): #处理一下敌人数据
 	for key in enemyInfo:
@@ -56,5 +56,6 @@ func on_time_out(timer_id : String): #定时产生敌人
 			enemy_num_list[timer_id] += 1
 			var enemy = scene_list[timer_id].instantiate()
 			enemy.player = player
+			enemy.master = master
 			add_child(enemy)
 			enemy.enemy_die_signal.connect(handle_enemy_die)

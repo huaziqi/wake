@@ -60,8 +60,10 @@ dna_manager = NodePath("../dnamanager(cyy)")
 [node name="Player" parent="." instance=ExtResource("2_lpkca")]
 position = Vector2(194, 120)
 
-[node name="EnemyGenerator" type="Node" parent="."]
+[node name="EnemyGenerator" type="Node" parent="." node_paths=PackedStringArray("player", "master")]
 script = ExtResource("4_omf4g")
+player = NodePath("../Player")
+master = NodePath("../master")
 metadata/_custom_type_script = "uid://cru01rprfqcsl"
 
 [node name="DNABAR" parent="." node_paths=PackedStringArray("dna_manager") instance=ExtResource("1_0eyv0")]

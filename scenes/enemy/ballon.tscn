@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwqg4fvc31j4a"]
+[gd_scene load_steps=9 format=3 uid="uid://dwqg4fvc31j4a"]
 
 [ext_resource type="PackedScene" uid="uid://drgw74diqbyt6" path="res://scenes/enemy/enemy.tscn" id="1_vplr8"]
+[ext_resource type="Script" uid="uid://beqm7rfwg63n0" path="res://scripts/enemy/ballon.gd" id="2_jcfor"]
 [ext_resource type="Texture2D" uid="uid://dh3a45hhfra6w" path="res://assets/enemy/ballon.png" id="2_vhvep"]
+[ext_resource type="Texture2D" uid="uid://bfsr3r6kygu8" path="res://assets/master/common_bubble.png" id="3_vhvep"]
+[ext_resource type="Script" uid="uid://bx4c4iq8mb36u" path="res://scripts/enemy/ballon_hitbox.gd" id="4_2j5le"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vplr8"]
 radius = 49.0
@@ -12,19 +15,26 @@ radius = 37.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_jcfor"]
 radius = 33.8223
 
-[node name="ballon" instance=ExtResource("1_vplr8")]
-position = Vector2(3, 1)
+[node name="ballon" groups=["master_enemy"] instance=ExtResource("1_vplr8")]
+position = Vector2(4, 2)
+script = ExtResource("2_jcfor")
 
 [node name="Sprite2D" parent="graphics" index="0"]
-scale = Vector2(2, 2)
+scale = Vector2(1, 1)
 texture = ExtResource("2_vhvep")
 
 [node name="hurtbox" parent="graphics" index="1"]
-visible = true
+position = Vector2(-1, 33)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hurtbox" index="0"]
 position = Vector2(1, -36)
 shape = SubResource("CircleShape2D_vplr8")
+
+[node name="hitbox" parent="graphics" index="2" node_paths=PackedStringArray("ballon")]
+position = Vector2(1, 26)
+collision_mask = 512
+script = ExtResource("4_2j5le")
+ballon = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hitbox" index="0"]
 position = Vector2(-2, -32)
@@ -34,3 +44,10 @@ shape = SubResource("CircleShape2D_vhvep")
 visible = false
 position = Vector2(3, -27)
 shape = SubResource("CircleShape2D_jcfor")
+
+[node name="CommonBubble" type="Sprite2D" parent="." index="3"]
+position = Vector2(-2, -5)
+scale = Vector2(3.565, 3.565)
+texture = ExtResource("3_vhvep")
+
+[connection signal="area_entered" from="graphics/hitbox" to="graphics/hitbox" method="_on_area_entered"]
