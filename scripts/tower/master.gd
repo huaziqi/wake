@@ -10,7 +10,7 @@ class_name Master
 var current_sleepness : float
 var max_sleepness : float = 100
 
-const MAX_BLOOD : float = 200.0
+const MAX_BLOOD : float = 20
 var current_blood : float
 var current_max_blood : float
 var in_recover : bool #正在回血
@@ -39,18 +39,17 @@ func blood_update() -> void: #更新血条状态
 	var percent = current_blood / current_max_blood
 	if(percent == 0.0 and not empty_blood):
 		empty_blood = true
-		current_sleepness -= 0.2
+		current_sleepness = max(0, current_sleepness - 0.2 * max_sleepness)
 		sleep_area.sleepness_update()
 	if(percent != 0):
 		empty_blood = false
 	blood_bar.value = percent
-	create_tween().tween_property(eased_bar, "value", percent, 0.3)
+	create_tween().tween_property(eased_bar, "value", percent, 0.1)
 
 func _physics_process(delta: float) -> void:
 	if(in_recover):
 		current_blood = min(current_blood + delta * recover_rate, current_max_blood)
 		blood_update()
-
 
 func _on_bomb_area_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.

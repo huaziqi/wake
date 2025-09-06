@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://db3s31iru8on2"]
+[gd_scene load_steps=14 format=3 uid="uid://db3s31iru8on2"]
 
 [ext_resource type="PackedScene" uid="uid://drgw74diqbyt6" path="res://scenes/enemy/enemy.tscn" id="1_ny26f"]
 [ext_resource type="Texture2D" uid="uid://dowl5qfrwss0g" path="res://assets/enemy/feng_you_jing_common.png" id="2_0ol28"]
@@ -83,9 +83,6 @@ void fragment(){
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8url"]
-shader = SubResource("Shader_tk5nf")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6y1ip"]
 shader = SubResource("Shader_tk5nf")
 
@@ -165,7 +162,6 @@ _data = {
 }
 
 [node name="FengYouJing" instance=ExtResource("1_ny26f")]
-material = SubResource("ShaderMaterial_i8url")
 script = ExtResource("2_oki2x")
 
 [node name="HealthBar" parent="UI" index="0"]

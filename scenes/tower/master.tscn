@@ -297,7 +297,7 @@ animations = [{
 radius = 85.5102
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5swd7"]
-radius = 428.565
+radius = 0.01
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0sxpw"]
 lifetime_randomness = 0.5
@@ -468,7 +468,7 @@ autoplay = "default"
 wait_time = 2.0
 one_shot = true
 
-[node name="SleepArea" type="Area2D" parent="." node_paths=PackedStringArray("bubbles", "gpu_particles_2d", "bomb_area", "common_bubble", "sprite_2d")]
+[node name="SleepArea" type="Area2D" parent="." node_paths=PackedStringArray("bubbles", "gpu_particles_2d", "bomb_area", "common_bubble", "sprite_2d", "bomb_collision")]
 position = Vector2(3, 133)
 collision_layer = 512
 collision_mask = 4
@@ -478,6 +478,7 @@ gpu_particles_2d = NodePath("../GPUParticles2D")
 bomb_area = NodePath("../BombArea")
 common_bubble = NodePath("../CommonBubble")
 sprite_2d = NodePath("../Sprite2D")
+bomb_collision = NodePath("../BombArea/CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SleepArea"]
 position = Vector2(-6, -146)
@@ -489,12 +490,9 @@ scale = Vector2(17.11, 17.11)
 texture = ExtResource("9_d50av")
 
 [node name="BombArea" type="Area2D" parent="."]
-visible = false
 position = Vector2(6, -6)
 collision_layer = 8
 collision_mask = 4
-monitoring = false
-monitorable = false
 script = ExtResource("10_5swd7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BombArea"]
