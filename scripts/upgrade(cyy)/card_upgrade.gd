@@ -8,6 +8,12 @@ signal selected
 func _ready():
 	gui_input.connect(_on_gui_input)              #guiinput是自带的信号，表示收到Inputevent对应的影响
 
+func play_in(delay:float=0):
+	modulate=Color.TRANSPARENT
+	await get_tree().create_timer(delay).timeout
+	modulate=Color.WHITE
+	$AnimationPlayer.play("出现")
+	
 
 func set_ability_upgrade(upgrade:AbilityUpgrade):
 	name_label.text=upgrade.name
