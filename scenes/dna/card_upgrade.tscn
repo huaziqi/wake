@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cpo0g0g17pov7"]
+[gd_scene load_steps=15 format=3 uid="uid://cpo0g0g17pov7"]
 
 [ext_resource type="Texture2D" uid="uid://brsndqijhwcvm" path="res://assets/UI/basic_wake-export-export.png" id="1_6dsjp"]
 [ext_resource type="Script" uid="uid://phibdtwb5knl" path="res://scripts/upgrade(cyy)/card_upgrade.gd" id="1_govi8"]
@@ -11,6 +11,43 @@ texture = ExtResource("1_6dsjp")
 
 [sub_resource type="Theme" id="Theme_jkrqx"]
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_q5rjs")
+
+[sub_resource type="Animation" id="Animation_h4rra"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6dsjp"]
+resource_name = "出现"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ldbf0"]
+_data = {
+&"RESET": SubResource("Animation_h4rra"),
+&"出现": SubResource("Animation_6dsjp")
+}
 
 [sub_resource type="Theme" id="Theme_kn08n"]
 Label/colors/font_color = Color(0.140447, 0.140447, 0.140447, 1)
@@ -39,10 +76,16 @@ PanelContainer/styles/panel = SubResource("StyleBoxTexture_7ps12")
 
 [node name="card_upgrade" type="PanelContainer"]
 custom_minimum_size = Vector2(200, 250)
-offset_right = 100.0
-offset_bottom = 150.0
+offset_right = 200.0
+offset_bottom = 250.0
+pivot_offset = Vector2(100, 125)
 theme = SubResource("Theme_jkrqx")
 script = ExtResource("1_govi8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ldbf0")
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
