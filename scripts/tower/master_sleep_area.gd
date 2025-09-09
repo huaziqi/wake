@@ -13,9 +13,7 @@ var in_bomb : bool = false
 
 func _on_area_entered(area: Area2D) -> void:
 	if("real_damage" in area):
-		print("enter")
 		master.current_sleepness = max(master.current_sleepness - area.real_damage, 0)
-		print(master.current_sleepness)
 		sleepness_update()
 
 func sleepness_update() -> void:

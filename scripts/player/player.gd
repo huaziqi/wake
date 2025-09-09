@@ -7,6 +7,7 @@ class_name Player
 @onready var attackways=$AttackManager#cyy（test）
 @export var health_bar: TextureProgressBar
 @export var eased_bar: TextureProgressBar
+@export var next_wave : Control
 
 const ACCELERATION := 9000
 const MAXSPEED := 500
@@ -24,9 +25,8 @@ func _ready() -> void:
 	current_max_health = MAX_HEALTH
 	current_health = 0
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
-	z_index = 99 # 保证显示在大部分图片上方
+	z_index = 199 # 保证显示在大部分图片上方
 	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)#连接升级系统（cyy）
-	
 
 func health_update() -> void: #
 	var percent = 1.0 * current_health / current_max_health
@@ -35,8 +35,6 @@ func health_update() -> void: #
 	
 func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):#升级系统初始化武器(cyy)
 	for i in attackways.weapon_array.size():
-
 		if upgrade.id==attackways.get_scene_name(attackways.weapon_array[i]) and current_upgrades[upgrade.id]["quantity"]==1:
-			
 			attackways.add_weapon_by_index(i)
 	
