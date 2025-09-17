@@ -3,11 +3,13 @@
 importer="csv_translation"
 type="Translation"
 uid="uid://crtlan7omds2g"
-valid=false
 
 [deps]
 
+files=["res://scripts/enemy/enemy_generate_csv/stage_0.enemy.translation", "res://scripts/enemy/enemy_generate_csv/stage_0.update.translation", "res://scripts/enemy/enemy_generate_csv/stage_0.max.translation", "res://scripts/enemy/enemy_generate_csv/stage_0.max.translation"]
+
 source_file="res://scripts/enemy/enemy_generate_csv/stage_0.CSV"
+dest_files=["res://scripts/enemy/enemy_generate_csv/stage_0.enemy.translation", "res://scripts/enemy/enemy_generate_csv/stage_0.update.translation", "res://scripts/enemy/enemy_generate_csv/stage_0.max.translation", "res://scripts/enemy/enemy_generate_csv/stage_0.max.translation"]
 
 [params]
 
