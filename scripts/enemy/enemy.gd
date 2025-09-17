@@ -42,10 +42,11 @@ func random_dis(minn : int, maxn : int) -> Vector2:
 func _ready() -> void:
 	add_to_group("enemy")
 	get_enemy_type()
-	current_health = MAX_HEALTH
 	current_max_health = MAX_HEALTH
-	position = player.position - random_dis(1000, 2000)
+	var target : Node = master if is_in_group("master_enemy") else player
+	position = target.position + random_dis(1000, 2000)
 	init()
+	current_health = current_max_health
 
 func init() -> void:
 	pass

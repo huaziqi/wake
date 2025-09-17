@@ -13,6 +13,9 @@ var tower_num : int = 0
 var in_able : bool = false #在可种植区内
 var in_forbid : bool = false #超出了一些范围
 var planted : bool = false # 是否被种植下去了
+var plantable : bool = false # 是否可以种植
+
+signal planted_signal
 
 func _ready() -> void:
 	plant_area_shader = plant_area_rect.material
@@ -20,18 +23,17 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if(planted == false):
 		global_position = get_global_mouse_position()
-		var plantable : bool = in_able and (not in_forbid) and (tower_num == 0)
+		plantable = in_able and (not in_forbid) and (tower_num == 0)
 		if(plantable):
 			plant_area_shader.set_shader_parameter("circle_color", Color(1, 1, 1, 0.45))
-			#able.visible = true
-			#unable.visible = false
 			if(Input.is_action_just_pressed("left_click")):
-				planted = true
-				able.visible = false
+				place()
 		else:
 			#able.visible = false
 			#unable.visible = true
 			plant_area_shader.set_shader_parameter("circle_color", Color(1, 0, 0, 0.45))
+		if(Input.is_action_just_pressed("right_click")):
+			queue_free()
 	else:
 		if targets.size()!=0:
 			var target_position = find_closest_enemy().global_position
@@ -77,3 +79,8 @@ func _on_plant_area_area_exited(area: Area2D) -> void:
 	tower_num = tower_num if not (area.collision_layer & (1 << 8)) else tower_num - 1
 
 	#print("in_able: ", in_able, ", in_forbid: ", in_forbid, ", in_tower: ", in_tower)
+
+func place() -> void: #放置函数
+	planted = true
+	able.visible = false
+	planted_signal.emit()

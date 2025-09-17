@@ -23,6 +23,7 @@ atlas = ExtResource("5_gl05p")
 region = Rect2(307, 85, 57, 7)
 
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "eased_progress")]
+z_index = 10
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_a3pup")

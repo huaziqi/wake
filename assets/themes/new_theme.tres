@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://4612m2k3prqf"]
+
+[ext_resource type="FontFile" uid="uid://bcyl6h60mx6qo" path="res://assets/fonts/PixelOperator8.ttf" id="1_iepjh"]
+
+[resource]
+default_font = ExtResource("1_iepjh")
+Label/colors/font_color = Color(0, 0.676971, 0.444509, 1)
+Label/font_sizes/font_size = 25

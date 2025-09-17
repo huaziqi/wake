@@ -42,6 +42,7 @@ background_mode = 3
 glow_enabled = true
 
 [node name="FengYouJingPro" node_paths=PackedStringArray("animation_player", "dead_particles", "hit_collision", "dead_damage_area") instance=ExtResource("1_4g23p")]
+z_index = 0
 collision_mask = 6
 script = ExtResource("2_2wp44")
 animation_player = NodePath("AnimationPlayer")

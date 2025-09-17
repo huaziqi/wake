@@ -23,7 +23,7 @@ var current_max_health : float
 func _ready() -> void:
 	add_to_group("player")
 	current_max_health = MAX_HEALTH
-	current_health = 0
+	current_health = current_max_health
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	z_index = 199 # 保证显示在大部分图片上方
 	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)#连接升级系统（cyy）

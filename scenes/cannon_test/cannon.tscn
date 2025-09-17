@@ -24,6 +24,7 @@ shader_parameter/edge_softness = 0.0
 radius = 77.0065
 
 [node name="Cannon" type="Node2D" node_paths=PackedStringArray("plant_area_rect")]
+z_index = 110
 script = ExtResource("1_pxhkx")
 plant_area_rect = NodePath("graphics/PlantGraphics/ColorRect")
 
@@ -62,25 +63,25 @@ position = Vector2(-3, 5)
 shape = SubResource("CircleShape2D_xd5c1")
 
 [node name="unable" type="Sprite2D" parent="graphics/PlantGraphics"]
-visible = false
 z_index = -90
 position = Vector2(-3.5, 5)
 scale = Vector2(5.34375, 5.25)
 texture = ExtResource("5_8o11w")
 
 [node name="able" type="Sprite2D" parent="graphics/PlantGraphics"]
-visible = false
 z_index = -99
 position = Vector2(-3, 5.25)
 scale = Vector2(5.25, 5.10938)
 texture = ExtResource("6_euu4e")
 
-[node name="shoot_manager" type="Node" parent="."]
+[node name="shoot_manager" type="Node" parent="." node_paths=PackedStringArray("timer")]
 script = ExtResource("4_un2bf")
 bullet = ExtResource("5_2mci5")
+timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="shoot_manager"]
-wait_time = 5.0
+wait_time = 3.0
+autostart = true
 
 [connection signal="body_entered" from="graphics/range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="graphics/range" to="." method="_on_range_body_exited"]

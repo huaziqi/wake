@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://qi8cxx074bja"]
+[gd_scene load_steps=41 format=3 uid="uid://qi8cxx074bja"]
 
 [ext_resource type="Script" uid="uid://nl1ip673o7un" path="res://scripts/player/player.gd" id="1_0owmy"]
 [ext_resource type="Shader" uid="uid://gax1k8tg58fm" path="res://scripts/shader/outline.gdshader" id="3_0owmy"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://bgrscboem4ywy" path="res://scripts/player/player_hurt_box.gd" id="6_fm80t"]
 [ext_resource type="Script" uid="uid://b5c3r34h73eml" path="res://scripts/player/player_interact_area.gd" id="6_gx1jg"]
 [ext_resource type="Script" uid="uid://7trakc2bxru" path="res://scripts/player/camera.gd" id="8_5gtgg"]
+[ext_resource type="AudioStream" uid="uid://6kmurgtxajih" path="res://assets/sound_effect/player/蚊子受击.mp3" id="8_cnsyf"]
+[ext_resource type="Texture2D" uid="uid://d323yjcakhi1w" path="res://assets/particles/particle.png" id="8_ioxgp"]
 [ext_resource type="Script" uid="uid://klxvq0rlepha" path="res://scripts/player/attack_manager.gd" id="8_qek5x"]
 [ext_resource type="Texture2D" uid="uid://byqa41uko1tng" path="res://assets/UI/HUD.png" id="11_je7p5"]
 [ext_resource type="PackedScene" uid="uid://cc006t2ujquda" path="res://scenes/weapon/rotate_weapon.tscn" id="15_myrg7"]
@@ -19,9 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://bniwmrxrmpas4" path="res://scenes/weapon/shoot_weapon_manager.tscn" id="17_8ydkj"]
 [ext_resource type="PackedScene" uid="uid://coby5s04d7my5" path="res://scenes/weapon/hand_knife.tscn" id="17_lgqa7"]
 [ext_resource type="PackedScene" uid="uid://l1eecd8v05hm" path="res://scenes/UI/tower_card.tscn" id="17_uf5tr"]
-[ext_resource type="Script" uid="uid://wwnq3hjl7lrn" path="res://scenes/player/wake_show.gd" id="20_8ydkj"]
+[ext_resource type="Script" uid="uid://wwnq3hjl7lrn" path="res://scripts/player/wake_show.gd" id="20_8ydkj"]
 [ext_resource type="Script" uid="uid://dattmaci570xe" path="res://scripts/player/next_wave_control.gd" id="21_yj68g"]
 [ext_resource type="Theme" uid="uid://bo2a04qa2h8kh" path="res://theme(test)/button UI(test).tres" id="22_ioxgp"]
+[ext_resource type="Theme" uid="uid://4612m2k3prqf" path="res://assets/themes/new_theme.tres" id="24_007i1"]
 
 [sub_resource type="Animation" id="Animation_p47bc"]
 length = 0.001
@@ -454,6 +457,19 @@ radius = 267.666
 [sub_resource type="CircleShape2D" id="CircleShape2D_je7p5"]
 radius = 23.3333
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cnsyf"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -15.88, 0)
+emission_shape_scale = Vector3(14.965, 6.21, 1)
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(0, -4.055, 0)
+initial_velocity_min = 62.94
+initial_velocity_max = 300.7
+gravity = Vector3(0, 300, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_007i1"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fm80t"]
 atlas = ExtResource("11_je7p5")
 region = Rect2(306, 21, 59, 8)
@@ -475,6 +491,7 @@ background_mode = 3
 glow_enabled = true
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "eased_bar", "next_wave")]
+z_index = 100
 collision_mask = 2
 script = ExtResource("1_0owmy")
 health_bar = NodePath("UI/HealthProgress/HealthBar")
@@ -503,6 +520,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 495, 476)
 
 [node name="scan_enemy" type="Area2D" parent="graphics"]
+visible = false
 position = Vector2(8, 0)
 collision_mask = 4
 script = ExtResource("5_h17s1")
@@ -512,6 +530,7 @@ position = Vector2(35.1667, -4.33333)
 shape = SubResource("RectangleShape2D_5gtgg")
 
 [node name="Pickup_Area(cyy)" type="Area2D" parent="graphics"]
+visible = false
 position = Vector2(0.666667, 1.33333)
 collision_layer = 16
 collision_mask = 0
@@ -520,6 +539,7 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_h17s1")
 
 [node name="InteractArea" type="Area2D" parent="graphics" node_paths=PackedStringArray("player")]
+visible = false
 position = Vector2(-4, 2.66667)
 collision_mask = 32
 script = ExtResource("6_gx1jg")
@@ -531,12 +551,21 @@ shape = SubResource("CircleShape2D_je7p5")
 
 [node name="HurtBox" type="Area2D" parent="graphics"]
 position = Vector2(14, -2)
-collision_layer = 0
 collision_mask = 4
 script = ExtResource("6_fm80t")
+hurt_sound = ExtResource("8_cnsyf")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="graphics/HurtBox"]
 polygon = PackedVector2Array(-40, -11.3333, -37.3333, -16.6667, -27.3333, -18.6667, -14, -18.6667, 0.666666, -14.6667, 2.66667, -8, 12, -2.66667, 10.6667, 7.33333, 2, 14.6667, -0.666668, 8, -18.6667, -5.33333, -28.6667, -11.3333)
+
+[node name="hurt" type="GPUParticles2D" parent="graphics/HurtBox"]
+position = Vector2(-14, 7.33333)
+scale = Vector2(0.666667, 0.666667)
+emitting = false
+amount = 90
+texture = ExtResource("8_ioxgp")
+lifetime = 0.6
+process_material = SubResource("ParticleProcessMaterial_cnsyf")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
@@ -556,8 +585,10 @@ script = ExtResource("5_p47bc")
 metadata/_custom_type_script = "uid://c8iyeby8xwg2o"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
+limit_smoothed = true
+position_smoothing_enabled = true
 script = ExtResource("8_5gtgg")
+boundary_shape = SubResource("RectangleShape2D_007i1")
 metadata/_edit_lock_ = true
 
 [node name="AttackManager" type="Node" parent="." node_paths=PackedStringArray("scan_enemy", "timers")]
@@ -583,15 +614,11 @@ offset_right = 53.0
 offset_bottom = 73.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CardUI/Control"]
+layout_direction = 2
 layout_mode = 0
-offset_left = -1.0
-offset_right = 1139.0
+offset_right = 120.0
 offset_bottom = 150.0
 alignment = 1
-
-[node name="TowerCard" parent="CardUI/Control/HBoxContainer" instance=ExtResource("17_uf5tr")]
-custom_minimum_size = Vector2(120, 150)
-layout_mode = 2
 
 [node name="TowerCard2" parent="CardUI/Control/HBoxContainer" instance=ExtResource("17_uf5tr")]
 custom_minimum_size = Vector2(120, 150)
@@ -600,8 +627,10 @@ layout_mode = 2
 [node name="NextWave" type="Control" parent="CardUI" node_paths=PackedStringArray("next_wave_show", "next_wave_button", "rest_time")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 2.0
+offset_top = 9.0
+offset_right = 42.0
+offset_bottom = 49.0
 script = ExtResource("21_yj68g")
 next_wave_show = NodePath("../NextWaveShow")
 next_wave_button = NodePath("Button")
@@ -609,10 +638,10 @@ rest_time = NodePath("../RestTime/Label")
 
 [node name="Button" type="Button" parent="CardUI/NextWave"]
 layout_mode = 0
-offset_left = 542.0
-offset_top = 448.0
-offset_right = 618.0
-offset_bottom = 527.0
+offset_left = 570.0
+offset_top = 538.0
+offset_right = 646.0
+offset_bottom = 617.0
 theme = ExtResource("22_ioxgp")
 text = "下一波"
 
@@ -628,10 +657,11 @@ wave_label = NodePath("Label")
 
 [node name="Label" type="Label" parent="CardUI/NextWaveShow"]
 layout_mode = 0
-offset_left = -70.0
-offset_top = 355.0
-offset_right = -22.0
-offset_bottom = 378.0
+offset_left = -84.0
+offset_top = 216.0
+offset_right = -9.0
+offset_bottom = 250.0
+theme = ExtResource("24_007i1")
 text = "第一波"
 
 [node name="RestTime" type="Control" parent="CardUI"]
@@ -641,10 +671,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="CardUI/RestTime"]
-offset_left = 946.0
-offset_top = 43.0
-offset_right = 986.0
-offset_bottom = 66.0
+layout_mode = 0
+offset_left = 944.0
+offset_top = 58.0
+offset_right = 984.0
+offset_bottom = 84.0
+theme = ExtResource("24_007i1")
 
 [node name="Timers" type="Node" parent="."]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ds8rcoyb5iedd"]
 
 [ext_resource type="PackedScene" uid="uid://dtvteogckdglk" path="res://scenes/weapon/shoot_weapon.tscn" id="1_jkuyc"]
-[ext_resource type="Shader" uid="uid://2ke8yl68lpq4" path="res://rotate.gdshader" id="2_kj7se"]
+[ext_resource type="Shader" uid="uid://2ke8yl68lpq4" path="res://scripts/shader/rotate.gdshader" id="2_kj7se"]
 [ext_resource type="Script" uid="uid://tr8iojbakqes" path="res://scripts/weapon/hurricane.gd" id="2_ymjcf"]
 [ext_resource type="Texture2D" uid="uid://dycn5jcdiru5e" path="res://assets/weapon/star_45.png" id="3_kj7se"]
 [ext_resource type="Script" uid="uid://743vnp1xjxil" path="res://scripts/weapon/hurricane_hitbox.gd" id="5_l5nl3"]
