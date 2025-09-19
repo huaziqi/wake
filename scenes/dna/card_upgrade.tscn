@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://cpo0g0g17pov7"]
+[gd_scene load_steps=16 format=3 uid="uid://cpo0g0g17pov7"]
 
 [ext_resource type="Texture2D" uid="uid://brsndqijhwcvm" path="res://assets/UI/basic_wake-export-export.png" id="1_6dsjp"]
 [ext_resource type="Script" uid="uid://phibdtwb5knl" path="res://scripts/upgrade(cyy)/card_upgrade.gd" id="1_govi8"]
 [ext_resource type="FontFile" uid="uid://bcyl6h60mx6qo" path="res://assets/fonts/PixelOperator8.ttf" id="3_6dsjp"]
 [ext_resource type="FontFile" uid="uid://ccgedpoalv6cc" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_h4rra"]
 [ext_resource type="Texture2D" uid="uid://cvqmhva0amow5" path="res://assets/UI/gdb-keyboard-2.png" id="5_ldbf0"]
+[ext_resource type="AudioStream" uid="uid://kr88w7n53upg" path="res://upgrade_sfx_3.wav" id="6_h4rra"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q5rjs"]
 texture = ExtResource("1_6dsjp")
@@ -113,5 +114,8 @@ autowrap_mode = 3
 layout_mode = 2
 text = "test2"
 autowrap_mode = 3
+
+[node name="sfx_selected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_h4rra")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

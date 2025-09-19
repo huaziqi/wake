@@ -37,4 +37,9 @@ func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary
 	for i in attackways.weapon_array.size():
 		if upgrade.id==attackways.get_scene_name(attackways.weapon_array[i]) and current_upgrades[upgrade.id]["quantity"]==1:
 			attackways.add_weapon_by_index(i)
-	
+
+	if upgrade.id!="health_bar":#连接升级系统		
+		return
+	var precent_reduction_health=current_upgrades["health_bar"]["quantity"]
+	MAX_HEALTH=MAX_HEALTH*(1+0.3*precent_reduction_health)
+	print("血条为",MAX_HEALTH)
