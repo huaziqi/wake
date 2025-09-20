@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bibjmkkdgp5h4"]
+
+[ext_resource type="Texture2D" uid="uid://p864kc5vrx40" path="res://assets/UI/main_menu/自己画的按钮hover2-小退出.png" id="1_h2nln"]
+[ext_resource type="Texture2D" uid="uid://dagscii60oxu7" path="res://assets/UI/main_menu/自己画的按钮2-小退出.png" id="2_8s7jb"]
+[ext_resource type="Texture2D" uid="uid://csjdww854gej5" path="res://assets/UI/main_menu/自己画的按钮b2-小退出.png" id="3_g6sf6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4pjnk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pnbcv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ljrox"]
+texture = ExtResource("1_h2nln")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gwqof"]
+texture = ExtResource("2_8s7jb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i75po"]
+texture = ExtResource("3_g6sf6")
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxEmpty_4pjnk")
+Button/styles/focus = SubResource("StyleBoxEmpty_pnbcv")
+Button/styles/hover = SubResource("StyleBoxTexture_ljrox")
+Button/styles/normal = SubResource("StyleBoxTexture_gwqof")
+Button/styles/pressed = SubResource("StyleBoxTexture_i75po")
