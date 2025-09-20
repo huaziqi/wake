@@ -2596,12 +2596,12 @@ dna_manager = NodePath("../dnamanager(cyy)")
 
 [node name="master" parent="." instance=ExtResource("2_omf4g")]
 
-[node name="Player" parent="." instance=ExtResource("2_lpkca")]
+[node name="player" parent="." instance=ExtResource("2_lpkca")]
 position = Vector2(194, 120)
 
 [node name="EnemyGenerator" type="Node" parent="." node_paths=PackedStringArray("player", "master", "wave_timer")]
 script = ExtResource("4_omf4g")
-player = NodePath("../Player")
+player = NodePath("../player")
 master = NodePath("../master")
 wave_timer = NodePath("WaveTimer")
 metadata/_custom_type_script = "uid://cru01rprfqcsl"

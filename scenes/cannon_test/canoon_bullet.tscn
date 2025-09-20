@@ -1,23 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://3l3mnax20jj8"]
+[gd_scene load_steps=5 format=3 uid="uid://3l3mnax20jj8"]
 
 [ext_resource type="Script" uid="uid://b44u410l6y5f2" path="res://scenes/cannon_test/canoon_bullet.gd" id="1_hn4tu"]
 [ext_resource type="Texture2D" uid="uid://bbif082yv3jkk" path="res://assets/cannon/bullet.png" id="2_cqb03"]
+[ext_resource type="Script" uid="uid://cpftam5uwo2mj" path="res://scripts/cannon/cannon_bullet_hitbox.gd" id="3_i3mlm"]
 
-[node name="canoon_bullet" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqb03"]
+size = Vector2(67, 15)
+
+[node name="canoon_bullet" type="Area2D" node_paths=PackedStringArray("hitbox")]
+z_index = 200
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_hn4tu")
-bullet_speed = 10.0
+bullet_speed = 300.0
+hitbox = NodePath("graphics/hitbox")
 
-[node name="Node" type="Node" parent="."]
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="graphics" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="graphics"]
 position = Vector2(-2, -1)
 rotation = 2.65316
 scale = Vector2(1.00781, 1)
 texture = ExtResource("2_cqb03")
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
+[node name="hitbox" type="Area2D" parent="graphics"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("3_i3mlm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hitbox"]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("RectangleShape2D_cqb03")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

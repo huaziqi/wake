@@ -10,12 +10,14 @@ class_name Master
 var current_sleepness : float
 var max_sleepness : float = 100
 
-const MAX_BLOOD : float = 20
+const MAX_BLOOD : float = 80
 var current_blood : float
 var current_max_blood : float
 var in_recover : bool #正在回血
 var recover_rate : float = 60 #回血速率
 var empty_blood : bool = false
+
+signal master_die
 
 func init() -> void:
 	current_max_blood = MAX_BLOOD
@@ -28,6 +30,9 @@ func _ready() -> void:
 	recover_timer.timeout.connect(func(): #回血冷却结束，开始回血
 		in_recover = true
 	)
+	sleep_area.master_die_pre.connect(func():
+		master_die.emit()
+		)
 
 func _on_blood_area_area_entered(area: Area2D) -> void:
 	interaction_icon.visible = true
@@ -53,3 +58,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_bomb_area_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.
+
+func reset() -> void:
+	max_sleepness = 100
+	

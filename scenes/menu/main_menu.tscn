@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb177rpq15j87"]
+[gd_scene load_steps=8 format=3 uid="uid://bb177rpq15j87"]
 
+[ext_resource type="Script" uid="uid://buijb2xdrbfpe" path="res://scripts/menu/main_menu.gd" id="1_isoef"]
 [ext_resource type="Theme" uid="uid://btoldkfb5f6pm" path="res://theme(test)/main_menu_button.tres" id="1_nl8w3"]
 [ext_resource type="FontFile" uid="uid://ghrxvwlhbkbk" path="res://assets/fonts/VonwaonBitmap-16px.ttf" id="2_3rkf3"]
 [ext_resource type="Texture2D" uid="uid://c1u7pomyfl4kx" path="res://assets/UI/main_menu/主界面（关灯前）.png" id="3_247la"]
@@ -7,15 +8,16 @@
 [ext_resource type="Theme" uid="uid://bibjmkkdgp5h4" path="res://theme(test)/main_menu_button2.tres" id="5_hj162"]
 [ext_resource type="Texture2D" uid="uid://cfg3u02w4kacy" path="res://assets/UI/main_menu/主界面（关灯后）.png" id="6_xn6kt"]
 
-[node name="Control" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_isoef")
 
-[node name="Button" type="Button" parent="."]
+[node name="begin" type="Button" parent="."]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 0
 offset_left = 698.0
@@ -41,7 +43,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_247la")
 
-[node name="Button2" type="Button" parent="."]
+[node name="settings" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,7 +58,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_kiqgm")
 
-[node name="Button3" type="Button" parent="."]
+[node name="quit" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -81,3 +83,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_xn6kt")
+
+[connection signal="pressed" from="begin" to="." method="_on_begin_pressed"]

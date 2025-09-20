@@ -7,7 +7,7 @@ extends Node
 var current_upgrades={} #储存已经升级的相关所有数据
 
 func _ready():
-	dna_manager.level_up.connect(on_level_up)       
+	dna_manager.level_up.connect(on_level_up)
 	
 
 func pick_upgrades():

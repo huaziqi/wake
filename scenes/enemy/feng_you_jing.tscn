@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://db3s31iru8on2"]
+[gd_scene load_steps=15 format=3 uid="uid://db3s31iru8on2"]
 
 [ext_resource type="PackedScene" uid="uid://drgw74diqbyt6" path="res://scenes/enemy/enemy.tscn" id="1_ny26f"]
 [ext_resource type="Texture2D" uid="uid://dowl5qfrwss0g" path="res://assets/enemy/feng_you_jing_common.png" id="2_0ol28"]
@@ -161,6 +161,9 @@ _data = {
 &"hurt": SubResource("Animation_tk5nf")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6y1ip"]
+size = Vector2(37, 173)
+
 [node name="FengYouJing" instance=ExtResource("1_ny26f")]
 script = ExtResource("2_oki2x")
 
@@ -201,3 +204,7 @@ shape = SubResource("RectangleShape2D_tk5nf")
 libraries = {
 &"": SubResource("AnimationLibrary_i8url")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(-1, -7)
+shape = SubResource("RectangleShape2D_6y1ip")

@@ -1,15 +1,17 @@
 extends Control
 
-var Cannon = preload("res://scenes/cannon_test/cannon.tscn")
+@export var CANNON : PackedScene
+
 
 var in_plant : bool = false
 var cannon : Node = null
+
 
 func _on_button_pressed() -> void:
 	if(in_plant):
 		return
 	in_plant = true
-	cannon = Cannon.instantiate()
+	cannon = CANNON.instantiate()
 	cannon.planted_signal.connect(func():
 		in_plant = false
 		cannon = null

@@ -19,6 +19,12 @@ radius = 33.8223
 position = Vector2(4, 2)
 script = ExtResource("2_jcfor")
 
+[node name="UI" parent="." index="0"]
+offset_left = -28.0
+offset_top = -75.0
+offset_right = 12.0
+offset_bottom = -35.0
+
 [node name="Sprite2D" parent="graphics" index="0"]
 scale = Vector2(1, 1)
 texture = ExtResource("2_vhvep")
@@ -41,8 +47,7 @@ position = Vector2(-2, -32)
 shape = SubResource("CircleShape2D_vhvep")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
-visible = false
-position = Vector2(3, -27)
+position = Vector2(-3, -4)
 shape = SubResource("CircleShape2D_jcfor")
 
 [node name="CommonBubble" type="Sprite2D" parent="." index="3"]

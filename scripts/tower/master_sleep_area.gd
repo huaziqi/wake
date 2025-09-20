@@ -8,6 +8,8 @@ extends Area2D
 @export var sprite_2d: Sprite2D
 @export var bomb_collision: CollisionShape2D
 
+signal master_die_pre
+
 var last_num : int = 5
 var in_bomb : bool = false
 
@@ -17,6 +19,8 @@ func _on_area_entered(area: Area2D) -> void:
 		sleepness_update()
 
 func sleepness_update() -> void:
+	if(master.current_sleepness == 0):
+		master_die_pre.emit()
 	var sleepness_percent : float = master.current_sleepness / master.max_sleepness
 	var bubble_num : int = ceil(sleepness_percent / float(1.0 / 5))
 	if(bubble_num != last_num):
@@ -24,6 +28,7 @@ func sleepness_update() -> void:
 		bomb()
 	for i in range(bubbles.size() - 1, bubble_num - 1, -1):
 		bubbles[i].visible = false
+	
 
 func _physics_process(delta: float) -> void:
 	if(gpu_particles_2d.emitting == false and common_bubble.visible == false):

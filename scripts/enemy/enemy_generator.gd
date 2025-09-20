@@ -1,4 +1,3 @@
-# Edit file: res://scripts/enemy/enemy_generator.gd
 extends Node
 class_name EnemyGenerator
 

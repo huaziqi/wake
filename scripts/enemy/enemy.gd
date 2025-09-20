@@ -40,7 +40,6 @@ func random_dis(minn : int, maxn : int) -> Vector2:
 	return rand_vec2 * dis
 
 func _ready() -> void:
-	add_to_group("enemy")
 	get_enemy_type()
 	current_max_health = MAX_HEALTH
 	var target : Node = master if is_in_group("master_enemy") else player

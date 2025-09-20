@@ -1,10 +1,12 @@
 extends Node2D
+class_name Cannon
 # 旋转速度
 
-@onready var unable: Sprite2D = $graphics/PlantGraphics/unable
-@onready var able: Sprite2D = $graphics/PlantGraphics/able
+@export var unable: Sprite2D
+@export var able: Sprite2D
 @export var rotation_speed = 360
 @export var plant_area_rect : ColorRect
+
 var plant_area_shader : ShaderMaterial
 var targets = []
 var rotation_angle
@@ -17,21 +19,23 @@ var plantable : bool = false # 是否可以种植
 
 signal planted_signal
 
-func _ready() -> void:
-	plant_area_shader = plant_area_rect.material
 
 func _physics_process(delta: float) -> void:
 	if(planted == false):
 		global_position = get_global_mouse_position()
 		plantable = in_able and (not in_forbid) and (tower_num == 0)
 		if(plantable):
-			plant_area_shader.set_shader_parameter("circle_color", Color(1, 1, 1, 0.45))
+			#plant_area_shader.set_shader_parameter("circle_color", Color(1, 1, 1, 0.45))
+			able.visible = true
+			unable.visible = false
 			if(Input.is_action_just_pressed("left_click")):
+				able.visible = false
+				unable.visible = false
 				place()
 		else:
-			#able.visible = false
-			#unable.visible = true
-			plant_area_shader.set_shader_parameter("circle_color", Color(1, 0, 0, 0.45))
+			able.visible = false
+			unable.visible = true
+			#plant_area_shader.set_shader_parameter("circle_color", Color(1, 0, 0, 0.45))
 		if(Input.is_action_just_pressed("right_click")):
 			queue_free()
 	else:

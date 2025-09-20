@@ -19,6 +19,7 @@ var facing_direction : int = 1 # 1表示右边，-1表示左边
 var push_force := 50.0 #推力
 var current_health : float
 var current_max_health : float
+signal player_die
 
 func _ready() -> void:
 	add_to_group("player")
@@ -32,6 +33,7 @@ func health_update() -> void: #
 	var percent = 1.0 * current_health / current_max_health
 	health_bar.value = percent
 	create_tween().tween_property(eased_bar, "value", percent, 0.2)
+	player_die.emit()
 	
 func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):#升级系统初始化武器(cyy)
 	for i in attackways.weapon_array.size():
@@ -42,4 +44,3 @@ func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary
 		return
 	var precent_reduction_health=current_upgrades["health_bar"]["quantity"]
 	MAX_HEALTH=MAX_HEALTH*(1+0.3*precent_reduction_health)
-	print("血条为",MAX_HEALTH)

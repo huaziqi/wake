@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://qi8cxx074bja"]
+[gd_scene load_steps=42 format=3 uid="uid://qi8cxx074bja"]
 
 [ext_resource type="Script" uid="uid://nl1ip673o7un" path="res://scripts/player/player.gd" id="1_0owmy"]
 [ext_resource type="Shader" uid="uid://gax1k8tg58fm" path="res://scripts/shader/outline.gdshader" id="3_0owmy"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://coby5s04d7my5" path="res://scenes/weapon/hand_knife.tscn" id="17_lgqa7"]
 [ext_resource type="PackedScene" uid="uid://l1eecd8v05hm" path="res://scenes/UI/tower_card.tscn" id="17_uf5tr"]
 [ext_resource type="Script" uid="uid://wwnq3hjl7lrn" path="res://scripts/player/wake_show.gd" id="20_8ydkj"]
+[ext_resource type="PackedScene" uid="uid://bsd1dafn4wk3g" path="res://scenes/UI/gatlin_card.tscn" id="21_6cv16"]
 [ext_resource type="Script" uid="uid://dattmaci570xe" path="res://scripts/player/next_wave_control.gd" id="21_yj68g"]
 [ext_resource type="Theme" uid="uid://bo2a04qa2h8kh" path="res://theme(test)/button UI(test).tres" id="22_ioxgp"]
 [ext_resource type="Theme" uid="uid://4612m2k3prqf" path="res://assets/themes/new_theme.tres" id="24_007i1"]
@@ -620,8 +621,11 @@ offset_right = 120.0
 offset_bottom = 150.0
 alignment = 1
 
-[node name="TowerCard2" parent="CardUI/Control/HBoxContainer" instance=ExtResource("17_uf5tr")]
+[node name="Cannon" parent="CardUI/Control/HBoxContainer" instance=ExtResource("17_uf5tr")]
 custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="Gatlin_Card" parent="CardUI/Control/HBoxContainer" instance=ExtResource("21_6cv16")]
 layout_mode = 2
 
 [node name="NextWave" type="Control" parent="CardUI" node_paths=PackedStringArray("next_wave_show", "next_wave_button", "rest_time")]

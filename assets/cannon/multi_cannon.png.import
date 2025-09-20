@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhiivpuxf0n4y"
-path="res://.godot/imported/自己画的按钮2（有字版）.png-a7e12d42f64c5a102311a3556791ef22.ctex"
+uid="uid://bldeb5r8b1i2y"
+path="res://.godot/imported/multi_cannon.png-5b3a2f2feab8a78b681c3f66cfabe7ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/main_menu/自己画的按钮2（有字版）.png"
-dest_files=["res://.godot/imported/自己画的按钮2（有字版）.png-a7e12d42f64c5a102311a3556791ef22.ctex"]
+source_file="res://assets/cannon/multi_cannon.png"
+dest_files=["res://.godot/imported/multi_cannon.png-5b3a2f2feab8a78b681c3f66cfabe7ec.ctex"]
 
 [params]
 
