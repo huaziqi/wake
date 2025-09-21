@@ -165,6 +165,7 @@ _data = {
 size = Vector2(37, 173)
 
 [node name="FengYouJing" instance=ExtResource("1_ny26f")]
+collision_mask = 0
 script = ExtResource("2_oki2x")
 
 [node name="HealthBar" parent="UI" index="0"]

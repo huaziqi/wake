@@ -11,6 +11,7 @@ size = Vector2(66, 77)
 size = Vector2(57, 77)
 
 [node name="ghost_1" instance=ExtResource("1_48q77")]
+collision_mask = 0
 script = ExtResource("2_nbagt")
 
 [node name="HealthBar" parent="UI" index="0"]
@@ -23,9 +24,6 @@ offset_bottom = -26.0
 position = Vector2(1, -18)
 scale = Vector2(2, 2)
 texture = ExtResource("2_bthb2")
-
-[node name="hurtbox" parent="graphics" index="1"]
-collision_mask = 1032
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hurtbox" index="0"]
 position = Vector2(-2, -7.5)

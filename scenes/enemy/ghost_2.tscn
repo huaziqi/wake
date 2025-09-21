@@ -13,6 +13,7 @@ size = Vector2(142.25, 153.25)
 size = Vector2(78, 111.5)
 
 [node name="ghost_2" groups=["master_enemy"] instance=ExtResource("1_srjdm")]
+collision_mask = 0
 script = ExtResource("2_u4v03")
 
 [node name="EasedProgress" parent="UI/HealthBar" index="0"]

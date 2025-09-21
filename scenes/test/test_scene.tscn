@@ -2488,7 +2488,7 @@ collision_mask = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/TowerArea"]
 position = Vector2(2483, -24)
 scale = Vector2(0.758451, 0.819209)
-polygon = PackedVector2Array(-3673.28, -393.062, -2913.83, -393.062, -2913.83, 349.117, -3673.28, 349.117, -3673.28, -391.841, -3884.23, -549.31, -3885.55, 507.807, -2681.78, 505.366, -2681.78, -549.31, -3882.91, -549.31)
+polygon = PackedVector2Array(-3602.0786, -338.13107, -2990.3054, -344.23453, -2970.5283, 299.069, -3600.7603, 302.73108, -3606.0342, -329.58624, -3884.23, -549.31, -3885.55, 507.807, -2681.78, 505.366, -2681.78, -549.31, -3882.91, -549.31)
 
 [node name="ForbiddenArea" type="Area2D" parent="Node2D"]
 collision_layer = 128
@@ -2498,7 +2498,7 @@ collision_mask = 0
 polygon = PackedVector2Array(-463, -475, 449, -474, 449, 390, -463, 390, -463, -474, -466, -474, -471, 399, 457, 394, 461, -486, -463, -479)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Node2D/ForbiddenArea"]
-polygon = PackedVector2Array(-303, -346, 273, -346, 273, 262, -303, 262, -303, -345, -301, -344, -298, 256, 266, 254, 264, -337, -300, -344)
+polygon = PackedVector2Array(-221, -268, 197, -276, 207, 199, -222, 201, -225, -264, -249, -291, -242, 218, 231, 220, 214, -306, -244, -299)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
 collision_layer = 2

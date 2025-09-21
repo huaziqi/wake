@@ -3,7 +3,7 @@ class_name EnemyGenerator
 
 @export var player: Player
 @export var master: Master
-@export var csv_path := "res://scripts/enemy/enemy_generate_csv/stage_0.csv"
+@export var csv_path := "res://scripts/enemy/enemy_generate_csv/stage_0.txt"
 var enemy_num_list : Dictionary = {}
 var scene_list : Dictionary = {}
 
@@ -41,12 +41,11 @@ func load_next_wave() -> void:
 
 	var file := FileAccess.open(csv_path, FileAccess.READ)
 	if file == null:
-		push_error("无法打开 CSV: " + csv_path)
+		push_error("无法打开 csv: " + csv_path)
 		return
 	file.get_line()
 	while not file.eof_reached():
 		var line := file.get_csv_line()
-		print(line)
 		if line.is_empty():
 			continue
 		var wave := int(line[0])
@@ -63,7 +62,6 @@ func load_next_wave() -> void:
 	if _wave_data.is_empty():
 		game_win.emit()
 		return
-
 	start_current_wave()
 
 ## 启动当前波

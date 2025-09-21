@@ -25,7 +25,7 @@ region = Rect2(307, 85, 57, 7)
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "eased_progress") groups=["enemy"]]
 z_index = 120
 collision_layer = 4
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_a3pup")
 health_bar = NodePath("UI/HealthBar")
 eased_progress = NodePath("UI/HealthBar/EasedProgress")

@@ -15,6 +15,7 @@ size = Vector2(51.75, 60)
 size = Vector2(64, 58)
 
 [node name="ghost_0" instance=ExtResource("1_c3rl2")]
+collision_mask = 0
 script = ExtResource("2_2mj4q")
 
 [node name="UI" parent="." index="0"]
@@ -27,9 +28,6 @@ offset_bottom = -24.0
 position = Vector2(5, -9)
 scale = Vector2(1.825, 1.825)
 texture = ExtResource("2_uyodt")
-
-[node name="hurtbox" parent="graphics" index="1"]
-collision_mask = 1032
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hurtbox" index="0"]
 position = Vector2(8, -6)
