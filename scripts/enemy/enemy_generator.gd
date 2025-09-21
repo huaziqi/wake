@@ -7,6 +7,9 @@ class_name EnemyGenerator
 var enemy_num_list : Dictionary = {}
 var scene_list : Dictionary = {}
 
+signal game_win
+signal enemy_die
+
 ## 当前波次
 var _current_wave := 0
 ## 当前波所有行的配置
@@ -58,7 +61,7 @@ func load_next_wave() -> void:
 	file.close()
 
 	if _wave_data.is_empty():
-		push_warning("没有第 %d 波数据，结束生成" % _current_wave)
+		game_win.emit()
 		return
 
 	start_current_wave()
@@ -90,7 +93,7 @@ func start_current_wave() -> void:
 		_total_remaining += cur_data["max_num"]
 
 	# 波限时（简单起见：所有 update_time 之和 + 10 秒保底）
-	var wave_time := 5
+	var wave_time := 10 + 0.5 * _current_wave
 	wave_timer.wait_time = wave_time
 	wave_timer.one_shot = true
 	wave_timer.timeout.connect(_on_wave_timeout)
@@ -124,6 +127,7 @@ func _on_spawn_timer_timeout(data: Dictionary) -> void:
 ## 敌人死亡回调
 func _on_enemy_die(enemy_name: String) -> void:
 	enemy_num_list[enemy_name] -= 1
+	enemy_die.emit()
 
 ## 波次超时
 func _on_wave_timeout() -> void:

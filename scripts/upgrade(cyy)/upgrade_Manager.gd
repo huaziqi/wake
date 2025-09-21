@@ -9,7 +9,6 @@ var current_upgrades={} #储存已经升级的相关所有数据
 func _ready():
 	dna_manager.level_up.connect(on_level_up)
 	
-
 func pick_upgrades():
 	var chosen_upgrades:Array[AbilityUpgrade]=[]#用实现卡牌互不相同
 	var filtered_upgrades=upgrade_pool.duplicate()

@@ -29,16 +29,7 @@ func _ready() -> void:
 		for key in weapon_property["all_property"]: #遍历所有属性
 			if(key in inited_weapon): #如果该武器有这个属性
 				weapon_property[weapon_name][key] = weapon_property["all_property"][key]
-	
-	#print(weapon_property)	
-	
-	#add_weapon_by_index(0)
-	add_weapon_by_index(1)
-	#add_weapon_by_index(2)
-	#add_weapon_by_index(3)
-	#add_weapon_by_index(2)
-	#add_weapon_by_index(3)
-	#add_weapon_by_index(4)
+	weapon_property["in_use"].clear()
 	
 func add_weapon_by_name(name : String) -> void:
 	if(name in name_to_index_dic):
@@ -57,8 +48,7 @@ func add_weapon_by_index(index : int) -> void:
 
 	if("init_scene" in weapon):
 		weapon.init_scene(player, graphics)
-		
-	
+
 	weapon_property["in_use"].append(index)
 	
 func time_gap_weapon(weapon_scene : PackedScene,  weapon : Node) -> void:

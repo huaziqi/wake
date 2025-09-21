@@ -24,7 +24,7 @@ visible = false
 [node name="hitbox" parent="graphics" index="1"]
 script = ExtResource("5_l5nl3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hitbox" index="0"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="graphics/hitbox" index="0"]
 shape = SubResource("CircleShape2D_l5nl3")
 
 [node name="TextureRect" type="TextureRect" parent="." index="1"]

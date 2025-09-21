@@ -6,5 +6,5 @@
 script = ExtResource("1_yv3ip")
 id = "vavampiric_ability"
 name = "吸血能力"
-description = "每击杀一只怪增加5%吸血能力（未应用）"
+description = "每击杀一只怪增加5%吸血能力"
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

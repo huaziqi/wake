@@ -6,5 +6,5 @@
 script = ExtResource("1_6rqxg")
 id = "trace_weapon_damage"
 name = "追踪武器伤害"
-description = "增加百分之10追踪武器基础伤害(未应用)"
+description = "追踪武器，增加百分之10基础伤害"
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

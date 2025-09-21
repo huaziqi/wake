@@ -39,18 +39,16 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		attack_0_timer.start()
 		
 func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):
-	if upgrade.id!="hand_knife":#连接升级系统		
-		return
-	var precent_reduction_damage=current_upgrades["hand_knife"]["quantity"]
-	hitbox.real_damage=hitbox.real_damage*(1.05**precent_reduction_damage)
-	print("手刀伤害为",hitbox.real_damage)
+	if upgrade.id=="hand_knife":#连接升级系统		
+		var precent_reduction_damage=current_upgrades["hand_knife"]["quantity"]
+		hitbox.real_damage=hitbox.real_damage*(1.05**precent_reduction_damage)
+		print("手刀伤害为",hitbox.real_damage)
 	#手刀伤害
-	#if upgrade.id!="hand_knife_area":#连接升级系统		
-	#	return
-	#var precent_reduction_area=current_upgrades["hand_knife_area"]["quantity"]
-	#hitbox.real_damage=hitbox.real_damage*(1.05**precent_reduction_area)
-	#print("手刀范围为",hitbox.real_damage)
-	#手刀范围
+	elif upgrade.id=="hand_knife_area":#连接升级系统		
+		var precent_reduction_area = current_upgrades["hand_knife_area"]["quantity"]
+		var scaleValue = 1.0 * (1.05 **precent_reduction_area)
+		scale = Vector2(scaleValue, scaleValue)  # x 和 y 方向使用相同的缩放比例
+		print(scale)
 
 	
 	

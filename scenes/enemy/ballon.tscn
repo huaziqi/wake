@@ -38,6 +38,7 @@ shape = SubResource("CircleShape2D_vplr8")
 
 [node name="hitbox" parent="graphics" index="2" node_paths=PackedStringArray("ballon")]
 position = Vector2(1, 26)
+collision_layer = 1024
 collision_mask = 512
 script = ExtResource("4_2j5le")
 ballon = NodePath("../..")

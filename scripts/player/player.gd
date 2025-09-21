@@ -20,6 +20,9 @@ var push_force := 50.0 #推力
 var current_health : float
 var current_max_health : float
 signal player_die
+var suck_blood : float = 0
+
+var money : int = 0
 
 func _ready() -> void:
 	add_to_group("player")
@@ -29,18 +32,25 @@ func _ready() -> void:
 	z_index = 199 # 保证显示在大部分图片上方
 	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)#连接升级系统（cyy）
 
+func player_sucks():
+	current_health = min(current_max_health, current_health + current_max_health * suck_blood)
+	health_update()
+
 func health_update() -> void: #
 	var percent = 1.0 * current_health / current_max_health
 	health_bar.value = percent
 	create_tween().tween_property(eased_bar, "value", percent, 0.2)
-	player_die.emit()
+	if(current_health == 0):
+		player_die.emit()
 	
 func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):#升级系统初始化武器(cyy)
 	for i in attackways.weapon_array.size():
-		if upgrade.id==attackways.get_scene_name(attackways.weapon_array[i]) and current_upgrades[upgrade.id]["quantity"]==1:
+		if upgrade.id==attackways.get_scene_name(attackways.weapon_array[i]) and current_upgrades[upgrade.id]["quantity"]>=1:
 			attackways.add_weapon_by_index(i)
 
-	if upgrade.id!="health_bar":#连接升级系统		
-		return
-	var precent_reduction_health=current_upgrades["health_bar"]["quantity"]
-	MAX_HEALTH=MAX_HEALTH*(1+0.3*precent_reduction_health)
+	if upgrade.id=="health_bar":#连接升级系统		
+		var precent_reduction_health=current_upgrades["health_bar"]["quantity"]
+		current_max_health=current_max_health*(1+0.3*precent_reduction_health)
+	elif(upgrade.id == "vavampiric_ability"):
+		var num=current_upgrades["vavampiric_ability"]["quantity"]
+		suck_blood += 0.05 * num

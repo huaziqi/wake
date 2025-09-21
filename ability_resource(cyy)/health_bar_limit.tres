@@ -6,5 +6,5 @@
 script = ExtResource("1_p8253")
 id = "health_bar"
 name = "血量上限"
-description = "增加原血条百分之30血量上线"
+description = "增加原血条百分之30血量上限"
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

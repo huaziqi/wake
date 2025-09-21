@@ -7,6 +7,8 @@ var player : Player
 var shoot_gap_time : float = 1.0
 var shoot_gap_timer : Timer = null
 
+@export var hitbox : Area2D
+
 func init():
 	pass
 

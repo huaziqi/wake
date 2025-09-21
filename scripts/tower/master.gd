@@ -14,7 +14,7 @@ const MAX_BLOOD : float = 80
 var current_blood : float
 var current_max_blood : float
 var in_recover : bool #正在回血
-var recover_rate : float = 60 #回血速率
+var recover_rate : float = 30 #回血速率
 var empty_blood : bool = false
 
 signal master_die

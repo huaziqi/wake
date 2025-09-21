@@ -2,7 +2,7 @@ extends Area2D
 
 @export var player : Player
 
-var get_blood_rate : float = 500 #吸血速率
+var get_blood_rate : float = 50 #吸血速率
 var in_blood_area : bool = false 
 var master : Master = null
 

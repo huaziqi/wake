@@ -1,14 +1,15 @@
 extends Area2D
 
-var base_damage : float #基础伤害
-var real_damage : float #现在的伤害
+var base_damage : float = 60 #基础伤害
+var real_damage : float = 60 #现在的伤害
 
 var penetrate_time : int = 3 #可穿透次数
 
 func init() -> void:
-	base_damage = 60.0
+	pass
 
 func _ready() -> void:
+	init()
 	real_damage = base_damage
 
 func check_penetrate() -> bool: #返回是否销毁掉了
