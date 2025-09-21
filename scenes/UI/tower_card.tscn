@@ -1,14 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://l1eecd8v05hm"]
+[gd_scene load_steps=11 format=3 uid="uid://l1eecd8v05hm"]
 
 [ext_resource type="Script" uid="uid://bc11q2ysd25kx" path="res://scripts/UI/tower_card.gd" id="1_6140h"]
 [ext_resource type="Texture2D" uid="uid://dhmscpfavdp1y" path="res://assets/cannon/cannon.png" id="1_inx6f"]
 [ext_resource type="PackedScene" uid="uid://eisk158kli6j" path="res://scenes/cannon_test/cannon.tscn" id="2_nkh5m"]
 [ext_resource type="FontFile" uid="uid://ccgedpoalv6cc" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_vcf6s"]
+[ext_resource type="Texture2D" uid="uid://cxn2s6upkmgsh" path="res://assets/coin.png" id="5_5oc1d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hu7se"]
 font = ExtResource("2_vcf6s")
 font_size = 17
 font_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+
+[sub_resource type="Theme" id="Theme_lxmx8"]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 26
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oqt0"]
 draw_center = false
@@ -31,7 +36,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_4oqt0")
 Button/styles/normal = null
 Button/styles/pressed = SubResource("StyleBoxFlat_187ce")
 
-[node name="TowerCard" type="Control" node_paths=PackedStringArray("label", "texture_rect")]
+[node name="TowerCard" type="Control"]
 layout_mode = 3
 anchor_right = 0.109
 anchor_bottom = 0.236
@@ -39,8 +44,6 @@ offset_right = -125.568
 offset_bottom = -152.928
 script = ExtResource("1_6140h")
 CANNON = ExtResource("2_nkh5m")
-label = NodePath("Panel/ColorRect/Label")
-texture_rect = NodePath("Panel/ColorRect/TextureRect")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -74,6 +77,24 @@ offset_right = 79.0
 offset_bottom = 113.0
 text = "加农炮"
 label_settings = SubResource("LabelSettings_hu7se")
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/ColorRect"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 105.0
+offset_right = 102.0
+offset_bottom = 169.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_5oc1d")
+
+[node name="money" type="Label" parent="Panel/ColorRect/TextureRect2"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 14.0
+offset_right = 66.0
+offset_bottom = 50.0
+theme = SubResource("Theme_lxmx8")
+text = "2"
 
 [node name="Button" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0.384314)

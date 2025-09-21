@@ -590,6 +590,7 @@ _data = {
 size = Vector2(51, 31)
 
 [node name="HandKnife" type="StaticBody2D" node_paths=PackedStringArray("animation_player")]
+z_index = 150
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_ntner")
@@ -607,7 +608,7 @@ region_rect = Rect2(0, 0, 600, 160)
 
 [node name="hitbox" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 4
+collision_mask = 1028
 script = ExtResource("3_st013")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="hitbox"]

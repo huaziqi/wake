@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=4 uid="uid://cfhfpo7sdi4nn"]
+[gd_scene load_steps=16 format=4 uid="uid://bupklqsfpcw70"]
 
 [ext_resource type="Script" uid="uid://dngi6dh6f6v77" path="res://scripts/menu/settings.gd" id="1_37860"]
 [ext_resource type="Texture2D" uid="uid://dpnrvohfacu1u" path="res://assets/test_menu/Sprite sheet for Basic Pack.png" id="1_dxr1k"]
 [ext_resource type="Theme" uid="uid://bo2a04qa2h8kh" path="res://theme(test)/button UI(test).tres" id="2_37860"]
-[ext_resource type="AudioStream" uid="uid://dibjklwl3ptli" path="res://assets/music/战场迪斯科.mp3" id="4_0t5g5"]
 
 [sub_resource type="Image" id="Image_0t5g5"]
 data = {
@@ -1328,7 +1327,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_ck4fc")
 theme_override_font_sizes/font_size = 75
-text = "BACK"
+text = "返回"
 
 [node name="mainvolslide" type="HSlider" parent="CenterContainer/SettingsMenu"]
 custom_minimum_size = Vector2(0, 80)
@@ -1345,7 +1344,7 @@ offset_top = -16.0
 offset_right = 435.0
 offset_bottom = 39.0
 theme_override_font_sizes/font_size = 40
-text = "MAIN VOLUME"
+text = "主音量"
 horizontal_alignment = 1
 
 [node name="musicvolslide2" type="HSlider" parent="CenterContainer/SettingsMenu"]
@@ -1363,7 +1362,7 @@ offset_top = -16.0
 offset_right = 435.0
 offset_bottom = 39.0
 theme_override_font_sizes/font_size = 40
-text = "MUSIC VOLUME"
+text = "音乐音量"
 horizontal_alignment = 1
 
 [node name="sfxvolslide3" type="HSlider" parent="CenterContainer/SettingsMenu"]
@@ -1381,17 +1380,8 @@ offset_top = -16.0
 offset_right = 435.0
 offset_bottom = 39.0
 theme_override_font_sizes/font_size = 40
-text = "SFX VOLUME"
+text = "音效音量"
 horizontal_alignment = 1
-
-[node name="QUIT" type="Button" parent="CenterContainer/SettingsMenu"]
-custom_minimum_size = Vector2(353, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = SubResource("Theme_ck4fc")
-theme_override_font_sizes/font_size = 75
-text = "QUIT
-"
 
 [node name="CreditsMenu" type="VBoxContainer" parent="CenterContainer"]
 visible = false
@@ -1413,10 +1403,7 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 75
 text = "BACK"
 
-[node name="战场迪斯科" type="AudioStreamPlayer" parent="CenterContainer"]
-stream = ExtResource("4_0t5g5")
-autoplay = true
-
+[connection signal="pressed" from="CenterContainer/SettingsMenu/back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="CenterContainer/SettingsMenu/mainvolslide" to="." method="_on_mainvolslide_value_changed"]
 [connection signal="value_changed" from="CenterContainer/SettingsMenu/musicvolslide2" to="." method="_on_musicvolslide_2_value_changed"]
 [connection signal="value_changed" from="CenterContainer/SettingsMenu/sfxvolslide3" to="." method="_on_sfxvolslide_3_value_changed"]

@@ -14,12 +14,11 @@ radius = 1550.57
 [sub_resource type="CircleShape2D" id="CircleShape2D_xd5c1"]
 radius = 51.0392
 
-[node name="Cannon" type="Node2D" node_paths=PackedStringArray("unable", "able", "plant_area_rect")]
+[node name="Cannon" type="Node2D" node_paths=PackedStringArray("unable", "able")]
 z_index = 110
 script = ExtResource("1_pxhkx")
 unable = NodePath("graphics/PlantGraphics/unable")
 able = NodePath("graphics/PlantGraphics/able")
-plant_area_rect = NodePath("")
 
 [node name="graphics" type="Node2D" parent="."]
 
@@ -64,7 +63,7 @@ cannon = NodePath("..")
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="shoot_manager"]
-wait_time = 3.0
+wait_time = 2.0
 autostart = true
 
 [connection signal="body_entered" from="graphics/range" to="." method="_on_range_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bb177rpq15j87"]
+[gd_scene load_steps=10 format=3 uid="uid://bb177rpq15j87"]
 
 [ext_resource type="Script" uid="uid://buijb2xdrbfpe" path="res://scripts/menu/main_menu.gd" id="1_isoef"]
 [ext_resource type="Theme" uid="uid://btoldkfb5f6pm" path="res://theme(test)/main_menu_button.tres" id="1_nl8w3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://iegw8nlv8p7c" path="res://theme(test)/main_menu_button1.tres" id="4_kiqgm"]
 [ext_resource type="Theme" uid="uid://bibjmkkdgp5h4" path="res://theme(test)/main_menu_button2.tres" id="5_hj162"]
 [ext_resource type="Texture2D" uid="uid://cfg3u02w4kacy" path="res://assets/UI/main_menu/主界面（关灯后）.png" id="6_xn6kt"]
+[ext_resource type="PackedScene" path="res://scenes/menu/settings.tscn" id="9_vovv2"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -86,4 +87,9 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_xn6kt")
 
+[node name="setting_menu" parent="." instance=ExtResource("9_vovv2")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="begin" to="." method="_on_begin_pressed"]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]

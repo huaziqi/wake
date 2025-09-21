@@ -5,7 +5,6 @@ class_name Cannon
 @export var unable: Sprite2D
 @export var able: Sprite2D
 @export var rotation_speed = 360
-@export var plant_area_rect : ColorRect
 
 var plant_area_shader : ShaderMaterial
 var targets = []
@@ -18,7 +17,7 @@ var planted : bool = false # 是否被种植下去了
 var plantable : bool = false # 是否可以种植
 
 signal planted_signal
-
+signal planted_false
 
 func _physics_process(delta: float) -> void:
 	if(planted == false):
@@ -36,7 +35,8 @@ func _physics_process(delta: float) -> void:
 			able.visible = false
 			unable.visible = true
 			#plant_area_shader.set_shader_parameter("circle_color", Color(1, 0, 0, 0.45))
-		if(Input.is_action_just_pressed("right_click")):
+		if(not planted and  Input.is_action_just_pressed("right_click")):
+			planted_false.emit()
 			queue_free()
 	else:
 		if targets.size()!=0:

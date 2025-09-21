@@ -9,6 +9,8 @@ var current_dna : float = 0
 var current_level=1
 var target_dna : float = 2                  #初始化等级，经验，所需经验量
 
+
+
 func _ready():	
 	Gameevent.dna_collected.connect(on_dna_collected)     
 	

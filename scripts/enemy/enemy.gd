@@ -4,7 +4,6 @@ class_name Enemy
 @export var health_bar: TextureProgressBar
 @export var eased_progress: TextureProgressBar
 
-
 const DNA = preload("res://scenes/dna/dna.tscn")
 @onready var hurtbox: enemy_hurtbox = $graphics/hurtbox
 @onready var hitbox: enemy_hitbox = $graphics/hitbox
@@ -43,7 +42,7 @@ func _ready() -> void:
 	get_enemy_type()
 	current_max_health = MAX_HEALTH
 	var target : Node = master if is_in_group("master_enemy") else player
-	position = target.position + random_dis(1000, 2000)
+	position = target.position + random_dis(2000, 2500)
 	init()
 	current_health = current_max_health
 

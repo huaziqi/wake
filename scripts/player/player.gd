@@ -1,9 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
+@onready var money_label: Label = $CardUI/Control/MoneyControl/TextureRect/Label
 @onready var scan_enemy: Area2D = $graphics/scan_enemy
 @onready var graphics: Node2D = $graphics
-@onready var collision_2d: CollisionPolygon2D = $CollisionPolygon2D
+@onready var collision_2d: CollisionShape2D = $CollisionShape2D
 @onready var attackways=$AttackManager#cyy（test）
 @export var health_bar: TextureProgressBar
 @export var eased_bar: TextureProgressBar
@@ -35,6 +36,10 @@ func _ready() -> void:
 func player_sucks():
 	current_health = min(current_max_health, current_health + current_max_health * suck_blood)
 	health_update()
+
+func level_up(current_level : int):
+	money += 1
+	money_label.text = str(money)
 
 func health_update() -> void: #
 	var percent = 1.0 * current_health / current_max_health

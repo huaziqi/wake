@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://lgiyc25720og"]
+[gd_scene load_steps=8 format=3 uid="uid://lgiyc25720og"]
 
 [ext_resource type="PackedScene" uid="uid://drgw74diqbyt6" path="res://scenes/enemy/enemy.tscn" id="1_c3rl2"]
 [ext_resource type="Script" uid="uid://djasppwtqjf2a" path="res://scripts/enemy/ghost_0.gd" id="2_2mj4q"]
 [ext_resource type="Texture2D" uid="uid://c1nxee1caid3n" path="res://assets/enemy/ghost_0.png" id="2_uyodt"]
+[ext_resource type="Script" uid="uid://magxwtl1lhn7" path="res://scripts/enemy/ghost_0_hitbox.gd" id="4_7buqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyodt"]
 size = Vector2(84.5, 91.75)
@@ -27,12 +28,16 @@ position = Vector2(5, -9)
 scale = Vector2(1.825, 1.825)
 texture = ExtResource("2_uyodt")
 
+[node name="hurtbox" parent="graphics" index="1"]
+collision_mask = 1032
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hurtbox" index="0"]
 position = Vector2(8, -6)
 shape = SubResource("RectangleShape2D_uyodt")
 
 [node name="hitbox" parent="graphics" index="2"]
 collision_mask = 1
+script = ExtResource("4_7buqn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hitbox" index="0"]
 position = Vector2(1, 4)

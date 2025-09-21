@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://c1wko1rfba2e7"]
+[gd_scene load_steps=18 format=4 uid="uid://c1wko1rfba2e7"]
 
 [ext_resource type="PackedScene" uid="uid://8n8fpbivhjj1" path="res://scenes/dna/dnabar.tscn" id="1_0eyv0"]
 [ext_resource type="Script" uid="uid://d1a6e0pxsra0y" path="res://scripts/stage_controller.gd" id="1_7xtry"]
@@ -2461,6 +2461,12 @@ sources/1 = SubResource("TileSetAtlasSource_coxib")
 sources/3 = SubResource("TileSetAtlasSource_nr2x3")
 sources/2 = SubResource("TileSetAtlasSource_7xtry")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xtry"]
+size = Vector2(3693, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nr2x3"]
+size = Vector2(120, 3329)
+
 [node name="test_scene" type="Node2D" node_paths=PackedStringArray("enemy_controller")]
 position = Vector2(9, -9)
 script = ExtResource("1_7xtry")
@@ -2493,6 +2499,25 @@ polygon = PackedVector2Array(-463, -475, 449, -474, 449, 390, -463, 390, -463, -
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Node2D/ForbiddenArea"]
 polygon = PackedVector2Array(-303, -346, 273, -346, 273, 262, -303, 262, -303, -345, -301, -344, -298, 256, 266, 254, 264, -337, -300, -344)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+collision_layer = 2
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(26.5, 1699)
+shape = SubResource("RectangleShape2D_7xtry")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(-1815, 48.5)
+shape = SubResource("RectangleShape2D_nr2x3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(35, -1612)
+shape = SubResource("RectangleShape2D_7xtry")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(1874, 39)
+shape = SubResource("RectangleShape2D_nr2x3")
 
 [node name="upgrade_manager(cyy)" parent="." node_paths=PackedStringArray("dna_manager") instance=ExtResource("7_k0t8k")]
 dna_manager = NodePath("../dnamanager(cyy)")

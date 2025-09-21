@@ -4,6 +4,8 @@ extends Control
 路漫漫其修远兮，吾将上下而求索
 """
 
+@onready var setting_menu: Control = $setting_menu
+
 @export var main_menu_music : AudioStream
 const TEST_SCENE = preload("uid://c1wko1rfba2e7")
 func _ready() -> void:
@@ -14,3 +16,7 @@ func _on_quit_pressed() -> void:
 
 func _on_begin_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/test/test_scene.tscn")
+
+
+func _on_settings_pressed() -> void:
+	setting_menu.show()
