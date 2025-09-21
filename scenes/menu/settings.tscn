@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=4 uid="uid://cfhfpo7sdi4nn"]
+[gd_scene load_steps=17 format=4 uid="uid://cfhfpo7sdi4nn"]
 
 [ext_resource type="Script" uid="uid://dngi6dh6f6v77" path="res://scripts/menu/settings.gd" id="1_37860"]
 [ext_resource type="Texture2D" uid="uid://dpnrvohfacu1u" path="res://assets/test_menu/Sprite sheet for Basic Pack.png" id="1_dxr1k"]
 [ext_resource type="Theme" uid="uid://bo2a04qa2h8kh" path="res://theme(test)/button UI(test).tres" id="2_37860"]
+[ext_resource type="AudioStream" uid="uid://dibjklwl3ptli" path="res://assets/music/战场迪斯科.mp3" id="4_0t5g5"]
 
 [sub_resource type="Image" id="Image_0t5g5"]
 data = {
@@ -1332,6 +1333,7 @@ text = "BACK"
 [node name="mainvolslide" type="HSlider" parent="CenterContainer/SettingsMenu"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+min_value = -80.0
 max_value = 6.0
 step = 0.01
 
@@ -1349,6 +1351,7 @@ horizontal_alignment = 1
 [node name="musicvolslide2" type="HSlider" parent="CenterContainer/SettingsMenu"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+min_value = -80.0
 max_value = 6.0
 step = 0.01
 
@@ -1366,6 +1369,7 @@ horizontal_alignment = 1
 [node name="sfxvolslide3" type="HSlider" parent="CenterContainer/SettingsMenu"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+min_value = -80.0
 max_value = 6.0
 step = 0.01
 
@@ -1408,6 +1412,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 75
 text = "BACK"
+
+[node name="战场迪斯科" type="AudioStreamPlayer" parent="CenterContainer"]
+stream = ExtResource("4_0t5g5")
+autoplay = true
 
 [connection signal="value_changed" from="CenterContainer/SettingsMenu/mainvolslide" to="." method="_on_mainvolslide_value_changed"]
 [connection signal="value_changed" from="CenterContainer/SettingsMenu/musicvolslide2" to="." method="_on_musicvolslide_2_value_changed"]
