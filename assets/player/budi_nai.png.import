@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brsndqijhwcvm"
-path="res://.godot/imported/basic_wake-export-export.png-b4193510deb4013c9707c93c8edbb329.ctex"
+uid="uid://omji4sx10rxm"
+path="res://.godot/imported/budi_nai.png-603271466dafcdd19e06c19ac4846e92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/basic_wake-export-export.png"
-dest_files=["res://.godot/imported/basic_wake-export-export.png-b4193510deb4013c9707c93c8edbb329.ctex"]
+source_file="res://assets/player/budi_nai.png"
+dest_files=["res://.godot/imported/budi_nai.png-603271466dafcdd19e06c19ac4846e92.ctex"]
 
 [params]
 

@@ -1,5 +1,5 @@
 extends Control
-
+class_name Tower_card
 @export var CANNON : PackedScene
 
 

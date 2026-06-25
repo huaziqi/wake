@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://8n8fpbivhjj1" path="res://scenes/dna/dnabar.tscn" id="1_0eyv0"]
 [ext_resource type="Script" uid="uid://d1a6e0pxsra0y" path="res://scripts/stage_controller.gd" id="1_7xtry"]
 [ext_resource type="Texture2D" uid="uid://ca77rtcowyx38" path="res://assets/map/floor.jpg" id="1_k0t8k"]
-[ext_resource type="AudioStream" uid="uid://dibjklwl3ptli" path="res://assets/music/战场迪斯科.mp3" id="2_7xtry"]
 [ext_resource type="Texture2D" uid="uid://bsg228m383coe" path="res://assets/map/95fd250d4cc15152b5f8b456690bd2d4.png" id="2_coxib"]
 [ext_resource type="PackedScene" uid="uid://qi8cxx074bja" path="res://scenes/player/player.tscn" id="2_lpkca"]
+[ext_resource type="AudioStream" uid="uid://c85t1xl7r88a2" path="res://assets/music/屋顶苦行山.mp3" id="2_nr2x3"]
 [ext_resource type="PackedScene" uid="uid://dlo3n7hvwctoc" path="res://scenes/tower/master.tscn" id="2_omf4g"]
 [ext_resource type="Script" uid="uid://cru01rprfqcsl" path="res://scripts/enemy/enemy_generator.gd" id="4_omf4g"]
 [ext_resource type="PackedScene" uid="uid://014pne6gavek" path="res://scenes/dna/upgrade_manager.tscn" id="7_k0t8k"]
@@ -2465,7 +2465,7 @@ sources/2 = SubResource("TileSetAtlasSource_7xtry")
 position = Vector2(9, -9)
 script = ExtResource("1_7xtry")
 enemy_controller = NodePath("EnemyGenerator")
-background_music = ExtResource("2_7xtry")
+background_music = ExtResource("2_nr2x3")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(164, 111)

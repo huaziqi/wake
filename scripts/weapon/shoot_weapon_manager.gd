@@ -36,4 +36,4 @@ func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary
 		return
 	var precent_reduction=current_upgrades["shoot_weapon"]["quantity"]
 	shoot_gap_time=shoot_gap_time*(1-0.05*precent_reduction)
-	#print("全体射击武器基础速度加5%",shoot_gap_time)
+	print("全体射击武器基础速度加5%",shoot_gap_time)

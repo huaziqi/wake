@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://c0clbiqu8a7ct"]
 
-[ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource(cyy)/ability.gd" id="1_gmnsg"]
+[ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource/ability.gd" id="1_gmnsg"]
 
 [resource]
 script = ExtResource("1_gmnsg")
 id = "hand_knife_area"
 name = "手刀范围"
 description = "略微增加手刀范围"
+max_chosen_time = 4
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

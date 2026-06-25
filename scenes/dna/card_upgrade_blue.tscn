@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4fysuya2o8no"]
+
+[ext_resource type="PackedScene" uid="uid://cpo0g0g17pov7" path="res://scenes/dna/card_upgrade.tscn" id="1_wfp70"]
+[ext_resource type="Texture2D" uid="uid://be5wicj7mddvr" path="res://assets/UI/upgrade_paper_blue.png" id="2_ts53s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ua2lk"]
+texture = ExtResource("2_ts53s")
+expand_margin_left = 35.0
+expand_margin_top = 30.0
+expand_margin_right = 40.0
+expand_margin_bottom = 30.0
+
+[node name="card_upgrade_blue" instance=ExtResource("1_wfp70")]
+theme_override_styles/panel = SubResource("StyleBoxTexture_ua2lk")

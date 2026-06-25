@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://mtkb1p5eepjs"]
+
+[ext_resource type="PackedScene" uid="uid://l1eecd8v05hm" path="res://scenes/UI/tower_card.tscn" id="1_ad2c7"]
+
+[node name="Card_Cannon_common" instance=ExtResource("1_ad2c7")]

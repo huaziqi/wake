@@ -1,20 +1,29 @@
-[gd_scene load_steps=13 format=3 uid="uid://014pne6gavek"]
+[gd_scene load_steps=14 format=3 uid="uid://014pne6gavek"]
 
 [ext_resource type="Script" uid="uid://clgp5a3kchh6o" path="res://scripts/upgrade(cyy)/upgrade_Manager.gd" id="1_373v4"]
-[ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource(cyy)/ability.gd" id="2_c5ovp"]
+[ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource/ability.gd" id="2_c5ovp"]
 [ext_resource type="PackedScene" uid="uid://4mmjyi8gjurk" path="res://scenes/dna/upgrade_screen.tscn" id="4_ihlby"]
-[ext_resource type="Resource" uid="uid://dunnrberb7i8o" path="res://ability_resource(cyy)/rotate_weapon.tres" id="5_1ucnb"]
-[ext_resource type="Resource" uid="uid://c5lhiv1h4nogg" path="res://ability_resource(cyy)/hurricane.tres" id="6_1ucnb"]
+[ext_resource type="Resource" uid="uid://dunnrberb7i8o" path="res://ability_resource/rotate_weapon.tres" id="5_1ucnb"]
+[ext_resource type="Resource" uid="uid://c5lhiv1h4nogg" path="res://ability_resource/hurricane.tres" id="6_1ucnb"]
 [ext_resource type="Resource" uid="uid://r82eekbxtowy" path="res://scenes/dna/trace_shoot_weapon.tres" id="6_4gvu7"]
-[ext_resource type="Resource" uid="uid://b6fhtuv5mtnce" path="res://ability_resource(cyy)/hand_knife.tres" id="7_60qx0"]
+[ext_resource type="Resource" uid="uid://b6fhtuv5mtnce" path="res://ability_resource/hand_knife.tres" id="7_60qx0"]
 [ext_resource type="Resource" uid="uid://c1l67s1avafc0" path="res://scenes/dna/shoot_weapon.tres" id="8_4gvu7"]
-[ext_resource type="Resource" uid="uid://c0clbiqu8a7ct" path="res://ability_resource(cyy)/hand_knife_area.tres" id="8_60qx0"]
-[ext_resource type="Resource" uid="uid://jl5ykcvhghil" path="res://ability_resource(cyy)/health_bar_limit.tres" id="9_w1rx1"]
-[ext_resource type="Resource" uid="uid://b0lff5sdrh2fp" path="res://ability_resource(cyy)/vampric_ability.tres" id="10_w1rx1"]
-[ext_resource type="Resource" uid="uid://dmc60kehcwph1" path="res://ability_resource(cyy)/track_weapon_damage.tres" id="11_gxian"]
+[ext_resource type="Resource" uid="uid://c0clbiqu8a7ct" path="res://ability_resource/hand_knife_area.tres" id="8_60qx0"]
+[ext_resource type="Resource" uid="uid://jl5ykcvhghil" path="res://ability_resource/health_bar_limit.tres" id="9_w1rx1"]
+[ext_resource type="Resource" uid="uid://b0lff5sdrh2fp" path="res://ability_resource/vampric_ability.tres" id="10_w1rx1"]
+[ext_resource type="Resource" uid="uid://dmc60kehcwph1" path="res://ability_resource/track_weapon_damage.tres" id="11_gxian"]
+
+[sub_resource type="Resource" id="Resource_gxian"]
+script = ExtResource("2_c5ovp")
+id = "hurricane_manager"
+name = "风暴"
+rarity = 1
+ability_type = 1
+prerequisites = Array[String]([""])
+metadata/_custom_type_script = "uid://bptee7m2xdmm5"
 
 [node name="upgrade_manager" type="Node" node_paths=PackedStringArray("dna_manager")]
 script = ExtResource("1_373v4")
-upgrade_pool = Array[ExtResource("2_c5ovp")]([ExtResource("5_1ucnb"), ExtResource("6_1ucnb"), ExtResource("6_4gvu7"), ExtResource("8_4gvu7"), ExtResource("7_60qx0"), ExtResource("8_60qx0"), ExtResource("9_w1rx1"), ExtResource("10_w1rx1"), ExtResource("11_gxian")])
+upgrade_pool = Array[ExtResource("2_c5ovp")]([ExtResource("5_1ucnb"), ExtResource("6_1ucnb"), ExtResource("6_4gvu7"), ExtResource("8_4gvu7"), ExtResource("7_60qx0"), ExtResource("8_60qx0"), ExtResource("9_w1rx1"), ExtResource("10_w1rx1"), ExtResource("11_gxian"), SubResource("Resource_gxian")])
 dna_manager = NodePath(".")
 upgrade_scene = ExtResource("4_ihlby")

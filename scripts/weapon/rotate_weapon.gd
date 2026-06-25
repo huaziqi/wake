@@ -6,10 +6,21 @@ var rotation_speed: float = 80.0   #公转速度
 var orbit_radius: float = 90   #半径大小
 var player: Player
 
-var weapon_num : int = 3 #武器数量
+var weapon_num : int = 1  #武器数量
 var base_damage : int = 50
 var current_damage : int
 var weapon_array : Array = []
+
+const ROTATE_WEAPON_DESCRIPTIONS = {
+	1: "1级别螺旋桨：增加数量和速度",
+	2: "2级别螺旋桨：增加数量和速度",
+	3: "3级别螺旋桨：增加数量和速度",
+	4: "4级别螺旋桨：变成奶龙螺旋",
+	5: "5级别螺旋桨：风力增强，附带微弱推开效果。",
+	6: "6级别螺旋桨：风力增强，附带微弱推开效果。",
+	7: "7级别螺旋桨：风力增强，附带微弱推开效果。",
+	8: "8级别螺旋桨：风力增强，附带微弱推开效果。"
+}
 
 @onready var graphics: Node2D = $graphics
 
@@ -50,10 +61,19 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	#print("enter")
 	pass
 
-func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):#(cyy)gong转速的测试
+func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):
+	var rotate_level=current_upgrades["rotate_weapon"]["quantity"]
 	if upgrade.id!="rotate_weapon":#连接升级系统
 		return
-	print(rotation_speed)
+	#if current_upgrades["rotate_weapon"]["quantity"]==2:
+		
 	var precent_reduction=current_upgrades["rotate_weapon"]["quantity"]
-	rotation_speed=rotation_speed*1.6*(precent_reduction)
+	#改数值
+	rotation_speed=rotation_speed*1.2#*(precent_reduction)
+	weapon_num+=1
+	copy_weapon()
+	print("螺旋桨速度增加0.2，并且增加数量")
+	print(rotation_speed)
+	print(weapon_num)
+	upgrade.description = ROTATE_WEAPON_DESCRIPTIONS[rotate_level]
 	

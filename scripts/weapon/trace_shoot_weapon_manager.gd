@@ -7,6 +7,7 @@ func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary
 	if(upgrade.id == "trace_weapon_damage"):
 		var precent_reduction_damage=current_upgrades["trace_weapon_damage"]["quantity"]
 		damage_added=1.0*(1.05**precent_reduction_damage)
+		print("轨道伤害增加")
 		print(damage_added)
 	if(upgrade.id == "trace_shoot_weapon_manager"):
 		var precent_reduction_damage=current_upgrades["trace_shoot_weapon_manager"]["quantity"]

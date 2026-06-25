@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu7tnwaviwmd8"]
+
+[ext_resource type="PackedScene" uid="uid://l1eecd8v05hm" path="res://scenes/UI/tower_card.tscn" id="1_tpbhd"]
+[ext_resource type="PackedScene" uid="uid://dtfu8fv51555v" path="res://scenes/cannon_test/nai_cannon.tscn" id="2_g08g1"]
+[ext_resource type="Texture2D" uid="uid://c5y6kdnmvh01i" path="res://assets/player/angry_side_eye_nai.png" id="3_7w5t6"]
+
+[node name="Nai_card" instance=ExtResource("1_tpbhd")]
+CANNON = ExtResource("2_g08g1")
+
+[node name="TextureRect" parent="Panel/ColorRect" index="0"]
+texture = ExtResource("3_7w5t6")
+
+[node name="Label" parent="Panel/ColorRect" index="1"]
+text = "加奶炮"

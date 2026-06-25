@@ -53,4 +53,4 @@ func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary
 		current_max_health=current_max_health*(1+0.3*precent_reduction_health)
 	elif(upgrade.id == "vavampiric_ability"):
 		var num=current_upgrades["vavampiric_ability"]["quantity"]
-		suck_blood += 0.05 * num
+		suck_blood += 0.01 * num

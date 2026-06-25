@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://qi8cxx074bja"]
+[gd_scene load_steps=45 format=3 uid="uid://qi8cxx074bja"]
 
 [ext_resource type="Script" uid="uid://nl1ip673o7un" path="res://scripts/player/player.gd" id="1_0owmy"]
 [ext_resource type="Shader" uid="uid://gax1k8tg58fm" path="res://scripts/shader/outline.gdshader" id="3_0owmy"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://5g33a5nsapcy" path="res://scripts/state/idle.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://d1pjl8s55angd" path="res://scripts/state/state_machine.gd" id="5_0owmy"]
 [ext_resource type="Script" uid="uid://brnqdgwx2vnle" path="res://scripts/player/scan_enemy.gd" id="5_h17s1"]
+[ext_resource type="Texture2D" uid="uid://omji4sx10rxm" path="res://assets/player/budi_nai.png" id="5_j4nxn"]
 [ext_resource type="Script" uid="uid://cnvl78m6lfcr1" path="res://scripts/state/move.gd" id="5_p47bc"]
+[ext_resource type="Texture2D" uid="uid://cimahw0g2ixl" path="res://assets/player/heart_nai.png" id="6_28m0y"]
 [ext_resource type="Script" uid="uid://bgrscboem4ywy" path="res://scripts/player/player_hurt_box.gd" id="6_fm80t"]
 [ext_resource type="Script" uid="uid://b5c3r34h73eml" path="res://scripts/player/player_interact_area.gd" id="6_gx1jg"]
 [ext_resource type="Script" uid="uid://7trakc2bxru" path="res://scripts/player/camera.gd" id="8_5gtgg"]
@@ -26,6 +28,7 @@
 [ext_resource type="Script" uid="uid://dattmaci570xe" path="res://scripts/player/next_wave_control.gd" id="21_yj68g"]
 [ext_resource type="Theme" uid="uid://bo2a04qa2h8kh" path="res://theme(test)/button UI(test).tres" id="22_ioxgp"]
 [ext_resource type="Theme" uid="uid://4612m2k3prqf" path="res://assets/themes/new_theme.tres" id="24_007i1"]
+[ext_resource type="PackedScene" uid="uid://bu7tnwaviwmd8" path="res://scenes/UI/cannon_nai_card.tscn" id="24_uniwh"]
 
 [sub_resource type="Animation" id="Animation_p47bc"]
 length = 0.001
@@ -500,6 +503,7 @@ eased_bar = NodePath("UI/HealthProgress/HealthBar/EasedBar")
 next_wave = NodePath("CardUI/NextWave")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
 libraries = {
 &"": SubResource("AnimationLibrary_5gtgg")
 }
@@ -509,10 +513,15 @@ autoplay = "idle_0"
 position = Vector2(0, -8)
 scale = Vector2(1.5, 1.5)
 
+[node name="Sprite2D2" type="Sprite2D" parent="graphics"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_j4nxn")
+
 [node name="Sprite2D" type="Sprite2D" parent="graphics"]
+visible = false
 material = SubResource("ShaderMaterial_qek5x")
 scale = Vector2(0.65, 0.65)
-texture = ExtResource("3_lgqa7")
+texture = ExtResource("6_28m0y")
 offset = Vector2(10, 20)
 flip_h = true
 hframes = 5
@@ -617,7 +626,7 @@ offset_bottom = 73.0
 [node name="HBoxContainer" type="HBoxContainer" parent="CardUI/Control"]
 layout_direction = 2
 layout_mode = 0
-offset_right = 120.0
+offset_right = 512.0
 offset_bottom = 150.0
 alignment = 1
 
@@ -626,6 +635,11 @@ custom_minimum_size = Vector2(120, 150)
 layout_mode = 2
 
 [node name="Gatlin_Card" parent="CardUI/Control/HBoxContainer" instance=ExtResource("21_6cv16")]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Nai_card" parent="CardUI/Control/HBoxContainer" instance=ExtResource("24_uniwh")]
+custom_minimum_size = Vector2(120, 150)
 layout_mode = 2
 
 [node name="NextWave" type="Control" parent="CardUI" node_paths=PackedStringArray("next_wave_show", "next_wave_button", "rest_time")]

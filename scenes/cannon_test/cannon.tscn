@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://eisk158kli6j"]
+[gd_scene load_steps=9 format=3 uid="uid://eisk158kli6j"]
 
 [ext_resource type="Script" uid="uid://bcay0pu2do22u" path="res://scripts/cannon/cannon.gd" id="1_pxhkx"]
-[ext_resource type="Texture2D" uid="uid://dhmscpfavdp1y" path="res://assets/cannon/cannon.png" id="2_yjxeu"]
 [ext_resource type="Script" uid="uid://gumc2mpsejyn" path="res://scripts/cannon/range.gd" id="3_yjxeu"]
 [ext_resource type="Script" uid="uid://d38cwytb2s2qb" path="res://scenes/cannon_test/canoon_shoot_manager.gd" id="4_un2bf"]
 [ext_resource type="PackedScene" uid="uid://3l3mnax20jj8" path="res://scenes/cannon_test/canoon_bullet.tscn" id="5_2mci5"]
@@ -14,12 +13,11 @@ radius = 1550.57
 [sub_resource type="CircleShape2D" id="CircleShape2D_xd5c1"]
 radius = 51.0392
 
-[node name="Cannon" type="Node2D" node_paths=PackedStringArray("unable", "able", "plant_area_rect")]
+[node name="Cannon" type="Node2D" node_paths=PackedStringArray("unable", "able")]
 z_index = 110
 script = ExtResource("1_pxhkx")
 unable = NodePath("graphics/PlantGraphics/unable")
 able = NodePath("graphics/PlantGraphics/able")
-plant_area_rect = NodePath("")
 
 [node name="graphics" type="Node2D" parent="."]
 
@@ -30,10 +28,6 @@ script = ExtResource("3_yjxeu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/range"]
 shape = SubResource("CircleShape2D_jfr8q")
-
-[node name="Sprite2D" type="Sprite2D" parent="graphics"]
-position = Vector2(1, -1.19209e-07)
-texture = ExtResource("2_yjxeu")
 
 [node name="PlantGraphics" type="Node2D" parent="graphics"]
 position = Vector2(2, 5)

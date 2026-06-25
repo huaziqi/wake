@@ -1,21 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://wpjlqbfg6dd7"]
 
 [ext_resource type="PackedScene" uid="uid://eisk158kli6j" path="res://scenes/cannon_test/cannon.tscn" id="1_47uxa"]
-[ext_resource type="Script" uid="uid://ssgc3xmcwlxp" path="res://scripts/cannon/gatlin_cannon.gd" id="2_rjbyv"]
+[ext_resource type="Script" uid="uid://nxhym5iqbo3x" path="res://scenes/cannon_test/gatlin_cannon.gd" id="2_1u8jw"]
 [ext_resource type="Texture2D" uid="uid://bldeb5r8b1i2y" path="res://assets/cannon/multi_cannon.png" id="3_1u8jw"]
 [ext_resource type="Script" uid="uid://b8sgu3jfup2j0" path="res://scripts/cannon/gatlin_shoot_manager.gd" id="3_kq3rp"]
 
 [node name="Gatlin_Cannon" instance=ExtResource("1_47uxa")]
-script = ExtResource("2_rjbyv")
+script = ExtResource("2_1u8jw")
 
-[node name="range" parent="graphics" index="0"]
-visible = false
-
-[node name="Sprite2D" parent="graphics" index="1"]
+[node name="Sprite2D" type="Sprite2D" parent="graphics" index="0"]
+scale = Vector2(0.45833334, 0.45833334)
 texture = ExtResource("3_1u8jw")
 
 [node name="shoot_manager" parent="." index="1"]
 script = ExtResource("3_kq3rp")
+bullet = null
 
 [node name="Timer" parent="shoot_manager" index="0"]
 wait_time = 1.0

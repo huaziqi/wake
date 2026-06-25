@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://b0lff5sdrh2fp"]
 
-[ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource(cyy)/ability.gd" id="1_yv3ip"]
+[ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource/ability.gd" id="1_yv3ip"]
 
 [resource]
 script = ExtResource("1_yv3ip")
 id = "vavampiric_ability"
 name = "吸血能力"
 description = "每击杀一只怪增加5%吸血能力"
+max_chosen_time = 99
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

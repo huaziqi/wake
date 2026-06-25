@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmla6hlkufjlr"]
+
+[ext_resource type="PackedScene" uid="uid://cc006t2ujquda" path="res://scenes/weapon/rotate_weapon.tscn" id="1_oo6n4"]
+[ext_resource type="Script" uid="uid://dh7fmc4x82uag" path="res://scripts/weapon/rotate_mosq.gd" id="2_ivj57"]
+[ext_resource type="Texture2D" uid="uid://4kqfpwwjof27" path="res://assets/temp_assets/back.png" id="3_tgkiv"]
+
+[node name="rotate_mosq" instance=ExtResource("1_oo6n4")]
+script = ExtResource("2_ivj57")
+
+[node name="Sprite2D" parent="graphics" index="0"]
+texture = ExtResource("3_tgkiv")
+region_rect = Rect2(0, 0, 60.5, 64)

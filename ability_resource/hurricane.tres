@@ -4,7 +4,9 @@
 
 [resource]
 script = ExtResource("1_mxexv")
-id = "hurricane_manager"
+id = "hurricane"
 name = "风暴"
-description = "八级大狂风，增加攻击速度"
+description = "大狂风"
+rarity = 1
+max_chosen_time = 8
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

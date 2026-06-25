@@ -31,7 +31,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_4oqt0")
 Button/styles/normal = null
 Button/styles/pressed = SubResource("StyleBoxFlat_187ce")
 
-[node name="TowerCard" type="Control" node_paths=PackedStringArray("label", "texture_rect")]
+[node name="TowerCard" type="Control"]
 layout_mode = 3
 anchor_right = 0.109
 anchor_bottom = 0.236
@@ -39,8 +39,6 @@ offset_right = -125.568
 offset_bottom = -152.928
 script = ExtResource("1_6140h")
 CANNON = ExtResource("2_nkh5m")
-label = NodePath("Panel/ColorRect/Label")
-texture_rect = NodePath("Panel/ColorRect/TextureRect")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
