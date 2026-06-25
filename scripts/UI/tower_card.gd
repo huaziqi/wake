@@ -1,6 +1,8 @@
 extends Control
 class_name Tower_card
 @export var CANNON : PackedScene
+@export var player : Player
+@onready var color_rect: ColorRect = $Panel/ColorRect
 
 var in_plant : bool = false
 var cannon : Node = null
