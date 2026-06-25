@@ -13,6 +13,7 @@ var attack_timer : Timer #攻击间隔
 
 
 func init() -> void:
+	
 	var circle = circle_collision.shape as CircleShape2D
 	incense_radius = circle.radius
 	

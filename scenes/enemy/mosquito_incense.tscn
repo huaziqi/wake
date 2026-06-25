@@ -13,8 +13,9 @@ radius = 20.6155
 [sub_resource type="CircleShape2D" id="CircleShape2D_0pea0"]
 radius = 25.0
 
-[node name="MosquitoIncense" node_paths=PackedStringArray("circle_collision") groups=["enemy"] instance=ExtResource("1_80y0w")]
+[node name="MosquitoIncense" node_paths=PackedStringArray("circle_collision") instance=ExtResource("1_80y0w")]
 rotation = -0.335103
+collision_mask = 0
 script = ExtResource("2_q5rjj")
 circle_collision = NodePath("graphics/hurtbox/CollisionShape2D")
 
