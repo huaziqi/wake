@@ -23,7 +23,7 @@ func _ready() -> void:
 	
 func on_ability_upgrade_added(upgrade:AbilityUpgrade,already_upgrades:Dictionary):
 	if upgrade.id!="hurricane_manager":#连接升级系统
-		return	
+		return
 	var hurricane_level=already_upgrades["hurricane_manager"]["quantity"]
 	shoot_gap_timer.wait_time=shoot_gap_time*0.8**(hurricane_level)
 	#print(shoot_gap_time)
