@@ -43,11 +43,11 @@ func health_update() -> void: #
 	if(current_health == 0):
 		player_die.emit()
 	
-func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):
+func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):#升级系统初始化武器(cyy)
 	for i in attackways.weapon_array.size():
 		if upgrade.id==attackways.get_scene_name(attackways.weapon_array[i]) and current_upgrades[upgrade.id]["quantity"]>=1:
 			attackways.add_weapon_by_index(i)
-	
+
 	if upgrade.id=="health_bar":#连接升级系统		
 		var precent_reduction_health=current_upgrades["health_bar"]["quantity"]
 		current_max_health=current_max_health*(1+0.3*precent_reduction_health)

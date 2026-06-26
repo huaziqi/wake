@@ -72,7 +72,7 @@ func apply_upgrade(upgrade:AbilityUpgrade):
 			"resource"=upgrade,    
 			"quantity"=1
 		}
-		Log.debug("升级系统","该武器未被选过，设置quantity数值为1")
+		Log.debug("升级系统","upgrademanager该武器未被选过，设置quantity数值为1")
 	else:
 		already_upgrades[upgrade.id]["quantity"]+=1            #能力有则＋1，无则添加
 	Gameevent.emit_ability_upgrade_added(upgrade,already_upgrades)

@@ -9,7 +9,5 @@ weapon_controller_scenea = ExtResource("2_hrjuh")
 id = "rotate_weapon"
 name = "螺旋桨武器"
 description = "提升旋转武器速度"
-scene = ExtResource("2_hrjuh")
-ability_type = 1
 max_chosen_time = 4
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"
