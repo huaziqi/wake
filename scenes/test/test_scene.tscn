@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c1wko1rfba2e7"]
+[gd_scene load_steps=19 format=4 uid="uid://c1wko1rfba2e7"]
 
 [ext_resource type="PackedScene" uid="uid://8n8fpbivhjj1" path="res://scenes/dna/dnabar.tscn" id="1_0eyv0"]
 [ext_resource type="Script" uid="uid://d1a6e0pxsra0y" path="res://scripts/stage_controller.gd" id="1_7xtry"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://qi8cxx074bja" path="res://scenes/player/player.tscn" id="2_lpkca"]
 [ext_resource type="AudioStream" uid="uid://c85t1xl7r88a2" path="res://assets/music/屋顶苦行山.mp3" id="2_nr2x3"]
 [ext_resource type="PackedScene" uid="uid://dlo3n7hvwctoc" path="res://scenes/tower/master.tscn" id="2_omf4g"]
+[ext_resource type="Resource" uid="uid://b6fhtuv5mtnce" path="res://ability_resource/hand_knife.tres" id="3_7xtry"]
 [ext_resource type="Script" uid="uid://cru01rprfqcsl" path="res://scripts/enemy/enemy_generator.gd" id="4_omf4g"]
 [ext_resource type="PackedScene" uid="uid://014pne6gavek" path="res://scenes/dna/upgrade_manager.tscn" id="7_k0t8k"]
 [ext_resource type="PackedScene" uid="uid://cxso2p2yfmnhd" path="res://scenes/dna/dnamanager.tscn" id="8_coxib"]
@@ -2472,6 +2473,7 @@ position = Vector2(9, -9)
 script = ExtResource("1_7xtry")
 enemy_controller = NodePath("EnemyGenerator")
 background_music = ExtResource("2_nr2x3")
+initial_weapon = ExtResource("3_7xtry")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(164, 111)

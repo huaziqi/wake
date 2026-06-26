@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtvteogckdglk"]
+[gd_scene load_steps=6 format=3 uid="uid://dtvteogckdglk"]
 
 [ext_resource type="Script" uid="uid://el8e18berfa7" path="res://scripts/weapon/shoot_weapon.gd" id="1_y63p1"]
 [ext_resource type="Texture2D" uid="uid://djgma2uaxxmru" path="res://assets/player/idle_0.png" id="2_hc1my"]
 [ext_resource type="Script" uid="uid://c13aa1fanxbog" path="res://scripts/weapon/shoot_weapon_hitbox.gd" id="3_hc1my"]
+[ext_resource type="PackedScene" uid="uid://bniwmrxrmpas4" path="res://scenes/weapon/shoot_weapon_manager.tscn" id="4_6qi8r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hc1my"]
 
@@ -28,3 +29,5 @@ script = ExtResource("3_hc1my")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="graphics/hitbox"]
 shape = SubResource("RectangleShape2D_hc1my")
+
+[node name="ShootWeaponManager" parent="." instance=ExtResource("4_6qi8r")]

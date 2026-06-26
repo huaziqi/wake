@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bcay0pu2do22u" path="res://scripts/cannon/cannon.gd" id="1_pxhkx"]
 [ext_resource type="Script" uid="uid://gumc2mpsejyn" path="res://scripts/cannon/range.gd" id="3_yjxeu"]
-[ext_resource type="Script" uid="uid://d38cwytb2s2qb" path="res://scenes/cannon_test/canoon_shoot_manager.gd" id="4_un2bf"]
+[ext_resource type="Script" uid="uid://d38cwytb2s2qb" path="res://scenes/canoon_shoot_manager.gd" id="4_un2bf"]
 [ext_resource type="PackedScene" uid="uid://3l3mnax20jj8" path="res://scenes/cannon_test/canoon_bullet.tscn" id="5_2mci5"]
 [ext_resource type="Texture2D" uid="uid://x3j3f4irbsit" path="res://assets/UI/unable_plant.png" id="5_8o11w"]
 [ext_resource type="Texture2D" uid="uid://wvk10p72kp8a" path="res://assets/UI/able_plant.png" id="6_euu4e"]

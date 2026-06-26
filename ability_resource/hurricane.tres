@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Abilities" load_steps=3 format=3 uid="uid://c5lhiv1h4nogg"]
+[gd_resource type="Resource" script_class="Abilities" load_steps=4 format=3 uid="uid://c5lhiv1h4nogg"]
 
+[ext_resource type="PackedScene" uid="uid://cficymkooyicx" path="res://scenes/weapon/hurricane_manager.tscn" id="1_1yqj2"]
 [ext_resource type="Script" uid="uid://c5pq5gkkm7yor" path="res://scripts/ability_attached.gd" id="1_mxexv"]
 [ext_resource type="PackedScene" uid="uid://ds8rcoyb5iedd" path="res://scenes/weapon/hurricane.tscn" id="2_ud5di"]
 
@@ -9,5 +10,7 @@ weapon_controller_scenea = ExtResource("2_ud5di")
 id = "hurricane_manager"
 name = "风暴"
 description = "大狂风"
+scene = ExtResource("1_1yqj2")
+ability_type = 1
 max_chosen_time = 3
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

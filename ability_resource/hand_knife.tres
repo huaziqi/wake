@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://b6fhtuv5mtnce"]
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://b6fhtuv5mtnce"]
 
 [ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource/ability.gd" id="1_5om0x"]
+[ext_resource type="PackedScene" uid="uid://coby5s04d7my5" path="res://scenes/weapon/hand_knife.tscn" id="1_474ni"]
 
 [resource]
 script = ExtResource("1_5om0x")
 id = "hand_knife"
 name = "手刀"
 description = "提升手刀伤害20%"
+scene = ExtResource("1_474ni")
+ability_type = 1
 max_chosen_time = 4
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"
