@@ -15,8 +15,6 @@ func _on_timer_timeout() -> void:
 	if targets.size()!=0:
 		shoot()
 func shoot():
-	if(not cannon):
-		return
 	var shooted_bullet=bullet.instantiate()
 	get_tree().current_scene.add_child.call_deferred(shooted_bullet)
 	shooted_bullet.rotation_angle = cannon.rotation_angle

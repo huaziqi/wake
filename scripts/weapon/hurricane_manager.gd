@@ -17,23 +17,24 @@ func _ready() -> void:
 	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)#升级系统
 	shoot_gap_timer.wait_time = shoot_gap_time
 	shoot_gap_timer.start()
+	
 
 
 	
-func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):
-	if upgrade.id!="hurricane":#连接升级系统
+func on_ability_upgrade_added(upgrade:AbilityUpgrade,already_upgrades:Dictionary):
+	if upgrade.id!="hurricane_manager":#连接升级系统
 		return	
-	var hurricane_level=current_upgrades["hurricane"]["quantity"]
+	var hurricane_level=already_upgrades["hurricane_manager"]["quantity"]
 	shoot_gap_timer.wait_time=shoot_gap_time*0.8**(hurricane_level)
-	print(shoot_gap_time)
-	print(shoot_gap_timer.wait_time)
-	print("风")
+	#print(shoot_gap_time)
+	#print(shoot_gap_timer.wait_time)
 	upgrade.description = HURRICANE_DESCRIPTIONS[hurricane_level]
-	print("changed")
+	Log.info("升级系统","武器 [%s] 成功升级至 Lv.%d" % [upgrade.id,hurricane_level])
+
 
 	
-	if upgrade.id=="shoot_weapon_manager":    
-		var precent_reduction=current_upgrades["shoot_weapon_manager"]["quantity"]
+	if upgrade.id=="shoot_weapon":    
+		var precent_reduction=already_upgrades["shoot_weapon"]["quantity"]
 		shoot_gap_time=shoot_gap_time*(1-0.05*precent_reduction)
 		shoot_gap_timer.wait_time=(shoot_gap_timer.wait_time)*0.95
 		print("全体射击武器基础速度加5%",shoot_gap_time)

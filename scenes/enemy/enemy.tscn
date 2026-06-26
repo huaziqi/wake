@@ -23,9 +23,9 @@ atlas = ExtResource("5_gl05p")
 region = Rect2(307, 85, 57, 7)
 
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "eased_progress") groups=["enemy"]]
-z_index = 120
+z_index = 10
 collision_layer = 4
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_a3pup")
 health_bar = NodePath("UI/HealthBar")
 eased_progress = NodePath("UI/HealthBar/EasedProgress")
@@ -67,7 +67,7 @@ texture = ExtResource("1_4a83h")
 
 [node name="hurtbox" type="Area2D" parent="graphics" node_paths=PackedStringArray("enemy")]
 collision_layer = 4
-collision_mask = 1032
+collision_mask = 8
 script = ExtResource("3_40wdo")
 enemy = NodePath("../..")
 

@@ -51,7 +51,6 @@ scale_max = 3.0
 scale_curve = SubResource("CurveTexture_a8fua")
 
 [node name="TraceShootWeapon" instance=ExtResource("1_s0nty")]
-z_index = 150
 script = ExtResource("1_l0d5i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="graphics" index="0"]
@@ -64,9 +63,6 @@ frame_progress = 0.321098
 visible = false
 texture = ExtResource("4_vstgt")
 region_rect = Rect2(0, 0, 168, 77)
-
-[node name="hitbox" parent="graphics" index="2"]
-collision_mask = 1028
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="graphics/hitbox" index="0"]
 position = Vector2(-12.5, 18.25)

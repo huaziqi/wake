@@ -23,6 +23,7 @@ Label/fonts/font = ExtResource("4_fsxku")
 
 [node name="upgrade_screen" type="CanvasLayer"]
 process_mode = 3
+layer = 2
 script = ExtResource("1_5e8dt")
 upgrade_card_scene = ExtResource("2_713sj")
 upgrade_card_scene2 = ExtResource("3_d8hk7")

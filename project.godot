@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Gameevent="*res://scripts/gameevent.gd"
 MusicManager="*res://scripts/music_manager.gd"
+Log="*res://scripts/log.gd"
 
 [display]
 

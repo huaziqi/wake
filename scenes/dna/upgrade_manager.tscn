@@ -12,18 +12,10 @@
 [ext_resource type="Resource" uid="uid://jl5ykcvhghil" path="res://ability_resource/health_bar_limit.tres" id="9_w1rx1"]
 [ext_resource type="Resource" uid="uid://b0lff5sdrh2fp" path="res://ability_resource/vampric_ability.tres" id="10_w1rx1"]
 [ext_resource type="Resource" uid="uid://dmc60kehcwph1" path="res://ability_resource/track_weapon_damage.tres" id="11_gxian"]
-
-[sub_resource type="Resource" id="Resource_gxian"]
-script = ExtResource("2_c5ovp")
-id = "hurricane_manager"
-name = "风暴"
-rarity = 1
-ability_type = 1
-prerequisites = Array[String]([""])
-metadata/_custom_type_script = "uid://bptee7m2xdmm5"
+[ext_resource type="Resource" uid="uid://dlumn3ymjkkv3" path="res://scenes/dna/blue_hurricane.tres" id="12_ju2el"]
 
 [node name="upgrade_manager" type="Node" node_paths=PackedStringArray("dna_manager")]
 script = ExtResource("1_373v4")
-upgrade_pool = Array[ExtResource("2_c5ovp")]([ExtResource("5_1ucnb"), ExtResource("6_1ucnb"), ExtResource("6_4gvu7"), ExtResource("8_4gvu7"), ExtResource("7_60qx0"), ExtResource("8_60qx0"), ExtResource("9_w1rx1"), ExtResource("10_w1rx1"), ExtResource("11_gxian"), SubResource("Resource_gxian")])
+upgrade_pool = Array[ExtResource("2_c5ovp")]([ExtResource("5_1ucnb"), ExtResource("6_1ucnb"), ExtResource("6_4gvu7"), ExtResource("8_4gvu7"), ExtResource("7_60qx0"), ExtResource("8_60qx0"), ExtResource("9_w1rx1"), ExtResource("10_w1rx1"), ExtResource("11_gxian"), ExtResource("12_ju2el")])
 dna_manager = NodePath(".")
 upgrade_scene = ExtResource("4_ihlby")

@@ -7,10 +7,6 @@ extends FengYouJing
 @export var dead_damage_area : CollisionShape2D
 @onready var damage_area_notice : Sprite2D = $graphics/hitbox/Sprite2D
 
-func init():
-	current_max_health = 140
-	hitbox.real_damage = 15
-
 func attack_event(delta : float) -> void:
 	if((current_health / current_max_health) < 0.4):
 		animation_player.play("attack")

@@ -1,7 +1,5 @@
 extends Node2D
 
-@onready var dnamanager_cyy_: Node = $"dnamanager(cyy)"
-
 @onready var next_wave_controller : NextWaveController = $player.next_wave
 @export var enemy_controller : EnemyGenerator
 @export var background_music : AudioStream
@@ -13,21 +11,15 @@ const PLAYER = preload("uid://qi8cxx074bja")
 const TEST_SCENE = preload("uid://c1wko1rfba2e7")
 
 func _ready() -> void:
-	
-	dnamanager_cyy_.level_up.connect(player.level_up)
-	
 	player.attackways.add_weapon_by_index(1)
 	next_wave_controller.next_wave_start.connect(enemy_controller.next_wave)
-	MusicManager.play_music(background_music)
-	
-	player.player_die.connect(game_over)
-	master.master_die.connect(game_over)
-	
-	enemy_controller.game_win.connect(game_win)
-	enemy_controller.enemy_die.connect(player.player_sucks)
 	enemy_controller.current_wave_num.connect(next_wave_controller.current_wave_show)
 	enemy_controller.wave_cleared.connect(next_wave_controller.current_wave_stop)
-
+	MusicManager.play_music(background_music)
+	player.player_die.connect(game_over)
+	master.master_die.connect(game_over)
+	enemy_controller.game_win.connect(game_win)
+	enemy_controller.enemy_die.connect(player.player_sucks)
 
 func _physics_process(delta: float) -> void:
 	next_wave_controller.rest_time.text = str(round(enemy_controller.wave_timer.time_left * 10) / 10)

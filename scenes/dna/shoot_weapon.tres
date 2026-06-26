@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_p2g2k")
-id = "shoot_weapon_manager"
+id = "shoot_weapon"
 name = "射击武器"
 description = "增强射击武器速度"
 max_chosen_time = 1

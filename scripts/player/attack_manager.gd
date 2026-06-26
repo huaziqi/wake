@@ -8,6 +8,7 @@ extends Node
 @export var weapon_array : Array[PackedScene] #存储所有武器
 var name_to_index_dic : Dictionary #名字转索引
 @export var weapon_property : Dictionary
+@export var already_upgrades: Dictionary
 
 var weapon_idx : int = 0
 var shootTimer : Timer
@@ -40,10 +41,13 @@ func add_weapon_by_name(name : String) -> void:
 #添加武器 index : 在weapon_array中的索引值
 func add_weapon_by_index(index : int) -> void:
 	if(index < 0 or index >= weapon_array.size()):
-		print(index, "超出了武器数组范围", ": file in attack_manager")
+		Log.error("错误","武器初始化失败，超出了数组范围,位置attack_manager")
 	if(index in weapon_property["in_use"]):
-		print(get_scene_name(weapon_array[index]), "已经被添加了", ": file in attack_manager")
 		return
+	var weapon_name=get_scene_name(weapon_array[index])
+	#初始化武器
+	#already_upgrade[get_scene_name(weapon_array[index])]["quantity"]
+	Log.info("升级系统","武器 [%s] 成功启动" % [weapon_name])
 	var weapon : Node = weapon_array[index].instantiate()
 
 	if("init_scene" in weapon):

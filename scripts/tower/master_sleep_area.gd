@@ -38,8 +38,7 @@ func _physics_process(delta: float) -> void:
 		circle.radius += delta * 500
 
 func bomb() -> void:
-	
-	if(in_bomb or master.current_sleepness):
+	if(in_bomb):
 		return
 	in_bomb = true
 	sprite_2d.modulate.a = 0.3

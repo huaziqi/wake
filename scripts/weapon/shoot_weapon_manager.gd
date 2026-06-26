@@ -32,8 +32,9 @@ func _on_shoot_gap_timer_timeout() -> void:
 		new_weapon.hitbox.real_damage = new_weapon.hitbox.real_damage * damage_added
 
 func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):
+	var shoot_gap_level=current_upgrades["shoot_weapon"]["quantity"]
 	if upgrade.id!="shoot_weapon":#连接升级系统
 		return
 	var precent_reduction=current_upgrades["shoot_weapon"]["quantity"]
-	shoot_gap_time=shoot_gap_time*(1-0.05*precent_reduction)
-	print("全体射击武器基础速度加5%",shoot_gap_time)
+	shoot_gap_time=shoot_gap_time*(1-0.05*precent_reduction)#"全体射击武器基础速度加5%
+	Log.info("升级系统","武器 [%s范围] 成功升级至 Lv.%d 射击时间间隔为为%d" % [upgrade.id,shoot_gap_level,shoot_gap_time])

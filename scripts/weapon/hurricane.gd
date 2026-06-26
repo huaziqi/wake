@@ -32,7 +32,7 @@ func _on_free_timer_timeout() -> void:
 
 func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):
 	if upgrade.id!="hurricane":#连接升级系统
-		
+
 		return
 	#print(shoot_gap_timer.wait_time)
 	var precent_reduction=current_upgrades["hurricane"]["quantity"]

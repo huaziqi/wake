@@ -65,15 +65,14 @@ func on_ability_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary
 	var rotate_level=current_upgrades["rotate_weapon"]["quantity"]
 	if upgrade.id!="rotate_weapon":#连接升级系统
 		return
-	#if current_upgrades["rotate_weapon"]["quantity"]==2:
-		
-	var precent_reduction=current_upgrades["rotate_weapon"]["quantity"]
-	#改数值
+	#if current_upgrades["rotate_weapon"]["quantity"]==2
+	#var precent_reduction=current_upgrades["rotate_weapon"]["quantity"]
 	rotation_speed=rotation_speed*1.2#*(precent_reduction)
 	weapon_num+=1
 	copy_weapon()
-	print("螺旋桨速度增加0.2，并且增加数量")
-	print(rotation_speed)
-	print(weapon_num)
+	#print("螺旋桨速度增加0.2，并且增加数量")
+	#print(rotation_speed)
+	#print(weapon_num)
 	upgrade.description = ROTATE_WEAPON_DESCRIPTIONS[rotate_level]
+	Log.info("升级系统","武器 [%s] 成功升级至 Lv.%d" % [upgrade.id,rotate_level])
 	
