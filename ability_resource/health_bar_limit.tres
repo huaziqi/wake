@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://jl5ykcvhghil"]
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://jl5ykcvhghil"]
 
 [ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource/ability.gd" id="1_p8253"]
+[ext_resource type="PackedScene" uid="uid://coby5s04d7my5" path="res://scenes/weapon/hand_knife.tscn" id="1_xapw8"]
 
 [resource]
 script = ExtResource("1_p8253")
 id = "health_bar"
 name = "血量上限"
 description = "增加原血条百分之30血量上限"
+scene = ExtResource("1_xapw8")
 max_chosen_time = 2
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

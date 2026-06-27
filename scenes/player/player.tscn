@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://qi8cxx074bja"]
+[gd_scene load_steps=40 format=3 uid="uid://qi8cxx074bja"]
 
 [ext_resource type="Script" uid="uid://nl1ip673o7un" path="res://scripts/player/player.gd" id="1_0owmy"]
 [ext_resource type="Shader" uid="uid://gax1k8tg58fm" path="res://scripts/shader/outline.gdshader" id="3_0owmy"]
@@ -17,11 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://d323yjcakhi1w" path="res://assets/particles/particle.png" id="8_ioxgp"]
 [ext_resource type="Script" uid="uid://klxvq0rlepha" path="res://scripts/player/attack_manager.gd" id="8_qek5x"]
 [ext_resource type="Texture2D" uid="uid://byqa41uko1tng" path="res://assets/UI/HUD.png" id="11_je7p5"]
-[ext_resource type="PackedScene" uid="uid://cc006t2ujquda" path="res://scenes/weapon/rotate_weapon.tscn" id="15_myrg7"]
-[ext_resource type="PackedScene" uid="uid://byhtkq50vmvmh" path="res://scenes/weapon/trace_shoot_weapon_manager.tscn" id="16_uf5tr"]
-[ext_resource type="PackedScene" uid="uid://cficymkooyicx" path="res://scenes/weapon/hurricane_manager.tscn" id="17_3j4b4"]
-[ext_resource type="PackedScene" uid="uid://bniwmrxrmpas4" path="res://scenes/weapon/shoot_weapon_manager.tscn" id="17_8ydkj"]
-[ext_resource type="PackedScene" uid="uid://coby5s04d7my5" path="res://scenes/weapon/hand_knife.tscn" id="17_lgqa7"]
 [ext_resource type="PackedScene" uid="uid://l1eecd8v05hm" path="res://scenes/UI/tower_card.tscn" id="17_uf5tr"]
 [ext_resource type="Script" uid="uid://wwnq3hjl7lrn" path="res://scripts/player/wake_show.gd" id="20_8ydkj"]
 [ext_resource type="PackedScene" uid="uid://bsd1dafn4wk3g" path="res://scenes/UI/gatlin_card.tscn" id="21_6cv16"]
@@ -605,7 +600,6 @@ metadata/_edit_lock_ = true
 script = ExtResource("8_qek5x")
 scan_enemy = NodePath("../graphics/scan_enemy")
 timers = NodePath("../Timers")
-weapon_array = Array[PackedScene]([ExtResource("15_myrg7"), ExtResource("17_lgqa7"), ExtResource("17_8ydkj"), ExtResource("16_uf5tr"), ExtResource("17_3j4b4")])
 weapon_property = {
 "all_property": {
 "shoot_gap_time": 1.0

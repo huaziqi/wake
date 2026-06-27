@@ -16,6 +16,7 @@ enum AbilityType {
 @export var id:String           #描述
 @export var name:String
 @export_multiline var description:String
+@export var scene:PackedScene
 
 
 # --- 新增的分类属性 ---

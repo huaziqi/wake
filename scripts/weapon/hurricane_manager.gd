@@ -2,7 +2,7 @@ extends shoot_weapon_manager
 #@onready var hurricane_gap_timer: Timer = $ShootGapTimer
 #var hurricane_gap_time=shoot_gap_time
 
-const HURRICANE_DESCRIPTIONS = {
+const DESCRIPTIONS = {
 	1: "一级大狂风：召唤微弱的气流阻挡敌人。",
 	2: "二级大狂风：风力增强，附带微弱推开效果。",
 	3: "三级大狂风：形成小型龙卷风。",
@@ -15,6 +15,7 @@ const HURRICANE_DESCRIPTIONS = {
 
 func _ready() -> void:
 	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)#升级系统
+	Gameevent.change_decription_sig.connect(on_change_description)
 	shoot_gap_timer.wait_time = shoot_gap_time
 	shoot_gap_timer.start()
 	
@@ -23,12 +24,14 @@ func _ready() -> void:
 	
 func on_ability_upgrade_added(upgrade:AbilityUpgrade,already_upgrades:Dictionary):
 	if upgrade.id!="hurricane_manager":#连接升级系统
+		print(3)
 		return
 	var hurricane_level=already_upgrades["hurricane_manager"]["quantity"]
 	shoot_gap_timer.wait_time=shoot_gap_time*0.8**(hurricane_level)
 	#print(shoot_gap_time)
 	#print(shoot_gap_timer.wait_time)
-	upgrade.description = HURRICANE_DESCRIPTIONS[hurricane_level]
+	Gameevent.change_description(upgrade,DESCRIPTIONS,hurricane_level)
+	print(2)
 	Log.info("升级系统","武器 [%s] 成功升级至 Lv.%d" % [upgrade.id,hurricane_level])
 
 
@@ -42,7 +45,11 @@ func on_ability_upgrade_added(upgrade:AbilityUpgrade,already_upgrades:Dictionary
 	# 同样，复制一份资源用于UI显示
 		# 根据等级从字典里抓取对应的描述，如果找不到就用默认文本
 		
-	
 	else:
 		return
+		
+func on_change_description(upgrade):
+	Gameevent.change_description(upgrade,DESCRIPTIONS,1)
+	print("change")
+	Log.info("升级系统","武器 [%s] 成功升级至 Lv.%d" % [upgrade.id,1])
 	

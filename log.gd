@@ -33,3 +33,13 @@ func error(module_name: String, message: String):
 	if current_filter_level <= Level.ERROR:
 		print_rich("[color=red][ERROR][%s][/color] [b]%s[/b]" % [module_name, message])
 		push_error("[%s] %s" % [module_name, message])
+		
+## 专用的富文本分割线
+func separator(module_name: String, title: String = ""):
+	if current_filter_level <= Level.INFO:
+		if title == "":
+			# 如果没传标题，就画一根纯纯的灰色虚线
+			print_rich("[color=gray]------------------------------------------------------------[/color]")
+		else:
+			# 如果传了标题，就画一根带模块名、有颜色的尊贵分割线
+			print_rich("[color=cyan]▶▶▶ [%s] %s ◀◀◀[/color]" % [module_name, title])

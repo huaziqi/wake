@@ -72,12 +72,14 @@ func apply_upgrade(upgrade:AbilityUpgrade):
 			"resource"=upgrade,    
 			"quantity"=1
 		}
-		Gameevent.emit_change_description(upgrade)
+		Gameevent.emit_change_description(upgrade.id)#初始化武器时，改变description
 		Log.debug("升级系统","upgrademanager该武器未被选过，设置quantity数值为%d" % [already_upgrades[upgrade.id]["quantity"]])
 	else:
 		already_upgrades[upgrade.id]["quantity"]+=1            #能力有则＋1，无则添加
+		Log.debug("升级系统","设置quantity数值为%d" % [already_upgrades[upgrade.id]["quantity"]])
 	Gameevent.emit_ability_upgrade_added(upgrade,already_upgrades)
 	
 	#print(already_upgrades)
 func on_upgrade_selected(upgrade:AbilityUpgrade):
+	Log.separator("升级系统", "开始应用卡牌: " + upgrade.id)
 	apply_upgrade(upgrade)

@@ -3,6 +3,8 @@ extends Node2D
 @onready var next_wave_controller : NextWaveController = $player.next_wave
 @export var enemy_controller : EnemyGenerator
 @export var background_music : AudioStream
+@export var initial_weapon : AbilityUpgrade
+
 @onready var master: Master = $master
 @onready var player: Player = $player
 @onready var enemy_generator: EnemyGenerator = $EnemyGenerator
@@ -11,7 +13,7 @@ const PLAYER = preload("uid://qi8cxx074bja")
 const TEST_SCENE = preload("uid://c1wko1rfba2e7")
 
 func _ready() -> void:
-	player.attackways.add_weapon_by_index(1)
+	player.attackways.add_weapon(initial_weapon)
 	next_wave_controller.next_wave_start.connect(enemy_controller.next_wave)
 	enemy_controller.current_wave_num.connect(next_wave_controller.current_wave_show)
 	enemy_controller.wave_cleared.connect(next_wave_controller.current_wave_stop)
