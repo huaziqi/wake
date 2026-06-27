@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://dmc60kehcwph1"]
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://dmc60kehcwph1"]
 
 [ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource/ability.gd" id="1_6rqxg"]
+[ext_resource type="PackedScene" uid="uid://cyi75rrptcqfs" path="res://scenes/weapon/trace_shoot_weapon.tscn" id="1_e4qs2"]
 
 [resource]
 script = ExtResource("1_6rqxg")
 id = "trace_weapon_damage"
 name = "追踪武器伤害"
 description = "追踪武器，增加百分之10基础伤害"
+scene = ExtResource("1_e4qs2")
 max_chosen_time = 1
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

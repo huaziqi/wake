@@ -7,5 +7,8 @@ script = ExtResource("1_p2g2k")
 id = "shoot_weapon"
 name = "射击武器"
 description = "增强射击武器速度"
+upgrade_description = {
+1: "射击1"
+}
 max_chosen_time = 1
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

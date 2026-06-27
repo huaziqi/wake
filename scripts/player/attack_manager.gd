@@ -44,9 +44,10 @@ func add_weapon(weapon_resource:AbilityUpgrade) -> void:
 		#Log.error("错误","武器初始化失败，超出了数组范围,位置attack_manager")
 	if(weapon_resource in weapon_in_using):
 		Log.debug("武器初始化","%s武器已经存在"%[weapon_resource.id])
+		Gameevent.change_description(weapon_resource,2)
 		return
-	var weapon_name=weapon_resource
-	#Gameevent.change_description(weapon_name)
+	var weapon_name=weapon_resource.id
+	Gameevent.change_description(weapon_resource,2)
 	Log.info("升级系统","武器 [%s] 成功启动" % [weapon_name])
 	var weapon : Node = weapon_resource.scene.instantiate()
 	

@@ -17,7 +17,7 @@ enum AbilityType {
 @export var name:String
 @export_multiline var description:String
 @export var scene:PackedScene
-
+@export var upgrade_description:Dictionary
 
 # --- 新增的分类属性 ---
 @export var rarity: Rarity = Rarity.COMMON          # 默认是普通品质

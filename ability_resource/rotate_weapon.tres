@@ -10,5 +10,14 @@ id = "rotate_weapon"
 name = "螺旋桨武器"
 description = "提升旋转武器速度"
 scene = ExtResource("2_hrjuh")
+upgrade_description = {
+1: "1级别螺旋桨：增加数量和速度",
+2: "2级别螺旋桨：增加数量和速度",
+3: "3级别螺旋桨：增加数量和速度",
+4: "4级别螺旋桨：变成奶龙螺旋",
+5: "5级别螺旋桨：风力增强，附带微弱推开效果",
+6: "6级别螺旋桨：风力增强，附带微弱推开效果",
+7: "7级别螺旋桨：风力增强，附带微弱推开效果"
+}
 max_chosen_time = 4
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

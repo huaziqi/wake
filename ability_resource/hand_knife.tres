@@ -9,5 +9,10 @@ id = "hand_knife"
 name = "手刀"
 description = "提升手刀伤害20%"
 scene = ExtResource("1_474ni")
+upgrade_description = {
+1: "增加20%伤害",
+2: "增加20",
+3: "增加20"
+}
 max_chosen_time = 4
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

@@ -1,11 +1,18 @@
-[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://r82eekbxtowy"]
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://r82eekbxtowy"]
 
 [ext_resource type="Script" uid="uid://bptee7m2xdmm5" path="res://ability_resource/ability.gd" id="1_5smo8"]
+[ext_resource type="PackedScene" uid="uid://cyi75rrptcqfs" path="res://scenes/weapon/trace_shoot_weapon.tscn" id="1_ts4rq"]
 
 [resource]
 script = ExtResource("1_5smo8")
 id = "trace_shoot_weapon_manager"
 name = "轨道？"
 description = "增加轨道武器速度"
+scene = ExtResource("1_ts4rq")
+upgrade_description = {
+1: "轨道1",
+2: "轨道2",
+3: "轨道3"
+}
 max_chosen_time = 1
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"

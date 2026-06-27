@@ -15,7 +15,7 @@ const DESCRIPTIONS = {
 
 func _ready() -> void:
 	Gameevent.ability_upgrade_added.connect(on_ability_upgrade_added)#升级系统
-	Gameevent.change_decription_sig.connect(on_change_description)
+	#Gameevent.change_decription_sig.connect(on_change_description)
 	shoot_gap_timer.wait_time = shoot_gap_time
 	shoot_gap_timer.start()
 	
@@ -30,8 +30,7 @@ func on_ability_upgrade_added(upgrade:AbilityUpgrade,already_upgrades:Dictionary
 	shoot_gap_timer.wait_time=shoot_gap_time*0.8**(hurricane_level)
 	#print(shoot_gap_time)
 	#print(shoot_gap_timer.wait_time)
-	Gameevent.change_description(upgrade,DESCRIPTIONS,hurricane_level)
-	print(2)
+	Gameevent.change_description(upgrade,hurricane_level+1)
 	Log.info("升级系统","武器 [%s] 成功升级至 Lv.%d" % [upgrade.id,hurricane_level])
 
 
@@ -48,8 +47,8 @@ func on_ability_upgrade_added(upgrade:AbilityUpgrade,already_upgrades:Dictionary
 	else:
 		return
 		
-func on_change_description(upgrade):
-	Gameevent.change_description(upgrade,DESCRIPTIONS,1)
-	print("change")
-	Log.info("升级系统","武器 [%s] 成功升级至 Lv.%d" % [upgrade.id,1])
+#func on_change_description(upgrade):
+	#Gameevent.change_description(upgrade,DESCRIPTIONS,1)
+	#print("change")
+	#Log.info("升级系统","武器 [%s] 成功升级至 Lv.%d" % [upgrade.id,1])
 	

@@ -15,6 +15,6 @@ func emit_ability_upgrade_added(upgrade:AbilityUpgrade, current_upgrades:Diction
 func emit_change_description(weaponid:String):
 	change_decription_sig.emit(weaponid)
 	
-func change_description(upgrade:AbilityUpgrade,dscps:
-	Dictionary,index:int):
-	upgrade.description=dscps[index]
+func change_description(upgrade:AbilityUpgrade,index:int):
+	upgrade.description=upgrade.upgrade_description[index]
+	Log.debug("升级系统","成功改变卡牌描述%s" % [upgrade.description])

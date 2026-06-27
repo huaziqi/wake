@@ -11,5 +11,14 @@ id = "hurricane_manager"
 name = "风暴"
 description = "大狂风"
 scene = ExtResource("1_1yqj2")
+upgrade_description = {
+1: "\"一级大狂风：召唤微弱的气流阻挡敌人。\"",
+2: "\"二级大狂风：风力增强，附带微弱推开效果。\"",
+3: " \"三级大狂风：形成小型龙卷风。",
+4: "四级大狂风：伤害范围大幅扩大",
+5: "五级大狂风：风刃开始具有撕裂效果",
+6: "6级大狂风：解锁终极风暴特效！",
+7: "7级大狂风：吞噬视线内的一切物品"
+}
 max_chosen_time = 3
 metadata/_custom_type_script = "uid://bptee7m2xdmm5"
